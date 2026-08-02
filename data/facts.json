@@ -50,15 +50,15 @@
   {
     "id": "spot-1",
     "title": "Danceability Meets Energy",
-    "explanation": "Top streaming tracks often score high on both danceability and energy (commonly 0.6–0.8+), reflecting playlist demand for upbeat, groove-forward audio.",
+    "explanation": "Top streaming tracks often score high on both danceability and energy, reflecting playlist demand for upbeat, groove-forward audio.",
     "category": "Music",
-    "source": "Spotify Web API (TidyTuesday)",
+    "source": "Spotify Web API",
     "dataset": "spotify"
   },
   {
     "id": "spot-2",
     "title": "Playlist Genres Shape Hits",
-    "explanation": "Curated playlist genres heavily influence which audio-feature profiles surface as “hits” — pop, latin, and edm catalogs often dominate high-energy clusters.",
+    "explanation": "Curated playlists influence which audio profiles become popular, with pop, latin, and electronic music frequently dominating high-energy clusters.",
     "category": "Music",
     "source": "Spotify Web API",
     "dataset": "spotify"
@@ -66,7 +66,7 @@
   {
     "id": "hap-1",
     "title": "Nordic Happiness Leadership",
-    "explanation": "Finland, Denmark, and Iceland consistently rank near the top of global happiness scores, linked to strong social support, trust, and economic security.",
+    "explanation": "Finland, Denmark, and Iceland consistently rank among the happiest countries, linked to social support, trust, and economic stability.",
     "category": "Society",
     "source": "World Happiness Report",
     "dataset": "happiness"
@@ -74,9 +74,161 @@
   {
     "id": "hap-2",
     "title": "Small Gaps at the Top",
-    "explanation": "Among the highest-ranked countries, Cantril ladder scores sit in a tight band — small differences separate global leaders even though the full 0–10 scale is wide.",
+    "explanation": "Countries at the top of happiness rankings often differ by only small score margins despite the global scale ranging from 0 to 10.",
     "category": "Society",
-    "source": "Our World in Data / WHR",
+    "source": "Our World in Data",
     "dataset": "happiness"
+  },
+
+  {
+    "id": "space-1",
+    "title": "The Universe Is Expanding",
+    "explanation": "Galaxies are moving away from each other because space itself is expanding, a discovery first supported by Edwin Hubble's observations in the 1920s.",
+    "category": "Space",
+    "source": "NASA",
+    "dataset": "space"
+  },
+  {
+    "id": "space-2",
+    "title": "A Day on Venus Is Longer Than Its Year",
+    "explanation": "Venus rotates so slowly that one full rotation takes about 243 Earth days, while orbiting the Sun takes about 225 Earth days.",
+    "category": "Space",
+    "source": "NASA Planetary Data",
+    "dataset": "space"
+  },
+  {
+    "id": "space-3",
+    "title": "Billions of Galaxies Exist",
+    "explanation": "Observations suggest the observable universe contains hundreds of billions to possibly trillions of galaxies.",
+    "category": "Space",
+    "source": "ESA / NASA",
+    "dataset": "space"
+  },
+
+  {
+    "id": "tech-1",
+    "title": "Internet Growth Explosion",
+    "explanation": "The internet grew from a research network connecting a few computers into a global infrastructure serving billions of users.",
+    "category": "Technology",
+    "source": "Internet World Stats",
+    "dataset": "technology"
+  },
+  {
+    "id": "tech-2",
+    "title": "Smartphones Changed Computing",
+    "explanation": "Modern smartphones contain computing power millions of times greater than early spacecraft computers used during the Apollo missions.",
+    "category": "Technology",
+    "source": "NASA / Computer History Museum",
+    "dataset": "technology"
+  },
+  {
+    "id": "tech-3",
+    "title": "AI Model Scale Growth",
+    "explanation": "Large AI models have increased dramatically in parameter count, training data volume, and computational requirements over the last decade.",
+    "category": "Technology",
+    "source": "Stanford AI Index",
+    "dataset": "technology"
+  },
+
+  {
+    "id": "health-1",
+    "title": "Global Life Expectancy Increase",
+    "explanation": "Average global life expectancy has increased significantly since the 1950s due to improvements in medicine, vaccination, and public health.",
+    "category": "Health",
+    "source": "World Bank",
+    "dataset": "health"
+  },
+  {
+    "id": "health-2",
+    "title": "Vaccination Impact",
+    "explanation": "Vaccination programs have prevented millions of deaths by reducing diseases such as smallpox, measles, and polio.",
+    "category": "Health",
+    "source": "World Health Organization",
+    "dataset": "health"
+  },
+
+  {
+    "id": "geo-1",
+    "title": "Earth Is Mostly Ocean",
+    "explanation": "Around 71% of Earth's surface is covered by oceans, while less than one-third is land.",
+    "category": "Geography",
+    "source": "NOAA",
+    "dataset": "geography"
+  },
+  {
+    "id": "geo-2",
+    "title": "The Amazon Holds Massive Biodiversity",
+    "explanation": "The Amazon rainforest contains millions of species and plays a major role in global carbon and water cycles.",
+    "category": "Environment",
+    "source": "WWF",
+    "dataset": "environment"
+  },
+
+  {
+    "id": "energy-1",
+    "title": "Renewable Energy Expansion",
+    "explanation": "Solar and wind power have become among the fastest-growing electricity sources worldwide due to falling costs and technology improvements.",
+    "category": "Energy",
+    "source": "International Energy Agency",
+    "dataset": "energy"
+  },
+  {
+    "id": "energy-2",
+    "title": "China Leads Solar Growth",
+    "explanation": "China has become the world's largest installer of solar energy capacity, driving major growth in renewable electricity.",
+    "category": "Energy",
+    "source": "International Renewable Energy Agency",
+    "dataset": "energy"
+  },
+
+  {
+    "id": "animal-1",
+    "title": "Blue Whale Is The Largest Animal",
+    "explanation": "The blue whale can reach over 30 meters in length and weigh more than 150 tonnes, making it the largest known animal in Earth's history.",
+    "category": "Animals",
+    "source": "National Geographic",
+    "dataset": "animals"
+  },
+  {
+    "id": "animal-2",
+    "title": "Octopuses Have Three Hearts",
+    "explanation": "Octopuses have three hearts and blue blood due to copper-based hemocyanin molecules that transport oxygen.",
+    "category": "Animals",
+    "source": "Smithsonian Institution",
+    "dataset": "animals"
+  },
+
+  {
+    "id": "transport-1",
+    "title": "Aviation Connects The World",
+    "explanation": "Commercial aviation transports billions of passengers annually and connects economies through global travel networks.",
+    "category": "Transportation",
+    "source": "International Air Transport Association",
+    "dataset": "transportation"
+  },
+  {
+    "id": "transport-2",
+    "title": "Electric Vehicles Are Growing",
+    "explanation": "Electric vehicle adoption has accelerated as battery costs decline and governments push for lower transportation emissions.",
+    "category": "Transportation",
+    "source": "International Energy Agency",
+    "dataset": "transportation"
+  },
+
+  {
+    "id": "food-1",
+    "title": "Rice Feeds Half The Planet",
+    "explanation": "Rice is one of the world's most important staple foods, providing a major source of calories for billions of people.",
+    "category": "Food",
+    "source": "FAO",
+    "dataset": "food"
+  },
+  {
+    "id": "food-2",
+    "title": "Coffee Is A Global Commodity",
+    "explanation": "Coffee is one of the world's most traded agricultural products and supports millions of farmers worldwide.",
+    "category": "Food",
+    "source": "International Coffee Organization",
+    "dataset": "food"
   }
 ]
