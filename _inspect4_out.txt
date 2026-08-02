@@ -1,0 +1,34 @@
+﻿745083 <script src="js/main.js">
+python : Traceback (most recent call last):
+At C:\Users\Damsara\AppData\Local\Temp\ps-script-36fcda3d-8ea4-440d-ad16-b3432ecc08fc.ps1:94 char:1
++ python _inspect4.py 2>&1 | Out-File _inspect4_out.txt -Encoding utf8; ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+749312 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js">
+749410 <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js">
+749493 <script src="js/main.js">
+749530 <script src="js/charts.js">
+
+--- first main.js context ---
+ned &amp; built by Damsara Dissanayaka À ® 2026</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+
+  <section id="p
+
+--- second ---
+ps://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/
+
+CONTACT STRUCTURE (stripped):
+  File "D:\Damsiiii.github.io\_inspect4.py", line 24, in <module>
+    print(clean[:2500])
+  File "C:\Users\Damsara\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 533: character maps to <undefined>

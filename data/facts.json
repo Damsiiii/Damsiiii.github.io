@@ -1,0 +1,82 @@
+[
+  {
+    "id": "pop-1",
+    "title": "Global Population Milestone",
+    "explanation": "The world population surpassed 8 billion in late 2022, doubling from 4 billion in less than 50 years — driven largely by advances in medicine, sanitation, and food production.",
+    "category": "Population",
+    "source": "United Nations Population Division",
+    "dataset": "population"
+  },
+  {
+    "id": "pop-2",
+    "title": "Growth Is Slowing, Totals Still Rise",
+    "explanation": "While the global population growth rate has fallen from over 2% in the 1960s to under 1% today, absolute numbers keep climbing because the base population is so large.",
+    "category": "Population",
+    "source": "United Nations / World Bank",
+    "dataset": "population"
+  },
+  {
+    "id": "clim-1",
+    "title": "Accelerating Warming Trend",
+    "explanation": "Global average surface temperatures have risen over 1.1°C above pre-industrial levels, and the last decade is the warmest in the instrumental record.",
+    "category": "Environment",
+    "source": "NASA GISS & NOAA",
+    "dataset": "climate"
+  },
+  {
+    "id": "clim-2",
+    "title": "Post-1970 Inflection",
+    "explanation": "Temperature anomaly series show a sharp upward bend after about 1970 — recent years frequently exceed +1.0°C relative to the mid-20th-century baseline.",
+    "category": "Environment",
+    "source": "NOAA / GCAG",
+    "dataset": "climate"
+  },
+  {
+    "id": "mov-1",
+    "title": "Blockbuster Revenue Scale",
+    "explanation": "Modern tentpole film budgets often exceed $200M, yet the highest-grossing titles can clear well over $2 billion worldwide — returns are highly skewed toward hits.",
+    "category": "Entertainment",
+    "source": "The Numbers & Box Office Mojo",
+    "dataset": "movies"
+  },
+  {
+    "id": "mov-2",
+    "title": "Budget Does Not Guarantee Gross",
+    "explanation": "Across major releases, higher production budgets correlate with higher worldwide gross on average, but variance widens dramatically for films above roughly $150M.",
+    "category": "Entertainment",
+    "source": "The Numbers",
+    "dataset": "movies"
+  },
+  {
+    "id": "spot-1",
+    "title": "Danceability Meets Energy",
+    "explanation": "Top streaming tracks often score high on both danceability and energy (commonly 0.6–0.8+), reflecting playlist demand for upbeat, groove-forward audio.",
+    "category": "Music",
+    "source": "Spotify Web API (TidyTuesday)",
+    "dataset": "spotify"
+  },
+  {
+    "id": "spot-2",
+    "title": "Playlist Genres Shape Hits",
+    "explanation": "Curated playlist genres heavily influence which audio-feature profiles surface as “hits” — pop, latin, and edm catalogs often dominate high-energy clusters.",
+    "category": "Music",
+    "source": "Spotify Web API",
+    "dataset": "spotify"
+  },
+  {
+    "id": "hap-1",
+    "title": "Nordic Happiness Leadership",
+    "explanation": "Finland, Denmark, and Iceland consistently rank near the top of global happiness scores, linked to strong social support, trust, and economic security.",
+    "category": "Society",
+    "source": "World Happiness Report",
+    "dataset": "happiness"
+  },
+  {
+    "id": "hap-2",
+    "title": "Small Gaps at the Top",
+    "explanation": "Among the highest-ranked countries, Cantril ladder scores sit in a tight band — small differences separate global leaders even though the full 0–10 scale is wide.",
+    "category": "Society",
+    "source": "Our World in Data / WHR",
+    "dataset": "happiness"
+  }
+]

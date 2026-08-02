@@ -1,0 +1,12 @@
+﻿SCRIPTS TAIL:
+<script src="js/charts.js"></script>
+</body>
+
+</html>
+
+playground span 745122 749264 len 4142
+contact at 512834
+contact end 744981 len 232147
+
+AFTER PLAYGROUND:
+'\n\n  <!-- Dependencies for Data Playground -->\n  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>\n  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>\n  <script src="js/main.js"></script>\n  <script src="js/charts.js"></script>\n</body>\n\n</html>'

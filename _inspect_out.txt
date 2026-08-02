@@ -1,0 +1,169 @@
+=== NAV ===
+<nav class="nav">
+      <a href="#top" class="mark"><span>DAMSARA</span>.DEV</a>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#playground">Digital Playground</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a
+            href="data:STRIPPED"
+            download="Damsara_Dissanayaka_CV.pdf">Résumé ↓</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
+    </nav>
+
+=== PLAYGROUND ===
+<section id="playground" class="playground-section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Digital Data Playground</h2>
+        <div class="section-rule"></div>
+      </div>
+      
+      <p class="proj-desc" style="max-width: 720px; margin-top: 12px; margin-bottom: 24px; font-size: 16px;">
+        Explore real-world datasets and discover hidden patterns through interactive visualization.
+      </p>
+
+      <div class="playground-grid">
+        <!-- Random Fact Card -->
+        <div class="playground-card">
+          <h3>🎲 Data Facts</h3>
+          <div id="factDisplay">
+            <span class="fact-badge" id="factCategory">Environment</span>
+            <h4 class="fact-title" id="factTitle" style="margin-top: 14px;">Loading Data Fact...</h4>
+            <p class="fact-desc" id="factDesc" style="margin-top: 12px;"></p>
+            <div class="fact-meta" id="factSource" style="margin-top: 16px;"></div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 16px;">
+            <button id="nextFactBtn" class="btn btn-solid" style="justify-content: center; width: 100%;">
+              🎲 Generate Random Fact
+            </button>
+            <button id="exploreFactBtn" class="btn btn-outline" style="justify-content: center; width: 100%;">
+              📊 Explore This Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Interactive Visualization Explorer -->
+        <div class="playground-card">
+          <h3>📊 Interactive Explorer</h3>
+          <div class="controls-bar">
+            <div class="control-group">
+              <label for="datasetSelect">Select Dataset</label>
+              <select id="datasetSelect" class="control-select">
+                <option value="population">World Population (UN)</option>
+                <option value="climate">Global Temperature (NASA/NOAA)</option>
+                <option value="spotify">Spotify Songs (Audio Features)</option>
+                <option value="movies">Movie Box Office (Budgets & Revenue)</option>
+                <option value="happiness">World Happiness Index (UN SDG)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label for="chartTypeSelect">Chart Type</label>
+              <select id="chartTypeSelect" class="control-select">
+                <option value="line">Line Chart</option>
+                <option value="bar">Bar Chart</option>
+                <option value="scatter">Scatter Plot</option>
+                <option value="pie">Pie Chart</option>
+                <option value="histogram">Histogram / Bins</option>
+              </select>
+            </div>
+
+            <button id="downloadChartBtn" class="btn btn-outline" style="padding: 9px 16px; margin-top: 4px;">
+              💾 Download Chart
+            </button>
+          </div>
+
+          <div id="chartContainer" style="width: 100%; height: 420px; margin-top: 12px;"></div>
+
+          <div class="dataset-info-grid">
+            <div class="info-item">
+              <div class="info-label">Dataset</div>
+              <div class="info-val" id="infoName">-</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Source</div>
+              <div class="info-val" id="infoSource">-</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Total Records</div>
+              <div class="info-val" id="infoRecords">-</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Last Updated</div>
+              <div class="info-val" id="infoUpdated">2026-08</div>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              💡 Automated Data Insight
+            </div>
+            <p class="insight-text" id="insightText">
+              Loading dataset insight...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+=== SCRIPT TAGS ===
+<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/charts.js"></script>
+
+=== SECTION IDS ===
+top
+about
+projects
+skills
+certifications
+education
+contact
+playground
+
+=== LINK/CSS IN HEAD ===
+<title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+Inline style count: 0
+External css refs: ['css/style.css']
+External js refs: ['js/main.js', 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js', 'https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js', 'js/main.js', 'js/charts.js']
+
+=== ID PRESENCE ===
+factCategory: YES
+factTitle: YES
+factDesc: YES
+factSource: YES
+nextFactBtn: YES
+exploreFactBtn: YES
+datasetSelect: YES
+chartTypeSelect: YES
+downloadChartBtn: YES
+chartContainer: YES
+infoName: YES
+infoSource: YES
+infoRecords: YES
+insightText: YES
+generateFact: NO
+factContent: NO
+chart: NO
+chartSelect: NO
+insight: NO
+downloadChart: NO
+
+File size bytes: 749583
+Has css/style.css link: True

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Global Population Growth",
+    "explanation": "The world population has experienced continuous growth following the Great Famine of 1315–1317 and the end of the Black Death in 1350, when it was near 370 million.",
+    "dataset": "population",
+    "category": "Population",
+    "source": "United Nations",
+    "buttonText": "Visualize this trend"
+  },
+  {
+    "id": 2,
+    "title": "Rising Global Temperatures",
+    "explanation": "Global temperatures have risen significantly since the pre-industrial era, heavily driven by human activities such as fossil fuel burning.",
+    "dataset": "climate",
+    "category": "Environment",
+    "source": "NASA/GISS",
+    "buttonText": "Explore climate data"
+  },
+  {
+    "id": 3,
+    "title": "Box Office Revenue Growth",
+    "explanation": "Movie industry revenues have steadily climbed over decades with major blockbuster releases pushing records higher every year.",
+    "dataset": "movies",
+    "category": "Entertainment",
+    "source": "Box Office Mojo",
+    "buttonText": "See movie trends"
+  },
+  {
+    "id": 4,
+    "title": "Music Streaming Dominance",
+    "explanation": "Streaming has overtaken physical sales and digital downloads to become the primary way the world consumes music.",
+    "dataset": "spotify",
+    "category": "Technology",
+    "source": "Spotify Data",
+    "buttonText": "Check Spotify stats"
+  }
+]
