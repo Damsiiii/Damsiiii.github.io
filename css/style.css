@@ -94,6 +94,10 @@
       transition: color .2s;
     }
 
+    .nav ul a[href="#playground"] {
+      color: var(--amber-soft);
+    }
+
     .nav ul a:hover {
       color: var(--amber-soft);
     }
