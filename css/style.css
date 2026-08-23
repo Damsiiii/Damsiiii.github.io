@@ -41,6 +41,11 @@
       text-decoration: none;
     }
 
+    :focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+    }
+
     .wrap {
       max-width: 1120px;
       margin: 0 auto;
