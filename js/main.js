@@ -60,22 +60,43 @@
       const labels = ['Python', 'AI/ML', 'AWS', 'SQL', 'MCP', 'Security', 'LLM', 'Cloud', 'Java', 'Data'];
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      let mouse = { x: null, y: null };
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          mouse.x = (e.clientX - rect.left) * devicePixelRatio;
+          mouse.y = (e.clientY - rect.top) * devicePixelRatio;
+        } else {
+          mouse.x = null;
+          mouse.y = null;
+        }
+      });
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
       function resize() {
         w = canvas.width = canvas.offsetWidth * devicePixelRatio;
         h = canvas.height = canvas.offsetHeight * devicePixelRatio;
       }
       function init() {
         resize();
-        const count = w < 700 ? 16 : 26;
+        const count = w < 700 ? 18 : 32;
         nodes = Array.from({ length: count }, (_, i) => ({
           x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio, vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
-          r: (Math.random() * 2 + 1.5) * devicePixelRatio,
+          vx: (Math.random() - 0.5) * 0.3 * devicePixelRatio, vy: (Math.random() - 0.5) * 0.3 * devicePixelRatio,
+          r: (Math.random() * 2.5 + 1.5) * devicePixelRatio,
           label: i < labels.length ? labels[i] : null
         }));
       }
       function step() {
         ctx.clearRect(0, 0, w, h);
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        const lineRgb = isLight ? '217, 119, 6' : '226, 165, 61';
+        const particleColor = isLight ? 'rgba(13, 148, 136, 0.9)' : 'rgba(95, 179, 163, 0.85)';
+        const labelColor = isLight ? 'rgba(28, 36, 52, 0.65)' : 'rgba(246, 243, 236, 0.45)';
+
         for (const n of nodes) {
           n.x += n.vx; n.y += n.vy;
           if (n.x < 0 || n.x > w) n.vx *= -1;
@@ -87,18 +108,29 @@
             const d = Math.hypot(a.x - b.x, a.y - b.y);
             const maxD = 180 * devicePixelRatio;
             if (d < maxD) {
-              ctx.strokeStyle = `rgba(226,165,61,${(1 - d / maxD) * 0.22})`;
+              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - d / maxD) * 0.28})`;
               ctx.lineWidth = 1;
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+
+          // Connect to mouse cursor
+          if (mouse.x !== null && mouse.y !== null) {
+            const md = Math.hypot(nodes[i].x - mouse.x, nodes[i].y - mouse.y);
+            const maxMouseD = 220 * devicePixelRatio;
+            if (md < maxMouseD) {
+              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - md / maxMouseD) * 0.45})`;
+              ctx.lineWidth = 1.2;
+              ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
             }
           }
         }
         ctx.font = `${11 * devicePixelRatio}px 'JetBrains Mono', monospace`;
         for (const n of nodes) {
-          ctx.fillStyle = 'rgba(95,179,163,0.85)';
+          ctx.fillStyle = particleColor;
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
           if (n.label) {
-            ctx.fillStyle = 'rgba(246,243,236,0.4)';
+            ctx.fillStyle = labelColor;
             ctx.fillText(n.label, n.x + 8 * devicePixelRatio, n.y + 4 * devicePixelRatio);
           }
         }
