@@ -33,16 +33,8 @@
     // mobile nav
     const toggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
-    if (toggle && navLinks) {
-      toggle.addEventListener('click', () => {
-        const isOpen = navLinks.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      });
-      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }));
-    }
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
     // reveal on scroll
     const revealEls = document.querySelectorAll('.reveal');
