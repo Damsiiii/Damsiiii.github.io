@@ -13,6 +13,58 @@
       --body: 'Inter', sans-serif;
     }
 
+    [data-theme="light"] {
+      --ink: #faf8f5;
+      --ink-2: #ffffff;
+      --paper: #1c2434;
+      --paper-dim: #2d3748;
+      --amber: #d97706;
+      --amber-soft: #b45309;
+      --teal: #0d9488;
+      --line: rgba(28, 36, 52, 0.12);
+      --line-soft: rgba(28, 36, 52, 0.06);
+    }
+
+    [data-theme="light"] header {
+      background: rgba(250, 248, 245, 0.88);
+    }
+
+    [data-theme="light"] .nav ul a,
+    [data-theme="light"] .hero-role,
+    [data-theme="light"] .hero-desc,
+    [data-theme="light"] .about-text p,
+    [data-theme="light"] .proj-desc,
+    [data-theme="light"] .edu-body p,
+    [data-theme="light"] .stat-label,
+    [data-theme="light"] .scroll-cue {
+      color: rgba(28, 36, 52, 0.8);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--paper);
+      font-size: 16px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--amber);
+      transform: scale(1.05);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
