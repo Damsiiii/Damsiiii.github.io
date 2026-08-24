@@ -12,6 +12,9 @@
       }
 
       themeToggle.addEventListener('click', () => {
+        themeToggle.classList.add('spin');
+        setTimeout(() => themeToggle.classList.remove('spin'), 500);
+
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
         const nextTheme = isLight ? 'dark' : 'light';
         if (nextTheme === 'light') {
