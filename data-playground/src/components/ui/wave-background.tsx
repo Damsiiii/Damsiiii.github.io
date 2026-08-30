@@ -154,41 +154,39 @@ export function Waves({
 
     // Mouse handler
     const onMouseMove = (e: MouseEvent) => {
-        updateMousePosition(e.pageX, e.pageY)
+        updateMousePosition(e.clientX, e.clientY)
     }
 
     // Touch handler
     const onTouchMove = (e: TouchEvent) => {
-        e.preventDefault()
-        const touch = e.touches[0]
-        updateMousePosition(touch.clientX, touch.clientY)
+        if (e.touches.length > 0) {
+            updateMousePosition(e.touches[0].clientX, e.touches[0].clientY)
+        }
     }
 
     // Update mouse position
-    const updateMousePosition = (x: number, y: number) => {
-        if (!boundingRef.current) return
+    const updateMousePosition = (clientX: number, clientY: number) => {
+        if (!containerRef.current) return
 
+        const rect = containerRef.current.getBoundingClientRect()
         const mouse = mouseRef.current
-        mouse.x = x - boundingRef.current.left
-        mouse.y = y - boundingRef.current.top + window.scrollY
+        mouse.x = clientX - rect.left
+        mouse.y = clientY - rect.top
 
         if (!mouse.set) {
             mouse.sx = mouse.x
             mouse.sy = mouse.y
             mouse.lx = mouse.x
             mouse.ly = mouse.y
-
             mouse.set = true
+            containerRef.current.style.setProperty('--opacity', '1')
         }
 
-        // Update CSS variables
-        if (containerRef.current) {
-            containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
-            containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
-        }
+        containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
+        containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
     }
 
-    // Move points - smoother wave motion
+    // Move points - smoother wave motion with interactive mouse repulsion
     const movePoints = (time: number) => {
         const { current: lines } = linesRef
         const { current: mouse } = mouseRef
@@ -196,42 +194,56 @@ export function Waves({
 
         if (!noise) return
 
+        const radius = 160
+
         lines.forEach((points) => {
             points.forEach((p: Point) => {
-                // Wave movement - reduced amplitude for smoother waves
+                // Ambient wave movement
                 const move = noise(
-                    (p.x + time * 0.008) * 0.003,  // Adjusted frequency
-                    (p.y + time * 0.003) * 0.002   // Adjusted frequency
-                ) * 8  // Reduced amplitude for smoother waves
+                    (p.x + time * 0.008) * 0.003,
+                    (p.y + time * 0.003) * 0.002
+                ) * 8
 
-                p.wave.x = Math.cos(move) * 12  // Reduced horizontal amplitude
-                p.wave.y = Math.sin(move) * 6   // Reduced vertical amplitude
+                p.wave.x = Math.cos(move) * 12
+                p.wave.y = Math.sin(move) * 6
 
-                // Mouse effect - smoother response
-                const dx = p.x - mouse.sx
-                const dy = p.y - mouse.sy
-                const d = Math.hypot(dx, dy)
-                const l = Math.max(175, mouse.vs)
+                // Cursor interactive force
+                if (mouse.set) {
+                    const dx = p.x - mouse.sx
+                    const dy = p.y - mouse.sy
+                    const d = Math.hypot(dx, dy)
 
-                if (d < l) {
-                    const s = 1 - d / l
-                    const f = Math.cos(d * 0.001) * s
+                    if (d < radius && d > 0) {
+                        const s = 1 - d / radius
+                        const force = Math.sin(s * Math.PI) * 12
+                        const angle = Math.atan2(dy, dx)
 
-                    p.cursor.vx += Math.cos(mouse.a) * f * l * mouse.vs * 0.00035  // Reduced influence
-                    p.cursor.vy += Math.sin(mouse.a) * f * l * mouse.vs * 0.00035  // Reduced influence
+                        // Proximity push
+                        p.cursor.vx += Math.cos(angle) * force * 0.04
+                        p.cursor.vy += Math.sin(angle) * force * 0.04
+
+                        // Motion directional force if moving
+                        if (mouse.vs > 0.5) {
+                            p.cursor.vx += Math.cos(mouse.a) * s * mouse.vs * 0.005
+                            p.cursor.vy += Math.sin(mouse.a) * s * mouse.vs * 0.005
+                        }
+                    }
                 }
 
-                p.cursor.vx += (0 - p.cursor.x) * 0.01   // Increased restoration force
-                p.cursor.vy += (0 - p.cursor.y) * 0.01   // Increased restoration force
+                // Restoration spring force
+                p.cursor.vx += (0 - p.cursor.x) * 0.03
+                p.cursor.vy += (0 - p.cursor.y) * 0.03
 
-                p.cursor.vx *= 0.95  // Increased smoothness
-                p.cursor.vy *= 0.95  // Increased smoothness
+                // Damping
+                p.cursor.vx *= 0.92
+                p.cursor.vy *= 0.92
 
                 p.cursor.x += p.cursor.vx
                 p.cursor.y += p.cursor.vy
 
-                p.cursor.x = Math.min(50, Math.max(-50, p.cursor.x))  // Limited deformation range
-                p.cursor.y = Math.min(50, Math.max(-50, p.cursor.y))  // Limited deformation range
+                // Limits
+                p.cursor.x = Math.min(60, Math.max(-60, p.cursor.x))
+                p.cursor.y = Math.min(60, Math.max(-60, p.cursor.y))
             })
         })
     }
@@ -272,30 +284,33 @@ export function Waves({
     const tick = (time: number) => {
         const { current: mouse } = mouseRef
 
-        // Smooth mouse movement
-        mouse.sx += (mouse.x - mouse.sx) * 0.1
-        mouse.sy += (mouse.y - mouse.sy) * 0.1
+        if (mouse.set) {
+            // Smooth mouse movement
+            mouse.sx += (mouse.x - mouse.sx) * 0.12
+            mouse.sy += (mouse.y - mouse.sy) * 0.12
 
-        // Mouse velocity
-        const dx = mouse.x - mouse.lx
-        const dy = mouse.y - mouse.ly
-        const d = Math.hypot(dx, dy)
+            // Mouse velocity
+            const dx = mouse.x - mouse.lx
+            const dy = mouse.y - mouse.ly
+            const d = Math.hypot(dx, dy)
 
-        mouse.v = d
-        mouse.vs += (d - mouse.vs) * 0.1
-        mouse.vs = Math.min(100, mouse.vs)
+            mouse.v = d
+            mouse.vs += (d - mouse.vs) * 0.1
+            mouse.vs = Math.min(100, mouse.vs)
 
-        // Previous mouse position
-        mouse.lx = mouse.x
-        mouse.ly = mouse.y
+            // Previous mouse position
+            mouse.lx = mouse.x
+            mouse.ly = mouse.y
 
-        // Mouse angle
-        mouse.a = Math.atan2(dy, dx)
+            // Mouse angle
+            if (d > 0.01) {
+                mouse.a = Math.atan2(dy, dx)
+            }
 
-        // Animation
-        if (containerRef.current) {
-            containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
-            containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
+            if (containerRef.current) {
+                containerRef.current.style.setProperty('--x', `${mouse.sx}px`)
+                containerRef.current.style.setProperty('--y', `${mouse.sy}px`)
+            }
         }
 
         movePoints(time)
@@ -318,27 +333,31 @@ export function Waves({
                 width: '100%',
                 height: '100%',
                 overflow: 'hidden',
-                '--x': '-0.5rem',
-                '--y': '50%',
+                '--x': '-100px',
+                '--y': '-100px',
+                '--opacity': '0',
             } as React.CSSProperties}
         >
             <svg
                 ref={svgRef}
-                className="block w-full h-full js-svg"
+                className="block w-full h-full js-svg pointer-events-none"
                 xmlns="http://www.w3.org/2000/svg"
             />
             <div
-                className="pointer-dot"
+                className="pointer-dot pointer-events-none"
                 style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
+                    pointerEvents: 'none',
                     width: `${pointerSize}rem`,
                     height: `${pointerSize}rem`,
                     background: strokeColor,
                     borderRadius: '50%',
-                    transform: 'translate3d(calc(var(--x) - 50%), calc(var(--y) - 50%), 0)',
-                    willChange: 'transform',
+                    opacity: 'var(--opacity, 0)',
+                    transform: 'translate3d(calc(var(--x, -100px) - 50%), calc(var(--y, -100px) - 50%), 0)',
+                    transition: 'opacity 0.25s ease',
+                    willChange: 'transform, opacity',
                 }}
             />
         </div>
