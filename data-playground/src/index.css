@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg: #fdfbf7;
-  --fg: #2d2d2d;
-  --muted: #e5e0d8;
-  --accent: #ff4d4d;
-  --border: #2d2d2d;
+  --bg: #f4ede2;
+  --fg: #2c2825;
+  --muted: #ded4c4;
+  --accent: #e04444;
+  --border: #2c2825;
   --blue: #2d5da1;
-  --card-bg: #ffffff;
-  --postit: #fff9c4;
-  --shadow-color: #2d2d2d;
-  --dot-color: #e5e0d8;
+  --card-bg: #faf5ed;
+  --postit: #faefb8;
+  --shadow-color: #2c2825;
+  --dot-color: #ded4c4;
 
   --heading: 'Kalam', cursive;
   --body: 'Patrick Hand', cursive;

@@ -393,28 +393,68 @@
   }
 
   function buildOption(data, config) {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    const themeColors = isDark ? {
+      text: '#e8e4dc',
+      textMuted: 'rgba(232, 228, 220, 0.85)',
+      textSubtle: 'rgba(232, 228, 220, 0.65)',
+      axisLine: 'rgba(232, 228, 220, 0.4)',
+      splitLine: 'rgba(232, 228, 220, 0.15)',
+      tooltipBg: 'rgba(30, 30, 30, 0.95)',
+      tooltipBorder: '#ff6b6b',
+      accent: '#ff6b6b',
+      accentSoft: '#ff8e8e',
+      secondary: '#5b8fd9',
+      colors: ['#ff6b6b', '#5b8fd9', '#f0c878', '#5fb3a3', '#38bdf8', '#e879f9'],
+      lineGradStart: 'rgba(255, 107, 107, 0.45)',
+      lineGradEnd: 'rgba(255, 107, 107, 0.02)',
+      barGradStart: '#5b8fd9',
+      barGradEnd: 'rgba(91, 143, 217, 0.3)',
+      pieBorder: '#2a2a2a',
+      pieLine: 'rgba(232, 228, 220, 0.6)'
+    } : {
+      text: '#2c2825',
+      textMuted: 'rgba(44, 40, 37, 0.85)',
+      textSubtle: 'rgba(44, 40, 37, 0.65)',
+      axisLine: 'rgba(44, 40, 37, 0.4)',
+      splitLine: 'rgba(44, 40, 37, 0.12)',
+      tooltipBg: 'rgba(250, 245, 237, 0.95)',
+      tooltipBorder: '#2c2825',
+      accent: '#e04444',
+      accentSoft: '#f07878',
+      secondary: '#2d5da1',
+      colors: ['#e04444', '#2d5da1', '#d97706', '#0d9488', '#7c3aed', '#db2777'],
+      lineGradStart: 'rgba(224, 68, 68, 0.35)',
+      lineGradEnd: 'rgba(224, 68, 68, 0.01)',
+      barGradStart: '#2d5da1',
+      barGradEnd: 'rgba(45, 93, 161, 0.25)',
+      pieBorder: '#faf5ed',
+      pieLine: 'rgba(44, 40, 37, 0.55)'
+    };
+
     const baseText = {
       fontFamily: "'Inter', sans-serif",
-      color: THEME.paper
+      color: themeColors.text
     };
 
     const option = {
       backgroundColor: 'transparent',
-      color: THEME.colors,
+      color: themeColors.colors,
       animationDuration: 650,
       animationEasing: 'cubicOut',
       textStyle: baseText,
       legend: {
         show: activeChartType === 'pie',
         bottom: 0,
-        textStyle: { color: 'rgba(246,243,236,0.7)', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }
+        textStyle: { color: themeColors.textMuted, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }
       },
       tooltip: {
         trigger: activeChartType === 'pie' || activeChartType === 'scatter' ? 'item' : 'axis',
-        backgroundColor: 'rgba(14, 28, 44, 0.95)',
-        borderColor: THEME.amber,
-        borderWidth: 1,
-        textStyle: { color: THEME.paper, fontFamily: "'Inter', sans-serif" },
+        backgroundColor: themeColors.tooltipBg,
+        borderColor: themeColors.tooltipBorder,
+        borderWidth: 1.5,
+        textStyle: { color: themeColors.text, fontFamily: "'Inter', sans-serif" },
         formatter: (params) => {
           if (activeChartType === 'pie') {
             const p = Array.isArray(params) ? params[0] : params;
@@ -452,28 +492,28 @@
         name: activeChartType === 'scatter' ? data.xName : '',
         nameLocation: 'middle',
         nameGap: 32,
-        nameTextStyle: { color: 'rgba(246,243,236,0.55)', fontSize: 11 },
+        nameTextStyle: { color: themeColors.textSubtle, fontSize: 11 },
         data: activeChartType === 'scatter' || activeChartType === 'pie' ? undefined : data.x,
-        axisLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.2)' } },
+        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1.5 } },
         axisLabel: {
-          color: 'rgba(246, 243, 236, 0.7)',
+          color: themeColors.textMuted,
           rotate: data.x && data.x.length > 14 ? 40 : 0,
           fontSize: 11,
           interval: activeChartType === 'histogram' ? 0 : 'auto'
         },
         splitLine: {
           show: activeChartType === 'scatter',
-          lineStyle: { color: 'rgba(246,243,236,0.06)' }
+          lineStyle: { color: themeColors.splitLine }
         }
       },
       yAxis: {
         show: activeChartType !== 'pie',
         type: 'value',
         name: activeChartType === 'histogram' ? 'Frequency' : data.yName || 'Value',
-        nameTextStyle: { color: 'rgba(246,243,236,0.55)', fontSize: 11 },
-        axisLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.2)' } },
-        splitLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.08)' } },
-        axisLabel: { color: 'rgba(246, 243, 236, 0.7)', fontSize: 11 }
+        nameTextStyle: { color: themeColors.textSubtle, fontSize: 11 },
+        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1.5 } },
+        splitLine: { lineStyle: { color: themeColors.splitLine } },
+        axisLabel: { color: themeColors.textMuted, fontSize: 11 }
       },
       series: []
     };
@@ -487,12 +527,12 @@
           smooth: true,
           symbol: 'circle',
           symbolSize: 6,
-          lineStyle: { width: 3, color: THEME.amber },
-          itemStyle: { color: THEME.amber },
+          lineStyle: { width: 3, color: themeColors.accent },
+          itemStyle: { color: themeColors.accent },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(226, 165, 61, 0.35)' },
-              { offset: 1, color: 'rgba(226, 165, 61, 0.0)' }
+              { offset: 0, color: themeColors.lineGradStart },
+              { offset: 1, color: themeColors.lineGradEnd }
             ])
           }
         }
@@ -506,8 +546,8 @@
           barMaxWidth: 42,
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: THEME.teal },
-              { offset: 1, color: 'rgba(95, 179, 163, 0.25)' }
+              { offset: 0, color: themeColors.barGradStart },
+              { offset: 1, color: themeColors.barGradEnd }
             ]),
             borderRadius: [3, 3, 0, 0]
           }
@@ -521,10 +561,10 @@
           data: data.scatter || data.x.map((xv, i) => [i, data.y[i]]),
           symbolSize: 10,
           itemStyle: {
-            color: THEME.amberSoft,
-            opacity: 0.85,
+            color: themeColors.accentSoft,
+            opacity: 0.9,
             shadowBlur: 8,
-            shadowColor: 'rgba(226,165,61,0.25)'
+            shadowColor: isDark ? 'rgba(255,107,107,0.4)' : 'rgba(224,68,68,0.3)'
           },
           emphasis: { scale: 1.25 }
         }
@@ -553,15 +593,15 @@
           radius: ['38%', '68%'],
           center: ['50%', '46%'],
           avoidLabelOverlap: true,
-          itemStyle: { borderRadius: 5, borderColor: THEME.ink, borderWidth: 2 },
+          itemStyle: { borderRadius: 5, borderColor: themeColors.pieBorder, borderWidth: 2 },
           label: {
             show: true,
-            color: THEME.paper,
+            color: themeColors.text,
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11,
             formatter: '{b}'
           },
-          labelLine: { lineStyle: { color: 'rgba(246,243,236,0.35)' } },
+          labelLine: { lineStyle: { color: themeColors.pieLine } },
           data: pieData
         }
       ];
@@ -594,8 +634,8 @@
           barMaxWidth: 48,
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: '#38bdf8' },
-              { offset: 1, color: 'rgba(56, 189, 248, 0.25)' }
+              { offset: 0, color: themeColors.secondary },
+              { offset: 1, color: isDark ? 'rgba(91, 143, 217, 0.25)' : 'rgba(45, 93, 161, 0.2)' }
             ]),
             borderRadius: [3, 3, 0, 0]
           }
@@ -655,10 +695,11 @@
     if (downloadBtn) {
       downloadBtn.addEventListener('click', () => {
         if (!chartInstance) return;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         const url = chartInstance.getDataURL({
           type: 'png',
           pixelRatio: 2,
-          backgroundColor: THEME.ink
+          backgroundColor: isDark ? '#2a2a2a' : '#faf5ed'
         });
         const link = document.createElement('a');
         link.download = 'data-playground-' + activeDatasetId + '-' + activeChartType + '.png';
@@ -668,6 +709,12 @@
         document.body.removeChild(link);
       });
     }
+
+    window.addEventListener('themechange', () => {
+      if (chartInstance && cache[activeDatasetId]) {
+        renderChart(cache[activeDatasetId]);
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

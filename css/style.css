@@ -5,17 +5,17 @@
 
 /* ---------- design tokens ---------- */
 :root {
-  /* colors — light mode (warm paper) */
-  --bg: #fdfbf7;
-  --fg: #2d2d2d;
-  --muted: #e5e0d8;
-  --accent: #ff4d4d;
-  --border: #2d2d2d;
+  /* colors — light mode (warm eye-comforting paper) */
+  --bg: #f4ede2;
+  --fg: #2c2825;
+  --muted: #ded4c4;
+  --accent: #e04444;
+  --border: #2c2825;
   --blue: #2d5da1;
-  --card-bg: #ffffff;
-  --postit: #fff9c4;
-  --shadow-color: #2d2d2d;
-  --dot-color: #e5e0d8;
+  --card-bg: #faf5ed;
+  --postit: #faefb8;
+  --shadow-color: #2c2825;
+  --dot-color: #ded4c4;
 
   /* typography */
   --heading: 'Kalam', cursive;
@@ -42,9 +42,9 @@
   --border: rgba(232, 228, 220, 0.7);
   --blue: #5b8fd9;
   --card-bg: #2a2a2a;
-  --postit: #4a4220;
+  --postit: #443c22;
   --shadow-color: rgba(0, 0, 0, 0.5);
-  --dot-color: rgba(255, 255, 255, 0.06);
+  --dot-color: rgba(255, 255, 255, 0.08);
 }
 
 /* ---------- reset & base ---------- */
@@ -252,11 +252,12 @@ header {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.35;
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 [data-theme="dark"] #graph-canvas {
-  opacity: 0.25;
+  opacity: 0.85;
 }
 
 .hero-inner {
@@ -1260,8 +1261,8 @@ footer p {
   font-family: var(--body);
   font-size: 16px;
   color: var(--fg);
-  opacity: 0.55;
-  background: rgba(253, 251, 247, 0.7);
+  opacity: 0.75;
+  background: rgba(244, 237, 226, 0.8);
   z-index: 2;
 }
 

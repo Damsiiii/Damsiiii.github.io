@@ -28,6 +28,7 @@ if (themeToggle) {
       themeToggle.setAttribute('aria-label', 'Switch to dark chalkboard theme');
     }
     localStorage.setItem('theme', nextTheme);
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: nextTheme } }));
   });
 }
 
@@ -87,16 +88,16 @@ revealEls.forEach(el => io.observe(el));
     nodes = Array.from({ length: count }, (_, i) => ({
       x: Math.random() * w, y: Math.random() * h,
       vx: (Math.random() - 0.5) * 0.3 * devicePixelRatio, vy: (Math.random() - 0.5) * 0.3 * devicePixelRatio,
-      r: (Math.random() * 2.5 + 1.5) * devicePixelRatio,
+      r: (Math.random() * 2.5 + 1.8) * devicePixelRatio,
       label: i < labels.length ? labels[i] : null
     }));
   }
   function step() {
     ctx.clearRect(0, 0, w, h);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const lineRgb = isDark ? '232, 228, 220' : '45, 45, 45';
-    const particleColor = isDark ? '#ff6b6b' : '#ff4d4d';
-    const labelColor = isDark ? 'rgba(232, 228, 220, 0.65)' : 'rgba(45, 45, 45, 0.6)';
+    const lineRgb = isDark ? '240, 235, 225' : '44, 40, 37';
+    const particleColor = isDark ? '#ff7878' : '#e04444';
+    const labelColor = isDark ? 'rgba(245, 240, 235, 0.95)' : 'rgba(44, 40, 37, 0.8)';
 
     for (const n of nodes) {
       n.x += n.vx; n.y += n.vy;
@@ -109,8 +110,9 @@ revealEls.forEach(el => io.observe(el));
         const d = Math.hypot(a.x - b.x, a.y - b.y);
         const maxD = 180 * devicePixelRatio;
         if (d < maxD) {
-          ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - d / maxD) * 0.22})`;
-          ctx.lineWidth = 1;
+          const alpha = isDark ? (1 - d / maxD) * 0.42 : (1 - d / maxD) * 0.28;
+          ctx.strokeStyle = `rgba(${lineRgb}, ${alpha})`;
+          ctx.lineWidth = isDark ? 1.2 * devicePixelRatio : 1 * devicePixelRatio;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
@@ -120,17 +122,27 @@ revealEls.forEach(el => io.observe(el));
         const md = Math.hypot(nodes[i].x - mouse.x, nodes[i].y - mouse.y);
         const maxMouseD = 220 * devicePixelRatio;
         if (md < maxMouseD) {
-          ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - md / maxMouseD) * 0.35})`;
-          ctx.lineWidth = 1.2;
+          const mAlpha = isDark ? (1 - md / maxMouseD) * 0.65 : (1 - md / maxMouseD) * 0.45;
+          ctx.strokeStyle = `rgba(${lineRgb}, ${mAlpha})`;
+          ctx.lineWidth = isDark ? 1.5 * devicePixelRatio : 1.2 * devicePixelRatio;
           ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
         }
       }
     }
-    ctx.font = `${13 * devicePixelRatio}px 'Patrick Hand', cursive`;
+    ctx.font = `${14 * devicePixelRatio}px 'Patrick Hand', cursive`;
     for (const n of nodes) {
+      if (isDark) {
+        ctx.shadowColor = 'rgba(255, 120, 120, 0.4)';
+        ctx.shadowBlur = 6 * devicePixelRatio;
+      } else {
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+      }
       ctx.fillStyle = particleColor;
       ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
       if (n.label) {
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
         ctx.fillStyle = labelColor;
         ctx.fillText(n.label, n.x + 8 * devicePixelRatio, n.y + 4 * devicePixelRatio);
       }
