@@ -25,7 +25,8 @@ const App = () => {
   const [chartData, setChartData] = useState(null);
   
   useEffect(() => {
-    fetch('/data-playground/data/facts.json')
+    const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+    fetch(`${baseUrl}data/facts.json`)
       .then(res => res.json())
       .then(data => {
         setFacts(data);
@@ -35,7 +36,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`/data-playground/data/datasets/${datasetId}.csv`)
+    const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+    fetch(`${baseUrl}data/datasets/${datasetId}.csv`)
       .then(res => res.text())
       .then(csv => {
         Papa.parse(csv, {
