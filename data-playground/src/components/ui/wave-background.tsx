@@ -24,8 +24,8 @@ interface WavesProps {
 
 export function Waves({
     className = "",
-    strokeColor = "#ffffff",  // White lines
-    backgroundColor = "#000000",  // Black background
+    strokeColor = "#2d2d2d",  // Pencil lead color
+    backgroundColor = "#fdfbf7",  // Warm paper background
     pointerSize = 0.5
 }: WavesProps) {
     const containerRef = useRef<HTMLDivElement>(null)
