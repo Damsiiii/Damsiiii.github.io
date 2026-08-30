@@ -4,15 +4,15 @@ import ReactECharts from 'echarts-for-react';
 import { Download, Shuffle, BarChart2, ArrowLeft, Sparkles } from 'lucide-react';
 
 const Header = () => (
-  <header className="bg-[#f4ede2] border-b-2 border-dashed border-[#2c2825] py-4 px-6 sticky top-0 z-50">
+  <header className="bg-[#e6ded3] border-b-2 border-dashed border-[#282420] py-4 px-6 sticky top-0 z-50">
     <div className="max-w-5xl mx-auto flex justify-between items-center">
-      <h1 className="font-heading text-2xl md:text-3xl font-bold flex items-center gap-2 text-[#2c2825]">
-        <BarChart2 className="text-[#e04444] stroke-[2.5]" size={28} />
-        <span>Data Playground<span className="text-[#e04444]">.</span></span>
+      <h1 className="font-heading text-2xl md:text-3xl font-bold flex items-center gap-2 text-[#221e1a]">
+        <BarChart2 className="text-[#c93535] stroke-[2.5]" size={28} />
+        <span>Data Playground<span className="text-[#c93535]">.</span></span>
       </h1>
       <a 
         href="../" 
-        className="font-hand text-lg text-[#2d5da1] hover:text-[#e04444] flex items-center gap-1.5 transition-colors border-2 border-[#2d5da1] hover:border-[#e04444] px-3.5 py-1 rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[2px_2px_0px_0px_#2c2825] hover:shadow-[1px_1px_0px_0px_#2c2825] hover:translate-x-0.5 hover:translate-y-0.5 bg-[#faf5ed]"
+        className="font-hand text-lg text-[#275696] hover:text-[#c93535] flex items-center gap-1.5 transition-colors border-2 border-[#275696] hover:border-[#c93535] px-3.5 py-1 rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[2px_2px_0px_0px_#282420] hover:shadow-[1px_1px_0px_0px_#282420] hover:translate-x-0.5 hover:translate-y-0.5 bg-[#eee5da]"
       >
         <ArrowLeft size={18} /> Back to Portfolio
       </a>
@@ -78,26 +78,26 @@ const App = () => {
     const xAxisCol = columns[0];
     const seriesCols = columns.slice(1);
     
-    const colors = ['#e04444', '#2d5da1', '#d97706', '#0d9488', '#7c3aed', '#db2777'];
+    const colors = ['#c93535', '#275696', '#cf7107', '#0d8579', '#6d32d4', '#c9206c'];
 
     return {
       color: colors,
       textStyle: {
         fontFamily: "'Patrick Hand', cursive",
         fontSize: 14,
-        color: '#2c2825'
+        color: '#221e1a'
       },
       tooltip: { 
         trigger: 'axis',
-        backgroundColor: '#faf5ed',
-        borderColor: '#2c2825',
+        backgroundColor: '#eee5da',
+        borderColor: '#282420',
         borderWidth: 2,
         textStyle: {
           fontFamily: "'Patrick Hand', cursive",
           fontSize: 15,
-          color: '#2c2825'
+          color: '#221e1a'
         },
-        extraCssText: 'box-shadow: 4px 4px 0px 0px #2c2825; border-radius: 8px;'
+        extraCssText: 'box-shadow: 4px 4px 0px 0px #282420; border-radius: 8px;'
       },
       legend: { 
         data: seriesCols, 
@@ -105,7 +105,7 @@ const App = () => {
         textStyle: {
           fontFamily: "'Patrick Hand', cursive",
           fontSize: 15,
-          color: '#2c2825'
+          color: '#221e1a'
         }
       },
       toolbox: {
@@ -116,21 +116,21 @@ const App = () => {
       xAxis: {
         type: 'category',
         data: chartData.map(row => row[xAxisCol]),
-        axisLine: { lineStyle: { color: '#2c2825', width: 2 } },
+        axisLine: { lineStyle: { color: '#282420', width: 2 } },
         axisLabel: {
           fontFamily: "'Patrick Hand', cursive",
           fontSize: 13,
-          color: '#2c2825'
+          color: '#221e1a'
         }
       },
       yAxis: { 
         type: 'value',
-        axisLine: { lineStyle: { color: '#2c2825', width: 2 } },
-        splitLine: { lineStyle: { type: 'dashed', color: '#ded4c4' } },
+        axisLine: { lineStyle: { color: '#282420', width: 2 } },
+        splitLine: { lineStyle: { type: 'dashed', color: '#cfc5b5' } },
         axisLabel: {
           fontFamily: "'Patrick Hand', cursive",
           fontSize: 13,
-          color: '#2c2825'
+          color: '#221e1a'
         }
       },
       series: seriesCols.map((col, idx) => ({
@@ -149,53 +149,53 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4ede2] text-[#2c2825] font-hand">
+    <div className="min-h-screen bg-[#e6ded3] text-[#221e1a] font-hand">
       <Header />
       
       <main className="max-w-5xl mx-auto p-4 sm:p-6 space-y-10 py-10">
         <section className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-[#2d5da1] font-bold">
-            <Sparkles size={16} className="text-[#e04444]" /> Interactive Laboratory
+          <div className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-[#275696] font-bold">
+            <Sparkles size={16} className="text-[#c93535]" /> Interactive Laboratory
           </div>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-[#2c2825]">
-            Explore Real Data<span className="text-[#e04444]">!</span>
+          <h2 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-[#221e1a]">
+            Explore Real Data<span className="text-[#c93535]">!</span>
           </h2>
-          <p className="text-xl text-[#2c2825]/75 max-w-xl mx-auto">
+          <p className="text-xl text-[#221e1a]/80 max-w-xl mx-auto">
             Discover hidden patterns, trends, and quirky curiosities through interactive hand-crafted visualizations.
           </p>
         </section>
 
         {/* Fact Card (Post-it note) */}
         {currentFact && (
-          <section className="relative bg-[#faefb8] p-6 sm:p-8 border-2 border-[#2c2825] rounded-[15px_255px_15px_225px/255px_15px_225px_15px] shadow-[4px_4px_0px_0px_#2c2825] max-w-2xl mx-auto -rotate-0.5 hover:rotate-0 transition-transform">
+          <section className="relative bg-[#e6d396] p-6 sm:p-8 border-2 border-[#282420] rounded-[15px_255px_15px_225px/255px_15px_225px_15px] shadow-[4px_4px_0px_0px_#282420] max-w-2xl mx-auto -rotate-0.5 hover:rotate-0 transition-transform">
             <div className="tape-strip"></div>
             
             <div className="flex justify-between items-start mb-4">
-              <span className="inline-block font-hand text-sm font-bold text-[#e04444] bg-red-500/10 border border-dashed border-[#e04444] px-3 py-0.5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] uppercase tracking-wider">
+              <span className="inline-block font-hand text-sm font-bold text-[#c93535] bg-red-500/10 border border-dashed border-[#c93535] px-3 py-0.5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] uppercase tracking-wider">
                 {currentFact.category}
               </span>
               <button 
                 onClick={generateRandomFact}
-                className="font-hand text-base text-[#2d5da1] hover:text-[#e04444] flex items-center gap-1.5 transition-colors border border-dashed border-[#2d5da1] px-3 py-1 rounded-[8px_18px_12px_16px] hover:bg-white/50"
+                className="font-hand text-base text-[#275696] hover:text-[#c93535] flex items-center gap-1.5 transition-colors border border-dashed border-[#275696] px-3 py-1 rounded-[8px_18px_12px_16px] hover:bg-white/50"
               >
                 <Shuffle size={16} /> Random Fact
               </button>
             </div>
             
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold mb-3 text-[#2c2825]">
+            <h3 className="font-heading text-2xl sm:text-3xl font-bold mb-3 text-[#221e1a]">
               {currentFact.title}
             </h3>
-            <p className="text-[#2c2825]/80 text-lg sm:text-xl leading-relaxed mb-6">
+            <p className="text-[#221e1a]/85 text-lg sm:text-xl leading-relaxed mb-6">
               {currentFact.explanation}
             </p>
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t-2 border-dashed border-[#2c2825]/20">
-              <span className="text-sm text-[#2c2825]/60 font-hand">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t-2 border-dashed border-[#282420]/20">
+              <span className="text-sm text-[#221e1a]/65 font-hand">
                 Source: {currentFact.source}
               </span>
               <button 
                 onClick={handleExploreFact}
-                className="wobbly-btn bg-[#faf5ed] hover:bg-[#e04444] text-[#2c2825] hover:text-white px-6 py-2 text-lg font-bold transition-all self-start sm:self-auto"
+                className="wobbly-btn bg-[#eee5da] hover:bg-[#c93535] text-[#221e1a] hover:text-white px-6 py-2 text-lg font-bold transition-all self-start sm:self-auto"
               >
                 {currentFact.buttonText || "Explore This Data"} →
               </button>
@@ -204,15 +204,15 @@ const App = () => {
         )}
 
         {/* Playground Exploration Card */}
-        <section className="bg-[#faf5ed] border-2 border-[#2c2825] rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[6px_6px_0px_0px_#2c2825] overflow-hidden">
-          <div className="bg-[#f4ede2] p-5 sm:p-6 border-b-2 border-dashed border-[#2c2825] flex flex-wrap gap-4 items-center justify-between">
+        <section className="bg-[#eee5da] border-2 border-[#282420] rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[6px_6px_0px_0px_#282420] overflow-hidden">
+          <div className="bg-[#e6ded3] p-5 sm:p-6 border-b-2 border-dashed border-[#282420] flex flex-wrap gap-4 items-center justify-between">
             <div className="flex flex-wrap gap-4 sm:gap-6 items-center w-full sm:w-auto">
               <div className="flex-1 sm:flex-none">
-                <label className="block text-sm font-bold text-[#2c2825]/70 mb-1 font-hand uppercase tracking-wider">
+                <label className="block text-sm font-bold text-[#221e1a]/70 mb-1 font-hand uppercase tracking-wider">
                   Select Dataset
                 </label>
                 <select 
-                  className="bg-[#faf5ed] border-2 border-[#2c2825] text-[#2c2825] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-52 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#2c2825] hover:border-[#2d5da1] font-hand"
+                  className="bg-[#eee5da] border-2 border-[#282420] text-[#221e1a] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-52 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#282420] hover:border-[#275696] font-hand"
                   value={datasetId}
                   onChange={(e) => setDatasetId(e.target.value)}
                 >
@@ -224,11 +224,11 @@ const App = () => {
                 </select>
               </div>
               <div className="flex-1 sm:flex-none">
-                <label className="block text-sm font-bold text-[#2c2825]/70 mb-1 font-hand uppercase tracking-wider">
+                <label className="block text-sm font-bold text-[#221e1a]/70 mb-1 font-hand uppercase tracking-wider">
                   Chart Type
                 </label>
                 <select 
-                  className="bg-[#faf5ed] border-2 border-[#2c2825] text-[#2c2825] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-44 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#2c2825] hover:border-[#2d5da1] font-hand"
+                  className="bg-[#eee5da] border-2 border-[#282420] text-[#221e1a] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-44 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#282420] hover:border-[#275696] font-hand"
                   value={chartType}
                   onChange={(e) => setChartType(e.target.value)}
                 >
@@ -241,7 +241,7 @@ const App = () => {
           </div>
           
           <div className="p-4 sm:p-8 space-y-6">
-             <div className="bg-[#f4ede2] p-4 rounded-xl border border-dashed border-[#ded4c4]">
+             <div className="bg-[#e6ded3] p-4 rounded-xl border border-dashed border-[#cfc5b5]">
                <ReactECharts 
                  option={getChartOption()} 
                  style={{ height: '420px', width: '100%' }} 
@@ -250,11 +250,11 @@ const App = () => {
              </div>
 
              {/* Speech bubble style insight */}
-             <div className="relative bg-[#faf5ed] text-[#2c2825] p-5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] border-2 border-[#2d5da1] shadow-[3px_3px_0px_0px_rgba(45,93,161,0.2)]">
-               <div className="font-heading font-bold text-[#2d5da1] text-base mb-1 flex items-center gap-1.5">
+             <div className="relative bg-[#eee5da] text-[#221e1a] p-5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] border-2 border-[#275696] shadow-[3px_3px_0px_0px_rgba(39,86,150,0.2)]">
+               <div className="font-heading font-bold text-[#275696] text-base mb-1 flex items-center gap-1.5">
                  <span>💡 Hand-Drawn Data Insight:</span>
                </div>
-               <p className="text-lg leading-relaxed text-[#2c2825]/85">
+               <p className="text-lg leading-relaxed text-[#221e1a]/85">
                  {chartData?.length 
                    ? `Analyzing ${chartData.length} records in the ${datasetId} dataset. Interactive points update directly based on your selected visualization mode.` 
                    : "Loading dataset entries..."}
@@ -264,7 +264,7 @@ const App = () => {
         </section>
       </main>
 
-      <footer className="border-t-2 border-dashed border-[#ded4c4] py-8 text-center text-[#2c2825]/50 font-hand text-base">
+      <footer className="border-t-2 border-dashed border-[#cfc5b5] py-8 text-center text-[#221e1a]/50 font-hand text-base">
         Hand-crafted with ♥ for data exploration · Damsara Dissanayaka © 2026
       </footer>
     </div>

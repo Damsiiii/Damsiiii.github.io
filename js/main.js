@@ -96,8 +96,8 @@ revealEls.forEach(el => io.observe(el));
     ctx.clearRect(0, 0, w, h);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const lineRgb = isDark ? '240, 235, 225' : '44, 40, 37';
-    const particleColor = isDark ? '#ff7878' : '#e04444';
-    const labelColor = isDark ? 'rgba(245, 240, 235, 0.95)' : 'rgba(44, 40, 37, 0.8)';
+    const particleColor = isDark ? '#ff7878' : '#d93838';
+    const labelColor = isDark ? 'rgba(245, 240, 235, 0.98)' : 'rgba(28, 24, 22, 0.95)';
 
     for (const n of nodes) {
       n.x += n.vx; n.y += n.vy;
@@ -110,9 +110,9 @@ revealEls.forEach(el => io.observe(el));
         const d = Math.hypot(a.x - b.x, a.y - b.y);
         const maxD = 180 * devicePixelRatio;
         if (d < maxD) {
-          const alpha = isDark ? (1 - d / maxD) * 0.42 : (1 - d / maxD) * 0.28;
+          const alpha = isDark ? (1 - d / maxD) * 0.45 : (1 - d / maxD) * 0.35;
           ctx.strokeStyle = `rgba(${lineRgb}, ${alpha})`;
-          ctx.lineWidth = isDark ? 1.2 * devicePixelRatio : 1 * devicePixelRatio;
+          ctx.lineWidth = isDark ? 1.3 * devicePixelRatio : 1.2 * devicePixelRatio;
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
@@ -122,21 +122,21 @@ revealEls.forEach(el => io.observe(el));
         const md = Math.hypot(nodes[i].x - mouse.x, nodes[i].y - mouse.y);
         const maxMouseD = 220 * devicePixelRatio;
         if (md < maxMouseD) {
-          const mAlpha = isDark ? (1 - md / maxMouseD) * 0.65 : (1 - md / maxMouseD) * 0.45;
+          const mAlpha = isDark ? (1 - md / maxMouseD) * 0.7 : (1 - md / maxMouseD) * 0.55;
           ctx.strokeStyle = `rgba(${lineRgb}, ${mAlpha})`;
-          ctx.lineWidth = isDark ? 1.5 * devicePixelRatio : 1.2 * devicePixelRatio;
+          ctx.lineWidth = 1.6 * devicePixelRatio;
           ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
         }
       }
     }
-    ctx.font = `${14 * devicePixelRatio}px 'Patrick Hand', cursive`;
+    ctx.font = `bold ${15 * devicePixelRatio}px 'Patrick Hand', cursive, sans-serif`;
     for (const n of nodes) {
       if (isDark) {
-        ctx.shadowColor = 'rgba(255, 120, 120, 0.4)';
+        ctx.shadowColor = 'rgba(255, 120, 120, 0.5)';
         ctx.shadowBlur = 6 * devicePixelRatio;
       } else {
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'rgba(217, 56, 56, 0.3)';
+        ctx.shadowBlur = 3 * devicePixelRatio;
       }
       ctx.fillStyle = particleColor;
       ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
@@ -144,7 +144,7 @@ revealEls.forEach(el => io.observe(el));
         ctx.shadowColor = 'transparent';
         ctx.shadowBlur = 0;
         ctx.fillStyle = labelColor;
-        ctx.fillText(n.label, n.x + 8 * devicePixelRatio, n.y + 4 * devicePixelRatio);
+        ctx.fillText(n.label, n.x + 8 * devicePixelRatio, n.y + 5 * devicePixelRatio);
       }
     }
     if (!reduceMotion) requestAnimationFrame(step);

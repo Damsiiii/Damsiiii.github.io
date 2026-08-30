@@ -396,12 +396,12 @@
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
     const themeColors = isDark ? {
-      text: '#e8e4dc',
-      textMuted: 'rgba(232, 228, 220, 0.85)',
-      textSubtle: 'rgba(232, 228, 220, 0.65)',
-      axisLine: 'rgba(232, 228, 220, 0.4)',
-      splitLine: 'rgba(232, 228, 220, 0.15)',
-      tooltipBg: 'rgba(30, 30, 30, 0.95)',
+      text: '#f5f0eb',
+      textMuted: '#e8e4dc',
+      textSubtle: '#d0cbc2',
+      axisLine: 'rgba(232, 228, 220, 0.7)',
+      splitLine: 'rgba(232, 228, 220, 0.18)',
+      tooltipBg: 'rgba(28, 28, 28, 0.96)',
       tooltipBorder: '#ff6b6b',
       accent: '#ff6b6b',
       accentSoft: '#ff8e8e',
@@ -410,31 +410,31 @@
       lineGradStart: 'rgba(255, 107, 107, 0.45)',
       lineGradEnd: 'rgba(255, 107, 107, 0.02)',
       barGradStart: '#5b8fd9',
-      barGradEnd: 'rgba(91, 143, 217, 0.3)',
+      barGradEnd: 'rgba(91, 143, 217, 0.35)',
       pieBorder: '#2a2a2a',
-      pieLine: 'rgba(232, 228, 220, 0.6)'
+      pieLine: 'rgba(232, 228, 220, 0.7)'
     } : {
-      text: '#2c2825',
-      textMuted: 'rgba(44, 40, 37, 0.85)',
-      textSubtle: 'rgba(44, 40, 37, 0.65)',
-      axisLine: 'rgba(44, 40, 37, 0.4)',
-      splitLine: 'rgba(44, 40, 37, 0.12)',
-      tooltipBg: 'rgba(250, 245, 237, 0.95)',
-      tooltipBorder: '#2c2825',
-      accent: '#e04444',
-      accentSoft: '#f07878',
-      secondary: '#2d5da1',
-      colors: ['#e04444', '#2d5da1', '#d97706', '#0d9488', '#7c3aed', '#db2777'],
-      lineGradStart: 'rgba(224, 68, 68, 0.35)',
-      lineGradEnd: 'rgba(224, 68, 68, 0.01)',
-      barGradStart: '#2d5da1',
-      barGradEnd: 'rgba(45, 93, 161, 0.25)',
-      pieBorder: '#faf5ed',
-      pieLine: 'rgba(44, 40, 37, 0.55)'
+      text: '#1c1917',
+      textMuted: '#282420',
+      textSubtle: '#443f3b',
+      axisLine: '#282420',
+      splitLine: 'rgba(40, 36, 32, 0.16)',
+      tooltipBg: 'rgba(238, 229, 218, 0.98)',
+      tooltipBorder: '#282420',
+      accent: '#c93535',
+      accentSoft: '#d94444',
+      secondary: '#275696',
+      colors: ['#c93535', '#275696', '#cf7107', '#0d8579', '#6d32d4', '#c9206c'],
+      lineGradStart: 'rgba(201, 53, 53, 0.32)',
+      lineGradEnd: 'rgba(201, 53, 53, 0.01)',
+      barGradStart: '#275696',
+      barGradEnd: 'rgba(39, 86, 150, 0.28)',
+      pieBorder: '#eee5da',
+      pieLine: 'rgba(40, 36, 32, 0.7)'
     };
 
     const baseText = {
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'Patrick Hand', cursive, sans-serif",
       color: themeColors.text
     };
 
@@ -446,15 +446,16 @@
       textStyle: baseText,
       legend: {
         show: activeChartType === 'pie',
-        bottom: 0,
-        textStyle: { color: themeColors.textMuted, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }
+        bottom: 4,
+        textStyle: { color: themeColors.text, fontFamily: "'Patrick Hand', cursive, sans-serif", fontSize: 13, fontWeight: 'bold' }
       },
       tooltip: {
         trigger: activeChartType === 'pie' || activeChartType === 'scatter' ? 'item' : 'axis',
         backgroundColor: themeColors.tooltipBg,
         borderColor: themeColors.tooltipBorder,
-        borderWidth: 1.5,
-        textStyle: { color: themeColors.text, fontFamily: "'Inter', sans-serif" },
+        borderWidth: 2,
+        extraCssText: 'box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.25); border-radius: 6px;',
+        textStyle: { color: themeColors.text, fontFamily: "'Patrick Hand', cursive, sans-serif", fontSize: 14 },
         formatter: (params) => {
           if (activeChartType === 'pie') {
             const p = Array.isArray(params) ? params[0] : params;
@@ -476,49 +477,56 @@
             );
           }
           const p = Array.isArray(params) ? params[0] : params;
-          return '<b>' + p.name + '</b><br/>' + p.seriesName + ': ' + p.value + (data.unit ? ' ' + data.unit : '');
+          return '<b>' + p.name + '</b><br/>' + p.seriesName + ': <b>' + p.value + (data.unit ? ' ' + data.unit : '') + '</b>';
         }
       },
       grid: {
-        left: '2%',
-        right: '3%',
-        bottom: data.x && data.x.length > 12 ? '18%' : '12%',
-        top: '10%',
+        left: '4%',
+        right: '4%',
+        bottom: data.x && data.x.length > 12 ? '20%' : '14%',
+        top: '14%',
         containLabel: true
       },
       xAxis: {
         show: activeChartType !== 'pie',
         type: activeChartType === 'scatter' ? 'value' : 'category',
-        name: activeChartType === 'scatter' ? data.xName : '',
-        nameLocation: 'middle',
-        nameGap: 32,
-        nameTextStyle: { color: themeColors.textSubtle, fontSize: 11 },
+        name: data.xName || '',
+        nameLocation: 'end',
+        nameGap: 10,
+        nameTextStyle: { color: themeColors.secondary, fontSize: 13, fontWeight: 'bold', fontFamily: "'Patrick Hand', cursive, sans-serif" },
         data: activeChartType === 'scatter' || activeChartType === 'pie' ? undefined : data.x,
-        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1.5 } },
+        axisLine: { lineStyle: { color: themeColors.axisLine, width: 2 } },
+        axisTick: { show: true, lineStyle: { color: themeColors.axisLine, width: 2 } },
         axisLabel: {
-          color: themeColors.textMuted,
-          rotate: data.x && data.x.length > 14 ? 40 : 0,
-          fontSize: 11,
+          color: themeColors.text,
+          rotate: data.x && data.x.length > 14 ? 35 : 0,
+          fontSize: 13,
+          fontWeight: 600,
+          fontFamily: "'Patrick Hand', cursive, sans-serif",
           interval: activeChartType === 'histogram' ? 0 : 'auto'
         },
         splitLine: {
           show: activeChartType === 'scatter',
-          lineStyle: { color: themeColors.splitLine }
+          lineStyle: { color: themeColors.splitLine, type: 'dashed' }
         }
       },
       yAxis: {
         show: activeChartType !== 'pie',
         type: 'value',
         name: activeChartType === 'histogram' ? 'Frequency' : data.yName || 'Value',
-        nameTextStyle: { color: themeColors.textSubtle, fontSize: 11 },
-        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1.5 } },
-        splitLine: { lineStyle: { color: themeColors.splitLine } },
-        axisLabel: { color: themeColors.textMuted, fontSize: 11 }
+        nameLocation: 'end',
+        nameGap: 10,
+        nameTextStyle: { color: themeColors.secondary, fontSize: 13, fontWeight: 'bold', fontFamily: "'Patrick Hand', cursive, sans-serif" },
+        axisLine: { show: true, lineStyle: { color: themeColors.axisLine, width: 2 } },
+        axisTick: { show: true, lineStyle: { color: themeColors.axisLine, width: 2 } },
+        splitLine: { lineStyle: { color: themeColors.splitLine, type: 'dashed' } },
+        axisLabel: { color: themeColors.text, fontSize: 13, fontWeight: 600, fontFamily: "'Patrick Hand', cursive, sans-serif" }
       },
       series: []
     };
 
     if (activeChartType === 'line') {
+      const step = Math.max(1, Math.ceil(data.y.length / 8));
       option.series = [
         {
           name: config.name,
@@ -526,9 +534,21 @@
           data: data.y,
           smooth: true,
           symbol: 'circle',
-          symbolSize: 6,
-          lineStyle: { width: 3, color: themeColors.accent },
+          symbolSize: 7,
+          lineStyle: { width: 3.5, color: themeColors.accent },
           itemStyle: { color: themeColors.accent },
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 12,
+            fontWeight: 600,
+            fontFamily: "'Patrick Hand', cursive, sans-serif",
+            formatter: (p) => {
+              if (data.y.length <= 15) return p.value + (data.unit ? ' ' + data.unit : '');
+              return p.dataIndex % step === 0 ? p.value + (data.unit ? ' ' + data.unit : '') : '';
+            }
+          },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: themeColors.lineGradStart },
@@ -543,13 +563,24 @@
           name: config.name,
           type: 'bar',
           data: data.y,
-          barMaxWidth: 42,
+          barMaxWidth: 44,
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 12,
+            fontWeight: 600,
+            fontFamily: "'Patrick Hand', cursive, sans-serif",
+            formatter: (p) => p.value + (data.unit ? ' ' + data.unit : '')
+          },
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: themeColors.barGradStart },
               { offset: 1, color: themeColors.barGradEnd }
             ]),
-            borderRadius: [3, 3, 0, 0]
+            borderRadius: [4, 4, 0, 0],
+            borderWidth: 1.5,
+            borderColor: themeColors.secondary
           }
         }
       ];
@@ -562,19 +593,29 @@
           symbolSize: 10,
           itemStyle: {
             color: themeColors.accentSoft,
-            opacity: 0.9,
+            opacity: 0.95,
             shadowBlur: 8,
-            shadowColor: isDark ? 'rgba(255,107,107,0.4)' : 'rgba(224,68,68,0.3)'
+            shadowColor: isDark ? 'rgba(255,107,107,0.5)' : 'rgba(217,56,56,0.35)'
           },
-          emphasis: { scale: 1.25 }
+          emphasis: {
+            scale: 1.3,
+            label: {
+              show: true,
+              position: 'top',
+              color: themeColors.text,
+              fontSize: 12,
+              fontWeight: 600,
+              fontFamily: "'Patrick Hand', cursive, sans-serif",
+              formatter: (p) => p.value[1] + (data.unit ? ' ' + data.unit : '')
+            }
+          }
         }
       ];
     } else if (activeChartType === 'pie') {
       const pieData =
         data.categories && data.categories.length
           ? data.categories
-          : // Fallback: sample evenly across series (max 10 slices)
-            (() => {
+          : (() => {
               const n = Math.min(10, data.x.length);
               const step = Math.max(1, Math.floor(data.x.length / n));
               const slices = [];
@@ -597,11 +638,12 @@
           label: {
             show: true,
             color: themeColors.text,
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            formatter: '{b}'
+            fontFamily: "'Patrick Hand', cursive, sans-serif",
+            fontSize: 13,
+            fontWeight: 700,
+            formatter: '{b}: {c}' + (data.unit ? ' ' + data.unit : '') + ' ({d}%)'
           },
-          labelLine: { lineStyle: { color: themeColors.pieLine } },
+          labelLine: { lineStyle: { color: themeColors.pieLine, width: 1.5 } },
           data: pieData
         }
       ];
@@ -632,12 +674,22 @@
           type: 'bar',
           data: bins,
           barMaxWidth: 48,
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 12,
+            fontWeight: 600,
+            fontFamily: "'Patrick Hand', cursive, sans-serif"
+          },
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: themeColors.secondary },
-              { offset: 1, color: isDark ? 'rgba(91, 143, 217, 0.25)' : 'rgba(45, 93, 161, 0.2)' }
+              { offset: 1, color: isDark ? 'rgba(91, 143, 217, 0.3)' : 'rgba(45, 93, 161, 0.25)' }
             ]),
-            borderRadius: [3, 3, 0, 0]
+            borderRadius: [4, 4, 0, 0],
+            borderWidth: 1.5,
+            borderColor: themeColors.secondary
           }
         }
       ];
@@ -699,7 +751,7 @@
         const url = chartInstance.getDataURL({
           type: 'png',
           pixelRatio: 2,
-          backgroundColor: isDark ? '#2a2a2a' : '#faf5ed'
+          backgroundColor: isDark ? '#2a2a2a' : '#eee5da'
         });
         const link = document.createElement('a');
         link.download = 'data-playground-' + activeDatasetId + '-' + activeChartType + '.png';
