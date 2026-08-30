@@ -82,10 +82,11 @@
       }
       function init() {
         resize();
-        const count = w < 700 ? 18 : 32;
+        const count = w < 700 ? 20 : 36;
         nodes = Array.from({ length: count }, (_, i) => ({
           x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.3 * devicePixelRatio, vy: (Math.random() - 0.5) * 0.3 * devicePixelRatio,
+          vx: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
+          vy: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
           r: (Math.random() * 2.5 + 1.5) * devicePixelRatio,
           label: i < labels.length ? labels[i] : null
         }));
@@ -94,37 +95,67 @@
         ctx.clearRect(0, 0, w, h);
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
         const lineRgb = isLight ? '217, 119, 6' : '226, 165, 61';
-        const particleColor = isLight ? 'rgba(13, 148, 136, 0.9)' : 'rgba(95, 179, 163, 0.85)';
-        const labelColor = isLight ? 'rgba(28, 36, 52, 0.65)' : 'rgba(246, 243, 236, 0.45)';
+        const particleColor = isLight ? 'rgba(13, 148, 136, 0.95)' : 'rgba(95, 179, 163, 0.9)';
+        const labelColor = isLight ? 'rgba(28, 36, 52, 0.75)' : 'rgba(246, 243, 236, 0.55)';
 
         for (const n of nodes) {
-          n.x += n.vx; n.y += n.vy;
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - n.x;
+            const dy = mouse.y - n.y;
+            const dist = Math.hypot(dx, dy);
+            const pullRadius = 240 * devicePixelRatio;
+            if (dist < pullRadius && dist > 1) {
+              const force = (1 - dist / pullRadius) * 0.08 * devicePixelRatio;
+              n.vx += (dx / dist) * force;
+              n.vy += (dy / dist) * force;
+            }
+          }
+
+          n.vx *= 0.98;
+          n.vy *= 0.98;
+
+          n.x += n.vx;
+          n.y += n.vy;
+
           if (n.x < 0 || n.x > w) n.vx *= -1;
           if (n.y < 0 || n.y > h) n.vy *= -1;
         }
+
         for (let i = 0; i < nodes.length; i++) {
           for (let j = i + 1; j < nodes.length; j++) {
             const a = nodes[i], b = nodes[j];
             const d = Math.hypot(a.x - b.x, a.y - b.y);
             const maxD = 180 * devicePixelRatio;
             if (d < maxD) {
-              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - d / maxD) * 0.28})`;
+              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - d / maxD) * 0.32})`;
               ctx.lineWidth = 1;
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
             }
           }
 
-          // Connect to mouse cursor
           if (mouse.x !== null && mouse.y !== null) {
             const md = Math.hypot(nodes[i].x - mouse.x, nodes[i].y - mouse.y);
-            const maxMouseD = 220 * devicePixelRatio;
+            const maxMouseD = 240 * devicePixelRatio;
             if (md < maxMouseD) {
-              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - md / maxMouseD) * 0.45})`;
-              ctx.lineWidth = 1.2;
+              ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - md / maxMouseD) * 0.6})`;
+              ctx.lineWidth = 1.4;
               ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
             }
           }
         }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          ctx.fillStyle = isLight ? 'rgba(217, 119, 6, 0.9)' : 'rgba(226, 165, 61, 0.9)';
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y, 5 * devicePixelRatio, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = isLight ? 'rgba(217, 119, 6, 0.25)' : 'rgba(226, 165, 61, 0.25)';
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y, 14 * devicePixelRatio, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
         ctx.font = `${11 * devicePixelRatio}px 'JetBrains Mono', monospace`;
         for (const n of nodes) {
           ctx.fillStyle = particleColor;
