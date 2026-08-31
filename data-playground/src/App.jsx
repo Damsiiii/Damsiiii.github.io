@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import ReactECharts from 'echarts-for-react';
-import { Download, Shuffle, BarChart2, ArrowLeft, Sparkles } from 'lucide-react';
+import { ArrowLeft, Shuffle } from 'lucide-react';
 
 const Header = () => (
-  <header className="bg-[#e6ded3] border-b-2 border-dashed border-[#282420] py-4 px-6 sticky top-0 z-50">
-    <div className="max-w-5xl mx-auto flex justify-between items-center">
-      <h1 className="font-heading text-2xl md:text-3xl font-bold flex items-center gap-2 text-[#221e1a]">
-        <BarChart2 className="text-[#c93535] stroke-[2.5]" size={28} />
-        <span>Data Playground<span className="text-[#c93535]">.</span></span>
-      </h1>
+  <header className="bg-[#F9F8F6]/90 backdrop-blur-md border-b border-[#1A1A1A]/10 py-5 px-6 sm:px-12 sticky top-0 z-50 transition-colors duration-500">
+    <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <div className="flex items-center gap-3">
+        <span className="font-serif text-lg tracking-[0.15em] font-semibold text-[#1A1A1A] uppercase">
+          Damsara <span className="text-[#D4AF37]">.</span>
+        </span>
+        <span className="hidden sm:inline-block text-[10px] tracking-[0.25em] uppercase text-[#6C6863] border-l border-[#1A1A1A]/15 pl-3">
+          Data Atelier
+        </span>
+      </div>
       <a 
         href="../" 
-        className="font-hand text-lg text-[#275696] hover:text-[#c93535] flex items-center gap-1.5 transition-colors border-2 border-[#275696] hover:border-[#c93535] px-3.5 py-1 rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[2px_2px_0px_0px_#282420] hover:shadow-[1px_1px_0px_0px_#282420] hover:translate-x-0.5 hover:translate-y-0.5 bg-[#eee5da]"
+        className="luxury-btn-outline h-9 px-4 text-[11px] tracking-[0.2em]"
       >
-        <ArrowLeft size={18} /> Back to Portfolio
+        <ArrowLeft size={14} className="text-[#D4AF37]" />
+        <span>Return to Portfolio</span>
       </a>
     </div>
   </header>
@@ -66,7 +71,13 @@ const App = () => {
   };
   
   const handleExploreFact = () => {
-    if (currentFact) setDatasetId(currentFact.dataset);
+    if (currentFact && currentFact.dataset) {
+      setDatasetId(currentFact.dataset);
+      const element = document.getElementById('visualizer-atelier');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   const getChartOption = () => {
@@ -78,59 +89,66 @@ const App = () => {
     const xAxisCol = columns[0];
     const seriesCols = columns.slice(1);
     
-    const colors = ['#c93535', '#275696', '#cf7107', '#0d8579', '#6d32d4', '#c9206c'];
+    const colors = ['#1A1A1A', '#D4AF37', '#6C6863', '#8C7D6B', '#3E4451', '#A6926D'];
 
     return {
+      backgroundColor: 'transparent',
       color: colors,
+      animationDuration: 800,
+      animationEasing: 'cubicOut',
       textStyle: {
-        fontFamily: "'Patrick Hand', cursive",
-        fontSize: 14,
-        color: '#221e1a'
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 12,
+        color: '#1A1A1A'
       },
       tooltip: { 
         trigger: 'axis',
-        backgroundColor: '#eee5da',
-        borderColor: '#282420',
-        borderWidth: 2,
+        backgroundColor: '#FFFFFF',
+        borderColor: '#1A1A1A',
+        borderWidth: 1,
         textStyle: {
-          fontFamily: "'Patrick Hand', cursive",
-          fontSize: 15,
-          color: '#221e1a'
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 13,
+          color: '#1A1A1A'
         },
-        extraCssText: 'box-shadow: 4px 4px 0px 0px #282420; border-radius: 8px;'
+        extraCssText: 'box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 14px 18px; border-radius: 0px;'
       },
       legend: { 
         data: seriesCols, 
         top: 'bottom',
         textStyle: {
-          fontFamily: "'Patrick Hand', cursive",
-          fontSize: 15,
-          color: '#221e1a'
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 12,
+          color: '#6C6863'
         }
       },
-      toolbox: {
-        feature: {
-          saveAsImage: { title: 'Download Chart' }
-        }
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '12%',
+        top: '8%',
+        containLabel: true
       },
       xAxis: {
         type: 'category',
         data: chartData.map(row => row[xAxisCol]),
-        axisLine: { lineStyle: { color: '#282420', width: 2 } },
+        axisLine: { lineStyle: { color: '#1A1A1A', width: 1 } },
+        axisTick: { show: true, lineStyle: { color: '#1A1A1A', width: 1 } },
         axisLabel: {
-          fontFamily: "'Patrick Hand', cursive",
-          fontSize: 13,
-          color: '#221e1a'
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 11,
+          color: '#6C6863',
+          rotate: chartData.length > 15 ? 35 : 0
         }
       },
       yAxis: { 
         type: 'value',
-        axisLine: { lineStyle: { color: '#282420', width: 2 } },
-        splitLine: { lineStyle: { type: 'dashed', color: '#cfc5b5' } },
+        axisLine: { lineStyle: { color: '#1A1A1A', width: 1 } },
+        splitLine: { lineStyle: { type: 'solid', color: 'rgba(26, 26, 26, 0.08)' } },
         axisLabel: {
-          fontFamily: "'Patrick Hand', cursive",
-          fontSize: 13,
-          color: '#221e1a'
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 11,
+          color: '#6C6863'
         }
       },
       series: seriesCols.map((col, idx) => ({
@@ -138,134 +156,201 @@ const App = () => {
         type: chartType === 'scatter' ? 'scatter' : chartType === 'bar' ? 'bar' : 'line',
         data: chartData.map(row => row[col]),
         smooth: true,
+        symbolSize: 6,
+        barMaxWidth: 36,
         itemStyle: {
-          color: colors[idx % colors.length]
+          color: colors[idx % colors.length],
+          borderRadius: 0
         },
         lineStyle: {
-          width: 3
-        }
+          width: 2
+        },
+        areaStyle: chartType === 'line' && idx === 0 ? {
+          color: {
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(212, 175, 55, 0.25)' },
+              { offset: 1, color: 'rgba(212, 175, 55, 0.0)' }
+            ]
+          }
+        } : undefined
       }))
     };
   };
 
   return (
-    <div className="min-h-screen bg-[#e6ded3] text-[#221e1a] font-hand">
+    <div className="min-h-screen bg-[#F9F8F6] text-[#1A1A1A] relative selection:bg-[#D4AF37] selection:text-white">
+      {/* Paper Grain Overlay */}
+      <div className="paper-noise" aria-hidden="true"></div>
+
+      {/* Architectural Gridlines */}
+      <div className="architectural-grid" aria-hidden="true">
+        <div className="grid-col-line"></div>
+        <div className="grid-col-line"></div>
+        <div className="grid-col-line"></div>
+        <div className="grid-col-line"></div>
+      </div>
+
       <Header />
       
-      <main className="max-w-5xl mx-auto p-4 sm:p-6 space-y-10 py-10">
-        <section className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 text-sm uppercase tracking-widest text-[#275696] font-bold">
-            <Sparkles size={16} className="text-[#c93535]" /> Interactive Laboratory
+      <main className="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-20 relative z-10">
+        
+        {/* Editorial Hero Intro */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-[#1A1A1A]/10 pb-16">
+          <div className="lg:col-span-8 space-y-6">
+            <div className="flex items-center gap-4">
+              <span className="text-[11px] font-semibold tracking-[0.28em] text-[#D4AF37] uppercase">
+                Observation &amp; Analysis
+              </span>
+              <span className="h-px w-12 bg-[#1A1A1A]/20"></span>
+              <span className="text-[11px] tracking-[0.25em] text-[#6C6863] uppercase">
+                Vol. 2026
+              </span>
+            </div>
+            
+            <h2 className="font-serif text-5xl sm:text-7xl font-normal leading-[0.95] tracking-tight text-[#1A1A1A]">
+              Statistical <span className="italic-accent">Perspectives</span>.
+            </h2>
+            
+            <p className="text-lg text-[#6C6863] font-light max-w-2xl leading-relaxed">
+              An interactive laboratory dissecting macroeconomic indicators, atmospheric anomalies, and cultural metrics through precise editorial visualizations.
+            </p>
           </div>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-[#221e1a]">
-            Explore Real Data<span className="text-[#c93535]">!</span>
-          </h2>
-          <p className="text-xl text-[#221e1a]/80 max-w-xl mx-auto">
-            Discover hidden patterns, trends, and quirky curiosities through interactive hand-crafted visualizations.
-          </p>
+
+          <div className="lg:col-span-4 border-t-2 border-[#1A1A1A] pt-6 space-y-4">
+            <div className="text-[11px] uppercase tracking-[0.25em] text-[#6C6863] font-medium">
+              Atelier Coordinates
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <div className="font-serif text-3xl text-[#1A1A1A]">05</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Curated Datasets</div>
+              </div>
+              <div>
+                <div className="font-serif text-3xl text-[#1A1A1A]">03</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Projection Modes</div>
+              </div>
+            </div>
+          </div>
         </section>
 
-        {/* Fact Card (Post-it note) */}
+        {/* Curated Fact Feature Card */}
         {currentFact && (
-          <section className="relative bg-[#e6d396] p-6 sm:p-8 border-2 border-[#282420] rounded-[15px_255px_15px_225px/255px_15px_225px_15px] shadow-[4px_4px_0px_0px_#282420] max-w-2xl mx-auto -rotate-0.5 hover:rotate-0 transition-transform">
-            <div className="tape-strip"></div>
-            
-            <div className="flex justify-between items-start mb-4">
-              <span className="inline-block font-hand text-sm font-bold text-[#c93535] bg-red-500/10 border border-dashed border-[#c93535] px-3 py-0.5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] uppercase tracking-wider">
-                {currentFact.category}
-              </span>
+          <section className="bg-white border-t-2 border-[#1A1A1A] p-8 sm:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] relative">
+            <div className="flex flex-wrap justify-between items-center gap-4 mb-8 pb-6 border-b border-[#1A1A1A]/10">
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#D4AF37] border-b border-[#D4AF37] pb-0.5">
+                  {currentFact.category || "Empirical Observation"}
+                </span>
+                <span className="text-xs text-[#6C6863]">/</span>
+                <span className="text-[11px] tracking-widest text-[#6C6863] uppercase">
+                  Fact #{currentFact.id || "01"}
+                </span>
+              </div>
               <button 
                 onClick={generateRandomFact}
-                className="font-hand text-base text-[#275696] hover:text-[#c93535] flex items-center gap-1.5 transition-colors border border-dashed border-[#275696] px-3 py-1 rounded-[8px_18px_12px_16px] hover:bg-white/50"
+                className="luxury-btn-outline h-8 px-3 text-[10px] tracking-[0.2em]"
               >
-                <Shuffle size={16} /> Random Fact
+                <Shuffle size={12} className="text-[#D4AF37]" /> Next Observation
               </button>
             </div>
             
-            <h3 className="font-heading text-2xl sm:text-3xl font-bold mb-3 text-[#221e1a]">
-              {currentFact.title}
-            </h3>
-            <p className="text-[#221e1a]/85 text-lg sm:text-xl leading-relaxed mb-6">
-              {currentFact.explanation}
-            </p>
+            <div className="space-y-4 max-w-4xl">
+              <h3 className="font-serif text-2xl sm:text-4xl font-normal text-[#1A1A1A] leading-snug">
+                {currentFact.title}
+              </h3>
+              <p className="text-[#6C6863] text-base sm:text-lg leading-relaxed font-light">
+                {currentFact.explanation}
+              </p>
+            </div>
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t-2 border-dashed border-[#282420]/20">
-              <span className="text-sm text-[#221e1a]/65 font-hand">
-                Source: {currentFact.source}
-              </span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 mt-8 border-t border-[#1A1A1A]/10">
+              <div className="text-xs text-[#6C6863] italic">
+                Source Document: <span className="font-medium text-[#1A1A1A] not-italic">{currentFact.source}</span>
+              </div>
               <button 
                 onClick={handleExploreFact}
-                className="wobbly-btn bg-[#eee5da] hover:bg-[#c93535] text-[#221e1a] hover:text-white px-6 py-2 text-lg font-bold transition-all self-start sm:self-auto"
+                className="luxury-btn-solid h-11 text-xs"
               >
-                {currentFact.buttonText || "Explore This Data"} →
+                <span>{currentFact.buttonText || "Examine Dataset"} →</span>
               </button>
             </div>
           </section>
         )}
 
-        {/* Playground Exploration Card */}
-        <section className="bg-[#eee5da] border-2 border-[#282420] rounded-[255px_15px_225px_15px/15px_225px_15px_255px] shadow-[6px_6px_0px_0px_#282420] overflow-hidden">
-          <div className="bg-[#e6ded3] p-5 sm:p-6 border-b-2 border-dashed border-[#282420] flex flex-wrap gap-4 items-center justify-between">
-            <div className="flex flex-wrap gap-4 sm:gap-6 items-center w-full sm:w-auto">
+        {/* Playground Exploration Atelier */}
+        <section id="visualizer-atelier" className="bg-white border-t-2 border-[#1A1A1A] shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
+          {/* Controls Bar */}
+          <div className="p-6 sm:p-10 border-b border-[#1A1A1A]/10 flex flex-wrap gap-8 items-end justify-between bg-[#F9F8F6]/50">
+            <div className="flex flex-wrap gap-8 items-center w-full sm:w-auto">
               <div className="flex-1 sm:flex-none">
-                <label className="block text-sm font-bold text-[#221e1a]/70 mb-1 font-hand uppercase tracking-wider">
-                  Select Dataset
+                <label className="block text-[11px] uppercase tracking-[0.25em] font-semibold text-[#6C6863] mb-2">
+                  Dataset Corpus
                 </label>
                 <select 
-                  className="bg-[#eee5da] border-2 border-[#282420] text-[#221e1a] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-52 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#282420] hover:border-[#275696] font-hand"
+                  className="bg-transparent border-b border-[#1A1A1A] text-[#1A1A1A] text-sm py-2 pr-8 outline-none cursor-pointer focus:border-[#D4AF37] font-medium transition-colors"
                   value={datasetId}
                   onChange={(e) => setDatasetId(e.target.value)}
                 >
-                  <option value="population">World Population</option>
-                  <option value="climate">Climate Change</option>
-                  <option value="movies">Movies Box Office</option>
-                  <option value="spotify">Spotify Top Songs</option>
-                  <option value="happiness">World Happiness</option>
+                  <option value="population">World Population Ingestion</option>
+                  <option value="climate">Atmospheric Temperature Deviations</option>
+                  <option value="movies">Global Box Office Performance</option>
+                  <option value="spotify">Spotify Streaming Audio Metrics</option>
+                  <option value="happiness">World Happiness Index</option>
                 </select>
               </div>
+
               <div className="flex-1 sm:flex-none">
-                <label className="block text-sm font-bold text-[#221e1a]/70 mb-1 font-hand uppercase tracking-wider">
-                  Chart Type
+                <label className="block text-[11px] uppercase tracking-[0.25em] font-semibold text-[#6C6863] mb-2">
+                  Projection Geometry
                 </label>
                 <select 
-                  className="bg-[#eee5da] border-2 border-[#282420] text-[#221e1a] text-base rounded-[8px_18px_12px_16px] block w-full sm:w-44 p-2.5 outline-none cursor-pointer shadow-[2px_2px_0px_0px_#282420] hover:border-[#275696] font-hand"
+                  className="bg-transparent border-b border-[#1A1A1A] text-[#1A1A1A] text-sm py-2 pr-8 outline-none cursor-pointer focus:border-[#D4AF37] font-medium transition-colors"
                   value={chartType}
                   onChange={(e) => setChartType(e.target.value)}
                 >
-                  <option value="line">Line Graph</option>
-                  <option value="bar">Bar Chart</option>
-                  <option value="scatter">Scatter Plot</option>
+                  <option value="line">Continuous Line Series</option>
+                  <option value="bar">Discrete Column Histogram</option>
+                  <option value="scatter">Distribution Scatter Plot</option>
                 </select>
               </div>
             </div>
+
+            <div className="text-[11px] tracking-[0.2em] text-[#6C6863] uppercase">
+              Render Engine: <span className="font-semibold text-[#1A1A1A]">Vector SVG</span>
+            </div>
           </div>
           
-          <div className="p-4 sm:p-8 space-y-6">
-             <div className="bg-[#e6ded3] p-4 rounded-xl border border-dashed border-[#cfc5b5]">
+          <div className="p-6 sm:p-10 space-y-8">
+             <div className="p-4 bg-[#F9F8F6] border border-[#1A1A1A]/10">
                <ReactECharts 
                  option={getChartOption()} 
-                 style={{ height: '420px', width: '100%' }} 
+                 style={{ height: '440px', width: '100%' }} 
                  opts={{ renderer: 'svg' }}
                />
              </div>
 
-             {/* Speech bubble style insight */}
-             <div className="relative bg-[#eee5da] text-[#221e1a] p-5 rounded-[8px_18px_12px_16px/14px_10px_18px_8px] border-2 border-[#275696] shadow-[3px_3px_0px_0px_rgba(39,86,150,0.2)]">
-               <div className="font-heading font-bold text-[#275696] text-base mb-1 flex items-center gap-1.5">
-                 <span>💡 Hand-Drawn Data Insight:</span>
+             {/* Analytical Insight Strip */}
+             <div className="border-l-2 border-[#D4AF37] bg-[#F9F8F6] p-6 space-y-2">
+               <div className="text-[11px] tracking-[0.25em] uppercase font-semibold text-[#D4AF37] flex items-center gap-2">
+                 <span>Statistical Note</span>
                </div>
-               <p className="text-lg leading-relaxed text-[#221e1a]/85">
+               <p className="text-base text-[#1A1A1A] font-serif italic leading-relaxed">
                  {chartData?.length 
-                   ? `Analyzing ${chartData.length} records in the ${datasetId} dataset. Interactive points update directly based on your selected visualization mode.` 
-                   : "Loading dataset entries..."}
+                   ? `Evaluated ${chartData.length} records in the ${datasetId} archive. Values update in real time across the selected visualization canvas.` 
+                   : "Parsing data stream..."}
                </p>
              </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t-2 border-dashed border-[#cfc5b5] py-8 text-center text-[#221e1a]/50 font-hand text-base">
-        Hand-crafted with ♥ for data exploration · Damsara Dissanayaka © 2026
+      <footer className="border-t border-[#1A1A1A]/10 py-12 text-center text-[#6C6863] text-xs uppercase tracking-[0.25em] relative z-10">
+        Data Atelier · Curated by Damsara Dissanayaka © 2026
       </footer>
     </div>
   );
