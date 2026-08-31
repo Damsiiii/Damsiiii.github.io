@@ -335,7 +335,7 @@ h1.hero-title {
   font-family: var(--display);
   font-weight: 600;
   font-size: clamp(2.6rem, 6.5vw, 5.2rem);
-  line-height: 1.02;
+  line-height: 0.92;
   letter-spacing: -0.01em;
   max-width: 900px;
 }
@@ -749,13 +749,16 @@ section {
   position: relative;
   border-radius: 0px;
   border-top: 1px solid var(--line);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  filter: grayscale(100%);
 }
 
 .proj-card:hover {
   background: var(--ink-2);
   border-top-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  filter: grayscale(0%);
 }
 
 .proj-card:last-child {
@@ -1095,12 +1098,14 @@ footer p {
   transition:
     border-color 0.4s ease,
     box-shadow 0.4s ease,
-    transform 0.4s ease;
+    transform 0.4s ease,
+    filter 1.5s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .playground-card:hover {
   border-top-color: var(--gold);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
