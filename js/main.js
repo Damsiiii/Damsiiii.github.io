@@ -23,7 +23,7 @@ if (themeToggle) {
       themeToggle.textContent = "🌙";
       themeToggle.setAttribute("aria-label", "Switch to dark theme");
     } else {
-      document.documentElement.removeAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", "dark");
       themeToggle.textContent = "☀️";
       themeToggle.setAttribute("aria-label", "Switch to light theme");
     }

@@ -1,0 +1,3 @@
+## 2025-05-20 - Theme Token Synchronization & Explicit State Attributes
+**Learning:** In CSS custom property design systems where `:root` and `[data-theme="dark"]` define color tokens, removing the `data-theme` attribute falls back to `:root`. If `:root` is designed for Light mode (`--ink: var(--alabaster)`), setting `data-theme="dark"` explicitly ensures synchronization between CSS background/color tokens and JS theme evaluations (e.g., ECharts rendering).
+**Action:** Always set explicit `data-theme="dark"` and `data-theme="light"` attributes on the root element rather than relying on `removeAttribute("data-theme")`.
