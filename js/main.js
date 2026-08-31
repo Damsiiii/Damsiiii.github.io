@@ -1,71 +1,102 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // theme toggle
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '🌙';
-      themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+      themeToggle.textContent = "🌙";
+      themeToggle.setAttribute("aria-label", "Switch to dark theme");
     } else {
-      themeToggle.textContent = '☀️';
-      themeToggle.setAttribute('aria-label', 'Switch to light theme');
+      themeToggle.textContent = "☀️";
+      themeToggle.setAttribute("aria-label", "Switch to light theme");
     }
 
-    themeToggle.addEventListener('click', () => {
-      themeToggle.classList.add('spin');
-      setTimeout(() => themeToggle.classList.remove('spin'), 500);
+    themeToggle.addEventListener("click", () => {
+      themeToggle.classList.add("spin");
+      setTimeout(() => themeToggle.classList.remove("spin"), 500);
 
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const nextTheme = isLight ? 'dark' : 'light';
-      if (nextTheme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeToggle.textContent = '🌙';
-        themeToggle.setAttribute('aria-label', 'Switch to dark theme');
+      const isLight =
+        document.documentElement.getAttribute("data-theme") === "light";
+      const nextTheme = isLight ? "dark" : "light";
+      if (nextTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
+        themeToggle.textContent = "🌙";
+        themeToggle.setAttribute("aria-label", "Switch to dark theme");
       } else {
-        document.documentElement.removeAttribute('data-theme');
-        themeToggle.textContent = '☀️';
-        themeToggle.setAttribute('aria-label', 'Switch to light theme');
+        document.documentElement.removeAttribute("data-theme");
+        themeToggle.textContent = "☀️";
+        themeToggle.setAttribute("aria-label", "Switch to light theme");
       }
-      localStorage.setItem('theme', nextTheme);
-      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: nextTheme } }));
+      localStorage.setItem("theme", nextTheme);
+      window.dispatchEvent(
+        new CustomEvent("themechange", { detail: { theme: nextTheme } }),
+      );
     });
   }
 
   // mobile nav
-  const toggle = document.getElementById('nav-toggle');
-  const navLinks = document.getElementById('nav-links');
+  const toggle = document.getElementById("nav-toggle");
+  const navLinks = document.getElementById("nav-links");
   if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    toggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    }));
+    navLinks.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }),
+    );
   }
 
   // reveal on scroll
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => io.observe(el));
+  const revealEls = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
+  revealEls.forEach((el) => io.observe(el));
 
   // knowledge-graph hero canvas
   (function () {
-    const canvas = document.getElementById('graph-canvas');
+    const canvas = document.getElementById("graph-canvas");
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let w, h, nodes;
-    const labels = ['Python', 'AI/ML', 'AWS', 'SQL', 'MCP', 'Security', 'LLM', 'Cloud', 'Java', 'Data'];
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const labels = [
+      "Python",
+      "AI/ML",
+      "AWS",
+      "SQL",
+      "MCP",
+      "Security",
+      "LLM",
+      "Cloud",
+      "Java",
+      "Data",
+    ];
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     let mouse = { x: null, y: null };
-    window.addEventListener('mousemove', (e) => {
+    window.addEventListener("mousemove", (e) => {
       const rect = canvas.getBoundingClientRect();
-      if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+      if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
         mouse.x = (e.clientX - rect.left) * devicePixelRatio;
         mouse.y = (e.clientY - rect.top) * devicePixelRatio;
       } else {
@@ -73,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mouse.y = null;
       }
     });
-    window.addEventListener('mouseleave', () => {
+    window.addEventListener("mouseleave", () => {
       mouse.x = null;
       mouse.y = null;
     });
@@ -86,19 +117,25 @@ document.addEventListener('DOMContentLoaded', () => {
       resize();
       const count = w < 700 ? 20 : 36;
       nodes = Array.from({ length: count }, (_, i) => ({
-        x: Math.random() * w, y: Math.random() * h,
+        x: Math.random() * w,
+        y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
         vy: (Math.random() - 0.5) * 0.35 * devicePixelRatio,
         r: (Math.random() * 2.5 + 1.5) * devicePixelRatio,
-        label: i < labels.length ? labels[i] : null
+        label: i < labels.length ? labels[i] : null,
       }));
     }
     function step() {
       ctx.clearRect(0, 0, w, h);
-      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      const lineRgb = '212, 175, 55';
-      const particleColor = isLight ? 'rgba(26, 26, 26, 0.85)' : 'rgba(249, 248, 246, 0.85)';
-      const labelColor = isLight ? 'rgba(108, 104, 99, 0.85)' : 'rgba(209, 204, 199, 0.75)';
+      const isLight =
+        document.documentElement.getAttribute("data-theme") === "light";
+      const lineRgb = "212, 175, 55";
+      const particleColor = isLight
+        ? "rgba(26, 26, 26, 0.85)"
+        : "rgba(249, 248, 246, 0.85)";
+      const labelColor = isLight
+        ? "rgba(108, 104, 99, 0.85)"
+        : "rgba(209, 204, 199, 0.75)";
 
       for (const n of nodes) {
         if (mouse.x !== null && mouse.y !== null) {
@@ -125,13 +162,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j];
+          const a = nodes[i],
+            b = nodes[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           const maxD = 180 * devicePixelRatio;
           if (d < maxD) {
             ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - d / maxD) * 0.32})`;
             ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
           }
         }
 
@@ -141,18 +182,25 @@ document.addEventListener('DOMContentLoaded', () => {
           if (md < maxMouseD) {
             ctx.strokeStyle = `rgba(${lineRgb}, ${(1 - md / maxMouseD) * 0.6})`;
             ctx.lineWidth = 1.4;
-            ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
           }
         }
       }
 
       if (mouse.x !== null && mouse.y !== null) {
-        ctx.fillStyle = isLight ? 'rgba(217, 119, 6, 0.9)' : 'rgba(226, 165, 61, 0.9)';
+        ctx.fillStyle = isLight
+          ? "rgba(217, 119, 6, 0.9)"
+          : "rgba(226, 165, 61, 0.9)";
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 5 * devicePixelRatio, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = isLight ? 'rgba(217, 119, 6, 0.25)' : 'rgba(226, 165, 61, 0.25)';
+        ctx.fillStyle = isLight
+          ? "rgba(217, 119, 6, 0.25)"
+          : "rgba(226, 165, 61, 0.25)";
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 14 * devicePixelRatio, 0, Math.PI * 2);
         ctx.fill();
@@ -161,15 +209,23 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.font = `${11 * devicePixelRatio}px 'JetBrains Mono', monospace`;
       for (const n of nodes) {
         ctx.fillStyle = particleColor;
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fill();
         if (n.label) {
           ctx.fillStyle = labelColor;
-          ctx.fillText(n.label, n.x + 8 * devicePixelRatio, n.y + 4 * devicePixelRatio);
+          ctx.fillText(
+            n.label,
+            n.x + 8 * devicePixelRatio,
+            n.y + 4 * devicePixelRatio,
+          );
         }
       }
       if (!reduceMotion) requestAnimationFrame(step);
     }
-    window.addEventListener('resize', () => { resize(); });
+    window.addEventListener("resize", () => {
+      resize();
+    });
     init();
     step();
   })();
