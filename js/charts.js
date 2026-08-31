@@ -393,7 +393,7 @@
   }
 
   function buildOption(data, config) {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
 
     const themeColors = isDark ? {
       text: '#F9F8F6',
@@ -745,7 +745,7 @@
     if (downloadBtn) {
       downloadBtn.addEventListener('click', () => {
         if (!chartInstance) return;
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
         const url = chartInstance.getDataURL({
           type: 'png',
           pixelRatio: 2,
