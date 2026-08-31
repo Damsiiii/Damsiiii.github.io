@@ -12,10 +12,11 @@
   --gold: #d4af37; /* Metallic Gold Accent */
 
   /* Default Light Mode tokens */
-  --paper: var(--alabaster); /* Canvas Background */
-  --paper-dim: var(--taupe); /* Sub-surface / Muted Canvas */
-  --ink: var(--charcoal); /* Primary Text */
-  --ink-2: #2b2a28; /* Secondary Text */
+  --paper: var(--alabaster); /* Paper Background */
+  --paper-dim: var(--warm-grey); /* Sub-surface / Muted Text */
+  --ink: var(--alabaster); /* Page Canvas Background */
+  --ink-text: var(--charcoal); /* Primary Text */
+  --ink-2: #f0ece1; /* Secondary Surface */
   --amber: var(--gold); /* Primary Accent */
   --amber-soft: #c49b28; /* Soft Gold Accent */
   --teal: #b8860b; /* Deep Gold Detail */
@@ -30,10 +31,11 @@
 
 [data-theme="dark"] {
   /* Inverted Dark Palette: Rich Charcoal Canvas + Warm Alabaster Ink */
-  --paper: var(--charcoal); /* Dark Canvas Background */
-  --paper-dim: #262626; /* Dark Elevated Surface */
-  --ink: var(--alabaster); /* Primary Text */
-  --ink-2: #e5e2dc; /* Secondary Text */
+  --paper: var(--charcoal); /* Dark Surface */
+  --paper-dim: #a39f98; /* Muted Text */
+  --ink: var(--charcoal); /* Page Canvas Background */
+  --ink-text: var(--alabaster); /* Primary Text */
+  --ink-2: #262626; /* Dark Elevated Surface */
   --amber: var(--gold);
   --amber-soft: var(--gold);
   --teal: var(--gold);
@@ -89,10 +91,10 @@
 .theme-toggle {
   background: none;
   border: 1px solid var(--line);
-  color: var(--paper);
+  color: var(--ink-text);
   font-size: 16px;
   padding: 6px 10px;
-  border-radius: 4px;
+  border-radius: 0px;
   cursor: pointer;
   transition:
     border-color 0.2s ease,
@@ -136,7 +138,7 @@ html {
 
 body {
   background: var(--ink);
-  color: var(--paper);
+  color: var(--ink-text);
   font-family: var(--body);
   line-height: 1.6;
   overflow-x: hidden;
@@ -822,7 +824,7 @@ section {
   flex-shrink: 0;
   width: 26px;
   height: 26px;
-  border-radius: 5px;
+  border-radius: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
