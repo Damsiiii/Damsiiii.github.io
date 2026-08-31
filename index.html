@@ -1,640 +1,920 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Damsara Dissanayaka — Data Science &amp; AI Portfolio</title>
+    <meta
+      name="description"
+      content="Editorial portfolio of Damsara Ganganath Dissanayaka — Data Science undergraduate, AI &amp; Cloud engineer, Sri Lanka."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Damsara Dissanayaka — Data Science &amp; AI Portfolio</title>
-  <meta name="description"
-    content="Editorial portfolio of Damsara Ganganath Dissanayaka — Data Science undergraduate, AI &amp; Cloud engineer, Sri Lanka.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <body>
+    <!-- Paper Grain Noise Texture Overlay -->
+    <div class="paper-noise" aria-hidden="true"></div>
 
-<body>
-
-  <!-- Paper Grain Noise Texture Overlay -->
-  <div class="paper-noise" aria-hidden="true"></div>
-
-  <!-- Architectural 4-Column Viewport Gridlines -->
-  <div class="architectural-grid" aria-hidden="true">
-    <div class="grid-col-line"></div>
-    <div class="grid-col-line"></div>
-    <div class="grid-col-line"></div>
-    <div class="grid-col-line"></div>
-  </div>
-
-  <header>
-    <nav class="nav">
-      <a href="#top" class="nav-brand">
-        <span>Damsara</span><span class="period">.</span>
-        <span class="nav-tagline">Data &amp; AI Atelier</span>
-      </a>
-      <ul id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#playground">Playground</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="Damsara_Dissanayaka_CV_ATS.pdf" download="Damsara_Dissanayaka_CV_ATS.pdf">CV ↓</a></li>
-        <li><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">THEME</button></li>
-      </ul>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
-    </nav>
-  </header>
-
-  <!-- Hero: Asymmetric Editorial Cover -->
-  <section class="hero" id="top">
-    <canvas id="graph-canvas"></canvas>
-    <div class="wrap hero-inner">
-      <div class="eyebrow">Data Science Undergraduate · Sri Lanka</div>
-      <h1 class="hero-title">Damsara<br><span class="editorial-italic">Dissanayaka</span><span class="accent">.</span></h1>
-      <p class="hero-role">Building at the intersection of data, AI, and cloud — one pipeline at a time.</p>
-      <p class="hero-desc">I'm an undergraduate at Sri Lanka Technology Campus with 12 professional certifications
-        across AWS, Anthropic, Hugging Face, Fortinet, and IBM. I like turning messy data into working systems —
-        prediction models, scrapers, and knowledge graphs included.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-solid">View Projects</a>
-        <a href="Damsara_Dissanayaka_CV_ATS.pdf"
-          download="Damsara_Dissanayaka_CV_ATS.pdf" class="btn btn-outline">Download CV</a>
-      </div>
+    <!-- Architectural 4-Column Viewport Gridlines -->
+    <div class="architectural-grid" aria-hidden="true">
+      <div class="grid-col-line"></div>
+      <div class="grid-col-line"></div>
+      <div class="grid-col-line"></div>
+      <div class="grid-col-line"></div>
     </div>
-    <div class="scroll-cue">
-      <div class="line"></div>SCROLL TO EXPLORE
-    </div>
-  </section>
 
-  <!-- Section 01: The Profile / About (Light Alabaster Canvas) -->
-  <section id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">01</span>
-        <h2 class="section-title">The <span class="italic-accent">Profile</span></h2>
-        <span class="section-subtitle">Biography &amp; Core Metrics</span>
-      </div>
-      <div class="about-grid reveal">
-        <div class="about-text">
-          <p class="drop-cap">I'm a Data Science undergraduate at Sri Lanka Technology Campus (SLTC) with a Cybersecurity elective track,
-            skilled in Python, Java, C++, C#, SQL, object-oriented programming, databases, AI, cloud technologies, and
-            data analytics. I have built practical projects across machine learning, big data, LLM applications, and
-            software development, supported by 12 professional certifications from AWS, Anthropic, Hugging Face,
-            Fortinet, and IBM covering generative AI, cloud, cybersecurity, and modern computing technologies. I am
-            currently seeking internship or graduate opportunities in Data Science, AI, or Software Development where I
-            can apply analytical thinking and hands-on engineering skills.</p>
-        </div>
-        <div class="stat-card">
-          <div class="stat-grid">
-            <div>
-              <div class="stat-num">12</div>
-              <div class="stat-label">Certifications</div>
-            </div>
-            <div>
-              <div class="stat-num">05</div>
-              <div class="stat-label">Languages</div>
-            </div>
-            <div>
-              <div class="stat-num">08+</div>
-              <div class="stat-label">Shipped Projects</div>
-            </div>
-            <div>
-              <div class="stat-num">2027</div>
-              <div class="stat-label">Expected Grad</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <header>
+      <nav class="nav">
+        <a href="#top" class="nav-brand">
+          <span>Damsara</span><span class="period">.</span>
+          <span class="nav-tagline">Data &amp; AI Atelier</span>
+        </a>
+        <ul id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#playground">Playground</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a
+              href="Damsara_Dissanayaka_CV_ATS.pdf"
+              download="Damsara_Dissanayaka_CV_ATS.pdf"
+              >CV ↓</a
+            >
+          </li>
+          <li>
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              THEME
+            </button>
+          </li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          ☰
+        </button>
+      </nav>
+    </header>
 
-  <!-- Section 02: Selected Works / Projects (Inverted Charcoal Canvas) -->
-  <section id="projects" class="dark-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Selected <span class="italic-accent">Works</span></h2>
-        <span class="section-subtitle">Systems &amp; Algorithms</span>
-      </div>
-      <div class="proj-grid reveal">
-
-        <div class="proj-card featured">
-          <div class="ongoing-badge">Active Research</div>
-          <div class="proj-top">
-            <span class="proj-name">Financial Statement Intelligence</span>
-          </div>
-          <p class="proj-desc">
-            Fine-tuning Gemma models for financial document contextual comprehension, integrating QLoRA parameter-efficient fine-tuning with hybrid Retrieval-Augmented Generation (RAG) to improve contextual analysis.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">Gemma</span>
-            <span class="tag">QLoRA</span>
-            <span class="tag">Fine-Tuning</span>
-            <span class="tag">Personal Finance</span>
-          </div>
-        </div>
-
-        <div class="proj-card featured">
-          <div class="ongoing-badge">Active Research</div>
-          <div class="proj-top">
-            <span class="proj-name">Neural Chord Detection</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/chord-detection" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Deep learning project exploring audio signal processing and machine learning techniques for real-time automatic chord classification.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">Audio DSP</span>
-            <span class="tag">Deep Learning</span>
-            <span class="tag">Signal Processing</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="ongoing-badge">Ongoing</div>
-          <div class="proj-top">
-            <span class="proj-name">Fake Engagement Detection</span>
-          </div>
-          <p class="proj-desc">
-            AI-driven anomaly detection identifying synthetic engagement patterns and bot activity on social media platforms using NLP and classification.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">Machine Learning</span>
-            <span class="tag">NLP</span>
-            <span class="tag">Analytics</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">Big Data E-Commerce Pipeline</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/Big-Data_E-commerce-pipeline" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            End-to-end big data pipeline for high-throughput e-commerce transaction processing, built for distributed ingestion and scalable querying.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">Big Data</span>
-            <span class="tag">Pipeline</span>
-            <span class="tag">ETL</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">Health Analytics with PySpark</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/Health-analytics-with-PySpark" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Distributed computation on real-world healthcare datasets using PySpark, uncovering demographic risk factors and clinical trends at scale.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">PySpark</span>
-            <span class="tag">Analytics</span>
-            <span class="tag">Healthcare</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">Crypto Predictive Engine</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/Crypto-prediction" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Automated cryptocurrency time-series price predictor modeling historical price movements via Yahoo Finance data streams.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Time Series</span>
-            <span class="tag">Yahoo Finance</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">Local LLM Inference (GPT4ALL)</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/GPT4ALL-model-local-run" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Executing quantized open-weight language models fully on local hardware — zero external API keys, zero cloud dependency, complete privacy.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">GPT4ALL</span>
-            <span class="tag">Local LLM</span>
-            <span class="tag">Privacy</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">Production Churn MLOps</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/churn-mlops" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Customer churn prediction system structured around rigorous MLOps practices — from feature engineering to validation and deployment.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">MLOps</span>
-            <span class="tag">Classification</span>
-            <span class="tag">ML</span>
-          </div>
-        </div>
-
-        <div class="proj-card">
-          <div class="proj-top">
-            <span class="proj-name">MarkIn RFID Attendance</span>
-            <a class="proj-link" href="https://github.com/Damsiiii/MarkIn" target="_blank" rel="noreferrer">GitHub ↗</a>
-          </div>
-          <p class="proj-desc">
-            Hardware RFID attendance reader linked to a real-time web dashboard, automating and securing organizational attendance auditing.
-          </p>
-          <div class="proj-tags">
-            <span class="tag">RFID</span>
-            <span class="tag">Web App</span>
-            <span class="tag">Systems</span>
-          </div>
+    <!-- Hero: Asymmetric Editorial Cover -->
+    <section class="hero" id="top">
+      <canvas id="graph-canvas"></canvas>
+      <div class="wrap hero-inner">
+        <div class="eyebrow">Data Science Undergraduate · Sri Lanka</div>
+        <h1 class="hero-title">
+          Damsara<br /><span class="editorial-italic">Dissanayaka</span
+          ><span class="accent">.</span>
+        </h1>
+        <p class="hero-role">
+          Building at the intersection of data, AI, and cloud — one pipeline at
+          a time.
+        </p>
+        <p class="hero-desc">
+          I'm an undergraduate at Sri Lanka Technology Campus with 12
+          professional certifications across AWS, Anthropic, Hugging Face,
+          Fortinet, and IBM. I like turning messy data into working systems —
+          prediction models, scrapers, and knowledge graphs included.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-solid">View Projects</a>
+          <a
+            href="Damsara_Dissanayaka_CV_ATS.pdf"
+            download="Damsara_Dissanayaka_CV_ATS.pdf"
+            class="btn btn-outline"
+            >Download CV</a
+          >
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Section 03: Technical Disciplines / Skills (Light Canvas) -->
-  <section id="skills">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">03</span>
-        <h2 class="section-title">Technical <span class="italic-accent">Disciplines</span></h2>
-        <span class="section-subtitle">Core Capabilities</span>
+      <div class="scroll-cue">
+        <div class="line"></div>
+        SCROLL TO EXPLORE
       </div>
-      <div class="skills-grid reveal">
-        <div class="skill-card">
-          <div class="skill-head">
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-            <h3>Languages</h3>
-          </div>
-          <ul>
-            <li><span class="skill-name">Python</span><span class="skill-detail">NumPy, Pandas, PyTorch, PySpark</span></li>
-            <li><span class="skill-name">SQL</span><span class="skill-detail">Relational database schema modeling</span></li>
-            <li><span class="skill-name">Java &amp; C++</span><span class="skill-detail">Object-oriented paradigms &amp; performance</span></li>
-            <li><span class="skill-name">C# &amp; JavaScript</span><span class="skill-detail">Application development &amp; web architecture</span></li>
-          </ul>
-        </div>
+    </section>
 
-        <div class="skill-card">
-          <div class="skill-head">
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="3" />
-              <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
-            </svg>
-            <h3>AI &amp; Machine Learning</h3>
-          </div>
-          <ul>
-            <li><span class="skill-name">Generative AI</span><span class="skill-detail">AWS AI Practitioner certified</span></li>
-            <li><span class="skill-name">Model Context Protocol</span><span class="skill-detail">Anthropic Certified Track</span></li>
-            <li><span class="skill-name">Supervised Fine-Tuning</span><span class="skill-detail">Hugging Face Smol Course Unit 1</span></li>
-            <li><span class="skill-name">LLM Applications</span><span class="skill-detail">LangChain, quantized models, RAG</span></li>
-          </ul>
+    <!-- Section 01: The Profile / About (Light Alabaster Canvas) -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <h2 class="section-title">
+            The <span class="italic-accent">Profile</span>
+          </h2>
+          <span class="section-subtitle">Biography &amp; Core Metrics</span>
         </div>
-
-        <div class="skill-card">
-          <div class="skill-head">
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M6 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 16 8a4.5 4.5 0 0 1 1 8.9" />
-              <path d="M8 18v2M12 18v3M16 18v2" />
-            </svg>
-            <h3>Cloud &amp; Infrastructure</h3>
-          </div>
-          <ul>
-            <li><span class="skill-name">AWS Cloud Ecosystem <span class="aws-badge">AWS</span></span><span class="skill-detail">Cloud Essentials &amp; Quest certified</span></li>
-            <li><span class="skill-name">Distributed Computing</span><span class="skill-detail">PySpark on cluster workloads</span></li>
-            <li><span class="skill-name">Big Data Pipelines</span><span class="skill-detail">End-to-end ingestion &amp; warehousing</span></li>
-            <li><span class="skill-name">Containers &amp; Virtualization</span><span class="skill-detail">Docker orchestration and lab practices</span></li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-head">
-            <svg class="skill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="11" width="18" height="10" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-            <h3>Cybersecurity</h3>
-          </div>
-          <ul>
-            <li><span class="skill-name">Network Security</span><span class="skill-detail">FortiGate 7.4 Certified Operator</span></li>
-            <li><span class="skill-name">Security Fundamentals</span><span class="skill-detail">IBM Cybersecurity Certified</span></li>
-            <li><span class="skill-name">Enterprise Threat Defense</span><span class="skill-detail">Fortinet Certified Associate</span></li>
-            <li><span class="skill-name">Authentication Protocols</span><span class="skill-detail">Access control and zero-trust principles</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 04: Credentials & Accolades (Light Palette with Grayscale Logos) -->
-  <section id="certifications">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Credentials &amp; <span class="italic-accent">Accolades</span></h2>
-        <span class="section-subtitle">12 Professional Accreditations</span>
-      </div>
-      <div class="cert-cols reveal">
-        <div class="cert-col">
-          <h3>Artificial Intelligence</h3>
-          <div class="cert-item">
-            <span class="cert-logo aws">AWS</span>
-            <span class="cert-body">
-              <span class="cert-title">AWS Certified AI Practitioner</span>
-              <span class="cert-meta">Amazon Web Services · 2026</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo aws">AWS</span>
-            <span class="cert-body">
-              <span class="cert-title">Fundamentals of Machine Learning &amp; AI</span>
-              <span class="cert-meta">Amazon Web Services · Apr 2026</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo aws">AWS</span>
-            <span class="cert-body">
-              <span class="cert-title">Cloud Quest: Generative AI Practitioner</span>
-              <span class="cert-meta">Amazon Web Services · Apr 2026</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo">HF</span>
-            <span class="cert-body">
-              <span class="cert-title">Smol Course Unit 1: Supervised Finetuning</span>
-              <span class="cert-meta">Hugging Face · Apr 2026</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="cert-col">
-          <h3>Model Context Protocol</h3>
-          <div class="cert-item">
-            <span class="cert-logo">MCP</span>
-            <span class="cert-body">
-              <span class="cert-title">Introduction to Model Context Protocol</span>
-              <span class="cert-meta">Anthropic · Apr 2026</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo">MCP</span>
-            <span class="cert-body">
-              <span class="cert-title">MCP: Advanced Topics &amp; Tool Authoring</span>
-              <span class="cert-meta">Anthropic · Apr 2026</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo ibm">IBM</span>
-            <span class="cert-body">
-              <span class="cert-title">IBM Z Day 2025 SE — AI, Data &amp; Security</span>
-              <span class="cert-meta">IBM · Apr 2025</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="cert-col">
-          <h3>Cloud &amp; Security</h3>
-          <div class="cert-item">
-            <span class="cert-logo aws">AWS</span>
-            <span class="cert-body">
-              <span class="cert-title">AWS Knowledge: Cloud Essentials</span>
-              <span class="cert-meta">Amazon Web Services · Mar 2025</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo fortinet">FTNT</span>
-            <span class="cert-body">
-              <span class="cert-title">Fortinet Certified Associate Cybersecurity</span>
-              <span class="cert-meta">Fortinet · 2025–2027</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo fortinet">FTNT</span>
-            <span class="cert-body">
-              <span class="cert-title">FortiGate 7.4 Operator Accreditation</span>
-              <span class="cert-meta">Fortinet · Mar 2025</span>
-            </span>
-          </div>
-          <div class="cert-item">
-            <span class="cert-logo ibm">IBM</span>
-            <span class="cert-body">
-              <span class="cert-title">Cybersecurity Fundamentals</span>
-              <span class="cert-meta">IBM · Mar 2025</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 05: Academic Foundation / Education (Dark Inverted Canvas) -->
-  <section id="education" class="dark-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">05</span>
-        <h2 class="section-title">Academic <span class="italic-accent">Foundation</span></h2>
-        <span class="section-subtitle">Curriculum &amp; Honours</span>
-      </div>
-      <div class="reveal">
-        <div class="edu-item">
-          <div class="edu-year">2023 — Present</div>
-          <div class="edu-body">
-            <h3>Sri Lanka Technology Campus (SLTC)</h3>
-            <p>
-              Bachelor of Science in Data Science with Cybersecurity electives. Core study areas include computational statistics, machine learning paradigms, relational database architectures, cloud systems, and network security.
+        <div class="about-grid reveal">
+          <div class="about-text">
+            <p class="drop-cap">
+              I'm a Data Science undergraduate at Sri Lanka Technology Campus
+              (SLTC) with a Cybersecurity elective track, skilled in Python,
+              Java, C++, C#, SQL, object-oriented programming, databases, AI,
+              cloud technologies, and data analytics. I have built practical
+              projects across machine learning, big data, LLM applications, and
+              software development, supported by 12 professional certifications
+              from AWS, Anthropic, Hugging Face, Fortinet, and IBM covering
+              generative AI, cloud, cybersecurity, and modern computing
+              technologies. I am currently seeking internship or graduate
+              opportunities in Data Science, AI, or Software Development where I
+              can apply analytical thinking and hands-on engineering skills.
             </p>
           </div>
+          <div class="stat-card">
+            <div class="stat-grid">
+              <div>
+                <div class="stat-num">12</div>
+                <div class="stat-label">Certifications</div>
+              </div>
+              <div>
+                <div class="stat-num">05</div>
+                <div class="stat-label">Languages</div>
+              </div>
+              <div>
+                <div class="stat-num">08+</div>
+                <div class="stat-label">Shipped Projects</div>
+              </div>
+              <div>
+                <div class="stat-num">2027</div>
+                <div class="stat-label">Expected Grad</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="edu-item">
-          <div class="edu-year">2022</div>
-          <div class="edu-body">
-            <h3>Maliyadeva College</h3>
-            <p>
-              Secondary education with academic distinction. Represented the school basketball team; awarded School Colours for athletic excellence and sportsmanship.
+      </div>
+    </section>
+
+    <!-- Section 02: Selected Works / Projects (Inverted Charcoal Canvas) -->
+    <section id="projects" class="dark-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <h2 class="section-title">
+            Selected <span class="italic-accent">Works</span>
+          </h2>
+          <span class="section-subtitle">Systems &amp; Algorithms</span>
+        </div>
+        <div class="proj-grid reveal">
+          <div class="proj-card featured">
+            <div class="ongoing-badge">Active Research</div>
+            <div class="proj-top">
+              <span class="proj-name">Financial Statement Intelligence</span>
+            </div>
+            <p class="proj-desc">
+              Fine-tuning Gemma models for financial document contextual
+              comprehension, integrating QLoRA parameter-efficient fine-tuning
+              with hybrid Retrieval-Augmented Generation (RAG) to improve
+              contextual analysis.
             </p>
+            <div class="proj-tags">
+              <span class="tag">Gemma</span>
+              <span class="tag">QLoRA</span>
+              <span class="tag">Fine-Tuning</span>
+              <span class="tag">Personal Finance</span>
+            </div>
+          </div>
+
+          <div class="proj-card featured">
+            <div class="ongoing-badge">Active Research</div>
+            <div class="proj-top">
+              <span class="proj-name">Neural Chord Detection</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/chord-detection"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Deep learning project exploring audio signal processing and
+              machine learning techniques for real-time automatic chord
+              classification.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">Audio DSP</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Signal Processing</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="ongoing-badge">Ongoing</div>
+            <div class="proj-top">
+              <span class="proj-name">Fake Engagement Detection</span>
+            </div>
+            <p class="proj-desc">
+              AI-driven anomaly detection identifying synthetic engagement
+              patterns and bot activity on social media platforms using NLP and
+              classification.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">Machine Learning</span>
+              <span class="tag">NLP</span>
+              <span class="tag">Analytics</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">Big Data E-Commerce Pipeline</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/Big-Data_E-commerce-pipeline"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              End-to-end big data pipeline for high-throughput e-commerce
+              transaction processing, built for distributed ingestion and
+              scalable querying.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">Big Data</span>
+              <span class="tag">Pipeline</span>
+              <span class="tag">ETL</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">Health Analytics with PySpark</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/Health-analytics-with-PySpark"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Distributed computation on real-world healthcare datasets using
+              PySpark, uncovering demographic risk factors and clinical trends
+              at scale.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">PySpark</span>
+              <span class="tag">Analytics</span>
+              <span class="tag">Healthcare</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">Crypto Predictive Engine</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/Crypto-prediction"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Automated cryptocurrency time-series price predictor modeling
+              historical price movements via Yahoo Finance data streams.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Time Series</span>
+              <span class="tag">Yahoo Finance</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">Local LLM Inference (GPT4ALL)</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/GPT4ALL-model-local-run"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Executing quantized open-weight language models fully on local
+              hardware — zero external API keys, zero cloud dependency, complete
+              privacy.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">GPT4ALL</span>
+              <span class="tag">Local LLM</span>
+              <span class="tag">Privacy</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">Production Churn MLOps</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/churn-mlops"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Customer churn prediction system structured around rigorous MLOps
+              practices — from feature engineering to validation and deployment.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">MLOps</span>
+              <span class="tag">Classification</span>
+              <span class="tag">ML</span>
+            </div>
+          </div>
+
+          <div class="proj-card">
+            <div class="proj-top">
+              <span class="proj-name">MarkIn RFID Attendance</span>
+              <a
+                class="proj-link"
+                href="https://github.com/Damsiiii/MarkIn"
+                target="_blank"
+                rel="noreferrer"
+                >GitHub ↗</a
+              >
+            </div>
+            <p class="proj-desc">
+              Hardware RFID attendance reader linked to a real-time web
+              dashboard, automating and securing organizational attendance
+              auditing.
+            </p>
+            <div class="proj-tags">
+              <span class="tag">RFID</span>
+              <span class="tag">Web App</span>
+              <span class="tag">Systems</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 06: Digital Data Atelier / Playground (Light Canvas) -->
-  <section id="playground" class="playground-section reveal">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">06</span>
-        <h2 class="section-title">Digital Data <span class="italic-accent">Atelier</span></h2>
-        <span class="section-subtitle">Real-time Visualization Engine</span>
-      </div>
-
-      <p class="playground-lead">
-        Explore empirical global datasets through refined, interactive statistical visualizations.
-      </p>
-
-      <div class="playground-grid">
-        <!-- Curated Fact Generator -->
-        <aside class="playground-card fact-card" aria-labelledby="fact-heading">
-          <div class="playground-card-head">
-            <span class="playground-kicker">01 — Curated Insight</span>
-            <h3 id="fact-heading">Empirical Data Fact</h3>
-          </div>
-
-          <div id="factDisplay" class="fact-display" aria-live="polite">
-            <span class="fact-badge" id="factCategory">Category</span>
-            <h4 class="fact-title" id="factTitle">Retrieving data stream…</h4>
-            <p class="fact-desc" id="factDesc"></p>
-            <div class="fact-meta" id="factSource"></div>
-          </div>
-
-          <div class="fact-actions">
-            <button type="button" id="nextFactBtn" class="btn btn-solid fact-btn">
-              <span>Next Observation</span>
-            </button>
-            <button type="button" id="exploreFactBtn" class="btn btn-outline fact-btn">
-              <span>Inspect Underlying Dataset →</span>
-            </button>
-          </div>
-        </aside>
-
-        <!-- Visualization Panel -->
-        <div class="playground-card viz-card" id="vizPanel" aria-labelledby="viz-heading">
-          <div class="playground-card-head">
-            <span class="playground-kicker">02 — Visual Engine</span>
-            <h3 id="viz-heading">Interactive Chart</h3>
-          </div>
-
-          <div class="controls-bar" role="group" aria-label="Dataset and chart controls">
-            <div class="control-group">
-              <label for="datasetSelect">Target Dataset</label>
-              <select id="datasetSelect" class="control-select">
-                <option value="population">World Population Trends</option>
-                <option value="climate">Global Temperature Deviations</option>
-                <option value="spotify">Spotify Streaming Metrics</option>
-                <option value="movies">Global Box Office Returns</option>
-                <option value="happiness">World Happiness Index</option>
-              </select>
+    <!-- Section 03: Technical Disciplines / Skills (Light Canvas) -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">03</span>
+          <h2 class="section-title">
+            Technical <span class="italic-accent">Disciplines</span>
+          </h2>
+          <span class="section-subtitle">Core Capabilities</span>
+        </div>
+        <div class="skills-grid reveal">
+          <div class="skill-card">
+            <div class="skill-head">
+              <svg
+                class="skill-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+              <h3>Languages</h3>
             </div>
-
-            <div class="control-group">
-              <label for="chartTypeSelect">Projection Mode</label>
-              <select id="chartTypeSelect" class="control-select">
-                <option value="line">Line Graph</option>
-                <option value="bar">Bar Chart</option>
-                <option value="scatter">Scatter Plot</option>
-                <option value="pie">Proportional Pie</option>
-                <option value="histogram">Distribution Histogram</option>
-              </select>
-            </div>
-
-            <button type="button" id="downloadChartBtn" class="btn btn-outline download-btn">
-              <span>Export Vector</span>
-            </button>
+            <ul>
+              <li>
+                <span class="skill-name">Python</span
+                ><span class="skill-detail"
+                  >NumPy, Pandas, PyTorch, PySpark</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">SQL</span
+                ><span class="skill-detail"
+                  >Relational database schema modeling</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">Java &amp; C++</span
+                ><span class="skill-detail"
+                  >Object-oriented paradigms &amp; performance</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">C# &amp; JavaScript</span
+                ><span class="skill-detail"
+                  >Application development &amp; web architecture</span
+                >
+              </li>
+            </ul>
           </div>
 
-          <div class="chart-shell">
-            <div id="chartLoading" class="chart-loading" hidden></div>
-            <div id="chartContainer" class="chart-container" role="img" aria-label="Interactive data chart"></div>
+          <div class="skill-card">
+            <div class="skill-head">
+              <svg
+                class="skill-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+                />
+              </svg>
+              <h3>AI &amp; Machine Learning</h3>
+            </div>
+            <ul>
+              <li>
+                <span class="skill-name">Generative AI</span
+                ><span class="skill-detail">AWS AI Practitioner certified</span>
+              </li>
+              <li>
+                <span class="skill-name">Model Context Protocol</span
+                ><span class="skill-detail">Anthropic Certified Track</span>
+              </li>
+              <li>
+                <span class="skill-name">Supervised Fine-Tuning</span
+                ><span class="skill-detail"
+                  >Hugging Face Smol Course Unit 1</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">LLM Applications</span
+                ><span class="skill-detail"
+                  >LangChain, quantized models, RAG</span
+                >
+              </li>
+            </ul>
           </div>
 
-          <div class="dataset-info-grid" aria-label="Dataset metadata">
-            <div class="info-item">
-              <div class="info-label">Dataset Title</div>
-              <div class="info-val" id="infoName">—</div>
+          <div class="skill-card">
+            <div class="skill-head">
+              <svg
+                class="skill-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M6 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 16 8a4.5 4.5 0 0 1 1 8.9"
+                />
+                <path d="M8 18v2M12 18v3M16 18v2" />
+              </svg>
+              <h3>Cloud &amp; Infrastructure</h3>
             </div>
-            <div class="info-item">
-              <div class="info-label">Primary Source</div>
-              <div class="info-val" id="infoSource">—</div>
-            </div>
-            <div class="info-item">
-              <div class="info-label">Observed Records</div>
-              <div class="info-val" id="infoRecords">—</div>
-            </div>
-            <div class="info-item">
-              <div class="info-label">Edition</div>
-              <div class="info-val" id="infoUpdated">2026.08</div>
-            </div>
+            <ul>
+              <li>
+                <span class="skill-name"
+                  >AWS Cloud Ecosystem <span class="aws-badge">AWS</span></span
+                ><span class="skill-detail"
+                  >Cloud Essentials &amp; Quest certified</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">Distributed Computing</span
+                ><span class="skill-detail">PySpark on cluster workloads</span>
+              </li>
+              <li>
+                <span class="skill-name">Big Data Pipelines</span
+                ><span class="skill-detail"
+                  >End-to-end ingestion &amp; warehousing</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">Containers &amp; Virtualization</span
+                ><span class="skill-detail"
+                  >Docker orchestration and lab practices</span
+                >
+              </li>
+            </ul>
           </div>
 
-          <div class="insight-card" aria-live="polite">
-            <div class="insight-header">Analytical Observation</div>
-            <p class="insight-text" id="insightText">Select a dataset to compute statistical insight.</p>
+          <div class="skill-card">
+            <div class="skill-head">
+              <svg
+                class="skill-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="11" width="18" height="10" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <h3>Cybersecurity</h3>
+            </div>
+            <ul>
+              <li>
+                <span class="skill-name">Network Security</span
+                ><span class="skill-detail"
+                  >FortiGate 7.4 Certified Operator</span
+                >
+              </li>
+              <li>
+                <span class="skill-name">Security Fundamentals</span
+                ><span class="skill-detail">IBM Cybersecurity Certified</span>
+              </li>
+              <li>
+                <span class="skill-name">Enterprise Threat Defense</span
+                ><span class="skill-detail">Fortinet Certified Associate</span>
+              </li>
+              <li>
+                <span class="skill-name">Authentication Protocols</span
+                ><span class="skill-detail"
+                  >Access control and zero-trust principles</span
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 07: Inquiries & Dialogue / Contact (Dark Inverted Canvas) -->
-  <section id="contact" class="dark-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num">07</span>
-        <h2 class="section-title">Inquiries &amp; <span class="italic-accent">Dialogue</span></h2>
-        <span class="section-subtitle">Communications</span>
-      </div>
-      <div class="contact-wrap reveal">
-        <div class="contact-links">
-          <a class="contact-row" href="mailto:thegreatdamsara@gmail.com">
-            <div>
-              <div class="label">Electronic Mail</div>
-              <div class="value">thegreatdamsara@gmail.com</div>
+    <!-- Section 04: Credentials & Accolades (Light Palette with Grayscale Logos) -->
+    <section id="certifications">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">04</span>
+          <h2 class="section-title">
+            Credentials &amp; <span class="italic-accent">Accolades</span>
+          </h2>
+          <span class="section-subtitle">12 Professional Accreditations</span>
+        </div>
+        <div class="cert-cols reveal">
+          <div class="cert-col">
+            <h3>Artificial Intelligence</h3>
+            <div class="cert-item">
+              <span class="cert-logo aws">AWS</span>
+              <span class="cert-body">
+                <span class="cert-title">AWS Certified AI Practitioner</span>
+                <span class="cert-meta">Amazon Web Services · 2026</span>
+              </span>
             </div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="contact-row" href="tel:+94779373087">
-            <div>
-              <div class="label">Direct Telephone</div>
-              <div class="value">+94 77 937 3087</div>
+            <div class="cert-item">
+              <span class="cert-logo aws">AWS</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >Fundamentals of Machine Learning &amp; AI</span
+                >
+                <span class="cert-meta">Amazon Web Services · Apr 2026</span>
+              </span>
             </div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="contact-row" href="https://linkedin.com/in/damsara-dissanayaka-7309812b4" target="_blank" rel="noreferrer">
-            <div>
-              <div class="label">Professional Network</div>
-              <div class="value">linkedin.com/in/damsara-dissanayaka</div>
+            <div class="cert-item">
+              <span class="cert-logo aws">AWS</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >Cloud Quest: Generative AI Practitioner</span
+                >
+                <span class="cert-meta">Amazon Web Services · Apr 2026</span>
+              </span>
             </div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="contact-row" href="https://github.com/Damsiiii" target="_blank" rel="noreferrer">
-            <div>
-              <div class="label">Source Code Repository</div>
-              <div class="value">github.com/Damsiiii</div>
+            <div class="cert-item">
+              <span class="cert-logo">HF</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >Smol Course Unit 1: Supervised Finetuning</span
+                >
+                <span class="cert-meta">Hugging Face · Apr 2026</span>
+              </span>
             </div>
-            <span class="arrow">→</span>
-          </a>
-          <a class="contact-row" href="Damsara_Dissanayaka_CV_ATS.pdf" download="Damsara_Dissanayaka_CV_ATS.pdf">
-            <div>
-              <div class="label">Curriculum Vitae</div>
-              <div class="value">Download ATS-Compliant PDF</div>
+          </div>
+
+          <div class="cert-col">
+            <h3>Model Context Protocol</h3>
+            <div class="cert-item">
+              <span class="cert-logo">MCP</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >Introduction to Model Context Protocol</span
+                >
+                <span class="cert-meta">Anthropic · Apr 2026</span>
+              </span>
             </div>
-            <span class="arrow">↓</span>
-          </a>
+            <div class="cert-item">
+              <span class="cert-logo">MCP</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >MCP: Advanced Topics &amp; Tool Authoring</span
+                >
+                <span class="cert-meta">Anthropic · Apr 2026</span>
+              </span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-logo ibm">IBM</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >IBM Z Day 2025 SE — AI, Data &amp; Security</span
+                >
+                <span class="cert-meta">IBM · Apr 2025</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="cert-col">
+            <h3>Cloud &amp; Security</h3>
+            <div class="cert-item">
+              <span class="cert-logo aws">AWS</span>
+              <span class="cert-body">
+                <span class="cert-title">AWS Knowledge: Cloud Essentials</span>
+                <span class="cert-meta">Amazon Web Services · Mar 2025</span>
+              </span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-logo fortinet">FTNT</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >Fortinet Certified Associate Cybersecurity</span
+                >
+                <span class="cert-meta">Fortinet · 2025–2027</span>
+              </span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-logo fortinet">FTNT</span>
+              <span class="cert-body">
+                <span class="cert-title"
+                  >FortiGate 7.4 Operator Accreditation</span
+                >
+                <span class="cert-meta">Fortinet · Mar 2025</span>
+              </span>
+            </div>
+            <div class="cert-item">
+              <span class="cert-logo ibm">IBM</span>
+              <span class="cert-body">
+                <span class="cert-title">Cybersecurity Fundamentals</span>
+                <span class="cert-meta">IBM · Mar 2025</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>Curated &amp; Engineered by Damsara Dissanayaka · © 2026</p>
-  </footer>
+    <!-- Section 05: Academic Foundation / Education (Dark Inverted Canvas) -->
+    <section id="education" class="dark-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">05</span>
+          <h2 class="section-title">
+            Academic <span class="italic-accent">Foundation</span>
+          </h2>
+          <span class="section-subtitle">Curriculum &amp; Honours</span>
+        </div>
+        <div class="reveal">
+          <div class="edu-item">
+            <div class="edu-year">2023 — Present</div>
+            <div class="edu-body">
+              <h3>Sri Lanka Technology Campus (SLTC)</h3>
+              <p>
+                Bachelor of Science in Data Science with Cybersecurity
+                electives. Core study areas include computational statistics,
+                machine learning paradigms, relational database architectures,
+                cloud systems, and network security.
+              </p>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2022</div>
+            <div class="edu-body">
+              <h3>Maliyadeva College</h3>
+              <p>
+                Secondary education with academic distinction. Represented the
+                school basketball team; awarded School Colours for athletic
+                excellence and sportsmanship.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Data Playground Dependencies: PapaParse (CSV) + Apache ECharts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/charts.js"></script>
-</body>
+    <!-- Section 06: Digital Data Atelier / Playground (Light Canvas) -->
+    <section id="playground" class="playground-section reveal">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">06</span>
+          <h2 class="section-title">
+            Digital Data <span class="italic-accent">Atelier</span>
+          </h2>
+          <span class="section-subtitle">Real-time Visualization Engine</span>
+        </div>
 
+        <p class="playground-lead">
+          Explore empirical global datasets through refined, interactive
+          statistical visualizations.
+        </p>
+
+        <div class="playground-grid">
+          <!-- Curated Fact Generator -->
+          <aside
+            class="playground-card fact-card"
+            aria-labelledby="fact-heading"
+          >
+            <div class="playground-card-head">
+              <span class="playground-kicker">01 — Curated Insight</span>
+              <h3 id="fact-heading">Empirical Data Fact</h3>
+            </div>
+
+            <div id="factDisplay" class="fact-display" aria-live="polite">
+              <span class="fact-badge" id="factCategory">Category</span>
+              <h4 class="fact-title" id="factTitle">Retrieving data stream…</h4>
+              <p class="fact-desc" id="factDesc"></p>
+              <div class="fact-meta" id="factSource"></div>
+            </div>
+
+            <div class="fact-actions">
+              <button
+                type="button"
+                id="nextFactBtn"
+                class="btn btn-solid fact-btn"
+              >
+                <span>Next Observation</span>
+              </button>
+              <button
+                type="button"
+                id="exploreFactBtn"
+                class="btn btn-outline fact-btn"
+              >
+                <span>Inspect Underlying Dataset →</span>
+              </button>
+            </div>
+          </aside>
+
+          <!-- Visualization Panel -->
+          <div
+            class="playground-card viz-card"
+            id="vizPanel"
+            aria-labelledby="viz-heading"
+          >
+            <div class="playground-card-head">
+              <span class="playground-kicker">02 — Visual Engine</span>
+              <h3 id="viz-heading">Interactive Chart</h3>
+            </div>
+
+            <div
+              class="controls-bar"
+              role="group"
+              aria-label="Dataset and chart controls"
+            >
+              <div class="control-group">
+                <label for="datasetSelect">Target Dataset</label>
+                <select id="datasetSelect" class="control-select">
+                  <option value="population">World Population Trends</option>
+                  <option value="climate">Global Temperature Deviations</option>
+                  <option value="spotify">Spotify Streaming Metrics</option>
+                  <option value="movies">Global Box Office Returns</option>
+                  <option value="happiness">World Happiness Index</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="chartTypeSelect">Projection Mode</label>
+                <select id="chartTypeSelect" class="control-select">
+                  <option value="line">Line Graph</option>
+                  <option value="bar">Bar Chart</option>
+                  <option value="scatter">Scatter Plot</option>
+                  <option value="pie">Proportional Pie</option>
+                  <option value="histogram">Distribution Histogram</option>
+                </select>
+              </div>
+
+              <button
+                type="button"
+                id="downloadChartBtn"
+                class="btn btn-outline download-btn"
+              >
+                <span>Export Vector</span>
+              </button>
+            </div>
+
+            <div class="chart-shell">
+              <div id="chartLoading" class="chart-loading" hidden></div>
+              <div
+                id="chartContainer"
+                class="chart-container"
+                role="img"
+                aria-label="Interactive data chart"
+              ></div>
+            </div>
+
+            <div class="dataset-info-grid" aria-label="Dataset metadata">
+              <div class="info-item">
+                <div class="info-label">Dataset Title</div>
+                <div class="info-val" id="infoName">—</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Primary Source</div>
+                <div class="info-val" id="infoSource">—</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Observed Records</div>
+                <div class="info-val" id="infoRecords">—</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Edition</div>
+                <div class="info-val" id="infoUpdated">2026.08</div>
+              </div>
+            </div>
+
+            <div class="insight-card" aria-live="polite">
+              <div class="insight-header">Analytical Observation</div>
+              <p class="insight-text" id="insightText">
+                Select a dataset to compute statistical insight.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 07: Inquiries & Dialogue / Contact (Dark Inverted Canvas) -->
+    <section id="contact" class="dark-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-num">07</span>
+          <h2 class="section-title">
+            Inquiries &amp; <span class="italic-accent">Dialogue</span>
+          </h2>
+          <span class="section-subtitle">Communications</span>
+        </div>
+        <div class="contact-wrap reveal">
+          <div class="contact-links">
+            <a class="contact-row" href="mailto:thegreatdamsara@gmail.com">
+              <div>
+                <div class="label">Electronic Mail</div>
+                <div class="value">thegreatdamsara@gmail.com</div>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+            <a class="contact-row" href="tel:+94779373087">
+              <div>
+                <div class="label">Direct Telephone</div>
+                <div class="value">+94 77 937 3087</div>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+            <a
+              class="contact-row"
+              href="https://linkedin.com/in/damsara-dissanayaka-7309812b4"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div>
+                <div class="label">Professional Network</div>
+                <div class="value">linkedin.com/in/damsara-dissanayaka</div>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+            <a
+              class="contact-row"
+              href="https://github.com/Damsiiii"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div>
+                <div class="label">Source Code Repository</div>
+                <div class="value">github.com/Damsiiii</div>
+              </div>
+              <span class="arrow">→</span>
+            </a>
+            <a
+              class="contact-row"
+              href="Damsara_Dissanayaka_CV_ATS.pdf"
+              download="Damsara_Dissanayaka_CV_ATS.pdf"
+            >
+              <div>
+                <div class="label">Curriculum Vitae</div>
+                <div class="value">Download ATS-Compliant PDF</div>
+              </div>
+              <span class="arrow">↓</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Curated &amp; Engineered by Damsara Dissanayaka · © 2026</p>
+    </footer>
+
+    <!-- Data Playground Dependencies: PapaParse (CSV) + Apache ECharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+  </body>
 </html>
