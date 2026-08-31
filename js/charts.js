@@ -28,13 +28,13 @@
   const cache = {};
 
   const THEME = {
-    amber: '#e2a53d',
-    amberSoft: '#f0c878',
-    teal: '#5fb3a3',
-    paper: '#f6f3ec',
-    ink: '#0e1420',
-    ink2: '#141c2c',
-    colors: ['#e2a53d', '#5fb3a3', '#f0c878', '#38bdf8', '#a78bfa', '#f43f5e']
+    amber: '#D4AF37',
+    amberSoft: '#D4AF37',
+    teal: '#B8860B',
+    paper: '#F9F8F6',
+    ink: '#1A1A1A',
+    ink2: '#242424',
+    colors: ['#D4AF37', '#B8860B', '#6C6863', '#1A1A1A', '#A39274', '#8C7B53']
   };
 
   const DATASETS = {

@@ -94,9 +94,9 @@
       function step() {
         ctx.clearRect(0, 0, w, h);
         const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        const lineRgb = isLight ? '217, 119, 6' : '226, 165, 61';
-        const particleColor = isLight ? 'rgba(13, 148, 136, 0.95)' : 'rgba(95, 179, 163, 0.9)';
-        const labelColor = isLight ? 'rgba(28, 36, 52, 0.75)' : 'rgba(246, 243, 236, 0.55)';
+        const lineRgb = '212, 175, 55';
+        const particleColor = isLight ? 'rgba(26, 26, 26, 0.85)' : 'rgba(249, 248, 246, 0.85)';
+        const labelColor = isLight ? 'rgba(108, 104, 99, 0.85)' : 'rgba(209, 204, 199, 0.75)';
 
         for (const n of nodes) {
           if (mouse.x !== null && mouse.y !== null) {
