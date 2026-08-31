@@ -797,7 +797,8 @@ section {
 }
 
 .cert-logo.anthropic {
-  background: #d99a6c;
+  background: #cc5500;
+  color: #ffffff;
 }
 
 .cert-logo.fortinet {
