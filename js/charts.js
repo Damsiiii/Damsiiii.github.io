@@ -393,28 +393,69 @@
   }
 
   function buildOption(data, config) {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    const themeColors = isDark ? {
+      text: '#F9F8F6',
+      textMuted: '#A09B94',
+      textSubtle: '#6C6863',
+      axisLine: 'rgba(249, 248, 246, 0.2)',
+      splitLine: 'rgba(249, 248, 246, 0.08)',
+      tooltipBg: 'rgba(20, 20, 20, 0.96)',
+      tooltipBorder: '#D4AF37',
+      accent: '#D4AF37',
+      accentSoft: '#F0DFC8',
+      secondary: '#EBE5DE',
+      colors: ['#D4AF37', '#EBE5DE', '#A09B94', '#6C6863', '#C4A458', '#8C7D6B'],
+      lineGradStart: 'rgba(212, 175, 55, 0.35)',
+      lineGradEnd: 'rgba(212, 175, 55, 0.01)',
+      barGradStart: '#D4AF37',
+      barGradEnd: 'rgba(212, 175, 55, 0.3)',
+      pieBorder: '#141414',
+      pieLine: 'rgba(249, 248, 246, 0.4)'
+    } : {
+      text: '#1A1A1A',
+      textMuted: '#6C6863',
+      textSubtle: '#8C867E',
+      axisLine: '#1A1A1A',
+      splitLine: 'rgba(26, 26, 26, 0.08)',
+      tooltipBg: 'rgba(255, 255, 255, 0.98)',
+      tooltipBorder: '#1A1A1A',
+      accent: '#1A1A1A',
+      accentSoft: '#D4AF37',
+      secondary: '#6C6863',
+      colors: ['#1A1A1A', '#D4AF37', '#6C6863', '#8C7D6B', '#3E4451', '#A6926D'],
+      lineGradStart: 'rgba(26, 26, 26, 0.25)',
+      lineGradEnd: 'rgba(26, 26, 26, 0.01)',
+      barGradStart: '#1A1A1A',
+      barGradEnd: 'rgba(26, 26, 26, 0.2)',
+      pieBorder: '#FFFFFF',
+      pieLine: 'rgba(26, 26, 26, 0.4)'
+    };
+
     const baseText = {
-      fontFamily: "'Inter', sans-serif",
-      color: THEME.paper
+      fontFamily: "'Inter', -apple-system, sans-serif",
+      color: themeColors.text
     };
 
     const option = {
       backgroundColor: 'transparent',
-      color: THEME.colors,
-      animationDuration: 650,
+      color: themeColors.colors,
+      animationDuration: 700,
       animationEasing: 'cubicOut',
       textStyle: baseText,
       legend: {
         show: activeChartType === 'pie',
-        bottom: 0,
-        textStyle: { color: 'rgba(246,243,236,0.7)', fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }
+        bottom: 4,
+        textStyle: { color: themeColors.text, fontFamily: "'Inter', sans-serif", fontSize: 12, fontWeight: 500 }
       },
       tooltip: {
         trigger: activeChartType === 'pie' || activeChartType === 'scatter' ? 'item' : 'axis',
-        backgroundColor: 'rgba(14, 28, 44, 0.95)',
-        borderColor: THEME.amber,
+        backgroundColor: themeColors.tooltipBg,
+        borderColor: themeColors.tooltipBorder,
         borderWidth: 1,
-        textStyle: { color: THEME.paper, fontFamily: "'Inter', sans-serif" },
+        extraCssText: 'box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 0px; padding: 12px 16px;',
+        textStyle: { color: themeColors.text, fontFamily: "'Inter', sans-serif", fontSize: 13 },
         formatter: (params) => {
           if (activeChartType === 'pie') {
             const p = Array.isArray(params) ? params[0] : params;
@@ -436,49 +477,56 @@
             );
           }
           const p = Array.isArray(params) ? params[0] : params;
-          return '<b>' + p.name + '</b><br/>' + p.seriesName + ': ' + p.value + (data.unit ? ' ' + data.unit : '');
+          return '<b>' + p.name + '</b><br/>' + p.seriesName + ': <b>' + p.value + (data.unit ? ' ' + data.unit : '') + '</b>';
         }
       },
       grid: {
-        left: '2%',
-        right: '3%',
-        bottom: data.x && data.x.length > 12 ? '18%' : '12%',
-        top: '10%',
+        left: '4%',
+        right: '4%',
+        bottom: data.x && data.x.length > 12 ? '20%' : '14%',
+        top: '14%',
         containLabel: true
       },
       xAxis: {
         show: activeChartType !== 'pie',
         type: activeChartType === 'scatter' ? 'value' : 'category',
-        name: activeChartType === 'scatter' ? data.xName : '',
-        nameLocation: 'middle',
-        nameGap: 32,
-        nameTextStyle: { color: 'rgba(246,243,236,0.55)', fontSize: 11 },
+        name: data.xName || '',
+        nameLocation: 'end',
+        nameGap: 10,
+        nameTextStyle: { color: themeColors.secondary, fontSize: 12, fontWeight: 500, fontFamily: "'Inter', sans-serif" },
         data: activeChartType === 'scatter' || activeChartType === 'pie' ? undefined : data.x,
-        axisLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.2)' } },
+        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1 } },
+        axisTick: { show: true, lineStyle: { color: themeColors.axisLine, width: 1 } },
         axisLabel: {
-          color: 'rgba(246, 243, 236, 0.7)',
-          rotate: data.x && data.x.length > 14 ? 40 : 0,
-          fontSize: 11,
+          color: themeColors.text,
+          rotate: data.x && data.x.length > 14 ? 35 : 0,
+          fontSize: 12,
+          fontWeight: 400,
+          fontFamily: "'Inter', sans-serif",
           interval: activeChartType === 'histogram' ? 0 : 'auto'
         },
         splitLine: {
           show: activeChartType === 'scatter',
-          lineStyle: { color: 'rgba(246,243,236,0.06)' }
+          lineStyle: { color: themeColors.splitLine, type: 'dashed' }
         }
       },
       yAxis: {
         show: activeChartType !== 'pie',
         type: 'value',
         name: activeChartType === 'histogram' ? 'Frequency' : data.yName || 'Value',
-        nameTextStyle: { color: 'rgba(246,243,236,0.55)', fontSize: 11 },
-        axisLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.2)' } },
-        splitLine: { lineStyle: { color: 'rgba(246, 243, 236, 0.08)' } },
-        axisLabel: { color: 'rgba(246, 243, 236, 0.7)', fontSize: 11 }
+        nameLocation: 'end',
+        nameGap: 10,
+        nameTextStyle: { color: themeColors.secondary, fontSize: 12, fontWeight: 500, fontFamily: "'Inter', sans-serif" },
+        axisLine: { show: true, lineStyle: { color: themeColors.axisLine, width: 1 } },
+        axisTick: { show: true, lineStyle: { color: themeColors.axisLine, width: 1 } },
+        splitLine: { lineStyle: { color: themeColors.splitLine, type: 'solid' } },
+        axisLabel: { color: themeColors.text, fontSize: 12, fontWeight: 400, fontFamily: "'Inter', sans-serif" }
       },
       series: []
     };
 
     if (activeChartType === 'line') {
+      const step = Math.max(1, Math.ceil(data.y.length / 8));
       option.series = [
         {
           name: config.name,
@@ -487,12 +535,24 @@
           smooth: true,
           symbol: 'circle',
           symbolSize: 6,
-          lineStyle: { width: 3, color: THEME.amber },
-          itemStyle: { color: THEME.amber },
+          lineStyle: { width: 2, color: themeColors.accent },
+          itemStyle: { color: themeColors.accent },
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 11,
+            fontWeight: 500,
+            fontFamily: "'Inter', sans-serif",
+            formatter: (p) => {
+              if (data.y.length <= 15) return p.value + (data.unit ? ' ' + data.unit : '');
+              return p.dataIndex % step === 0 ? p.value + (data.unit ? ' ' + data.unit : '') : '';
+            }
+          },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(226, 165, 61, 0.35)' },
-              { offset: 1, color: 'rgba(226, 165, 61, 0.0)' }
+              { offset: 0, color: themeColors.lineGradStart },
+              { offset: 1, color: themeColors.lineGradEnd }
             ])
           }
         }
@@ -503,13 +563,24 @@
           name: config.name,
           type: 'bar',
           data: data.y,
-          barMaxWidth: 42,
+          barMaxWidth: 36,
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 11,
+            fontWeight: 500,
+            fontFamily: "'Inter', sans-serif",
+            formatter: (p) => p.value + (data.unit ? ' ' + data.unit : '')
+          },
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: THEME.teal },
-              { offset: 1, color: 'rgba(95, 179, 163, 0.25)' }
+              { offset: 0, color: themeColors.barGradStart },
+              { offset: 1, color: themeColors.barGradEnd }
             ]),
-            borderRadius: [3, 3, 0, 0]
+            borderRadius: 0,
+            borderWidth: 1,
+            borderColor: themeColors.accent
           }
         }
       ];
@@ -519,22 +590,30 @@
           name: config.name,
           type: 'scatter',
           data: data.scatter || data.x.map((xv, i) => [i, data.y[i]]),
-          symbolSize: 10,
+          symbolSize: 8,
           itemStyle: {
-            color: THEME.amberSoft,
-            opacity: 0.85,
-            shadowBlur: 8,
-            shadowColor: 'rgba(226,165,61,0.25)'
+            color: themeColors.accentSoft,
+            opacity: 0.95
           },
-          emphasis: { scale: 1.25 }
+          emphasis: {
+            scale: 1.3,
+            label: {
+              show: true,
+              position: 'top',
+              color: themeColors.text,
+              fontSize: 11,
+              fontWeight: 500,
+              fontFamily: "'Inter', sans-serif",
+              formatter: (p) => p.value[1] + (data.unit ? ' ' + data.unit : '')
+            }
+          }
         }
       ];
     } else if (activeChartType === 'pie') {
       const pieData =
         data.categories && data.categories.length
           ? data.categories
-          : // Fallback: sample evenly across series (max 10 slices)
-            (() => {
+          : (() => {
               const n = Math.min(10, data.x.length);
               const step = Math.max(1, Math.floor(data.x.length / n));
               const slices = [];
@@ -550,18 +629,19 @@
         {
           name: config.name,
           type: 'pie',
-          radius: ['38%', '68%'],
+          radius: ['40%', '70%'],
           center: ['50%', '46%'],
           avoidLabelOverlap: true,
-          itemStyle: { borderRadius: 5, borderColor: THEME.ink, borderWidth: 2 },
+          itemStyle: { borderRadius: 0, borderColor: themeColors.pieBorder, borderWidth: 1 },
           label: {
             show: true,
-            color: THEME.paper,
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            formatter: '{b}'
+            color: themeColors.text,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 12,
+            fontWeight: 500,
+            formatter: '{b}: {c}' + (data.unit ? ' ' + data.unit : '') + ' ({d}%)'
           },
-          labelLine: { lineStyle: { color: 'rgba(246,243,236,0.35)' } },
+          labelLine: { lineStyle: { color: themeColors.pieLine, width: 1 } },
           data: pieData
         }
       ];
@@ -591,13 +671,23 @@
           name: 'Frequency',
           type: 'bar',
           data: bins,
-          barMaxWidth: 48,
+          barMaxWidth: 40,
+          label: {
+            show: true,
+            position: 'top',
+            color: themeColors.text,
+            fontSize: 11,
+            fontWeight: 500,
+            fontFamily: "'Inter', sans-serif"
+          },
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: '#38bdf8' },
-              { offset: 1, color: 'rgba(56, 189, 248, 0.25)' }
+              { offset: 0, color: themeColors.secondary },
+              { offset: 1, color: isDark ? 'rgba(235, 229, 222, 0.2)' : 'rgba(108, 104, 99, 0.2)' }
             ]),
-            borderRadius: [3, 3, 0, 0]
+            borderRadius: 0,
+            borderWidth: 1,
+            borderColor: themeColors.secondary
           }
         }
       ];
@@ -655,10 +745,11 @@
     if (downloadBtn) {
       downloadBtn.addEventListener('click', () => {
         if (!chartInstance) return;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         const url = chartInstance.getDataURL({
           type: 'png',
           pixelRatio: 2,
-          backgroundColor: THEME.ink
+          backgroundColor: isDark ? '#2a2a2a' : '#eee5da'
         });
         const link = document.createElement('a');
         link.download = 'data-playground-' + activeDatasetId + '-' + activeChartType + '.png';
@@ -668,6 +759,12 @@
         document.body.removeChild(link);
       });
     }
+
+    window.addEventListener('themechange', () => {
+      if (chartInstance && cache[activeDatasetId]) {
+        renderChart(cache[activeDatasetId]);
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

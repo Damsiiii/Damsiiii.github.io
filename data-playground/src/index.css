@@ -1,10 +1,191 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    --bg: #F9F8F6;
+    --fg: #1A1A1A;
+    --muted-bg: #EBE5DE;
+    --muted-fg: #6C6863;
+    --accent: #D4AF37;
+    --accent-fg: #FFFFFF;
+    --border: #1A1A1A;
+    --border-subtle: rgba(26, 26, 26, 0.12);
+    --card-bg: #FFFFFF;
+    --card-bg-subtle: #F3EFEA;
+    --grid-line: rgba(26, 26, 26, 0.08);
+
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    border-radius: 0px !important;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: #FFFFFF;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+}
+
+/* Paper Noise Texture */
+.paper-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 4 Vertical Architectural Gridlines */
+.architectural-grid {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4rem;
+}
+
+.grid-col-line {
+  width: 1px;
+  height: 100%;
+  background: var(--grid-line);
+}
+
+/* Typography Utilities */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.italic-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+}
+
+.drop-cap::first-letter {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.75rem;
+  margin-top: 0.15rem;
+  color: var(--fg);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted-fg);
+}
+
+/* Luxury Button Animations */
+.luxury-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  height: 3rem;
+  padding: 0 2rem;
+  background: var(--fg);
+  color: #FFFFFF;
+  border: 1px solid var(--fg);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxury-btn-solid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1;
+}
+
+.luxury-btn-solid span,
+.luxury-btn-solid svg {
+  position: relative;
+  z-index: 2;
+}
+
+.luxury-btn-solid:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+}
+
+.luxury-btn-solid:hover::before {
+  transform: translateX(0);
+}
+
+.luxury-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  height: 3rem;
+  padding: 0 2rem;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.luxury-btn-outline:hover {
+  background: var(--fg);
+  color: #FFFFFF;
+  border-color: var(--fg);
 }
