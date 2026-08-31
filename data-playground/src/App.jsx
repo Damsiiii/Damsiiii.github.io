@@ -14,8 +14,8 @@ const Header = () => (
           Data Atelier / Vol. 2026
         </span>
       </div>
-      <a 
-        href="../" 
+      <a
+        href="../"
         className="luxury-btn-outline h-9 px-4 text-[11px] tracking-[0.2em]"
       >
         <ArrowLeft size={13} className="text-[#D4AF37]" />
@@ -117,7 +117,7 @@ const App = () => {
         fontSize: 12,
         color: '#1A1A1A'
       },
-      tooltip: { 
+      tooltip: {
         trigger: 'axis',
         backgroundColor: '#FFFFFF',
         borderColor: '#1A1A1A',
@@ -129,8 +129,8 @@ const App = () => {
         },
         extraCssText: 'box-shadow: 0 8px 24px rgba(0,0,0,0.08); padding: 14px 18px; border-radius: 0px;'
       },
-      legend: { 
-        data: seriesCols, 
+      legend: {
+        data: seriesCols,
         top: 'bottom',
         textStyle: {
           fontFamily: "'Inter', sans-serif",
@@ -157,7 +157,7 @@ const App = () => {
           rotate: chartData.length > 15 ? 35 : 0
         }
       },
-      yAxis: { 
+      yAxis: {
         type: 'value',
         axisLine: { lineStyle: { color: '#1A1A1A', width: 1 } },
         splitLine: { lineStyle: { type: 'solid', color: 'rgba(26, 26, 26, 0.08)' } },
@@ -214,7 +214,7 @@ const App = () => {
       <Header />
       
       <main className="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-24 relative z-10">
-        
+
         {/* Editorial Hero Banner */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-b border-[#1A1A1A]/10 pb-16">
           <div className="lg:col-span-8 space-y-6">
@@ -227,11 +227,11 @@ const App = () => {
                 Edition MMXXVI
               </span>
             </div>
-            
+
             <h1 className="font-serif text-5xl sm:text-7xl font-normal leading-[0.92] tracking-tight text-[#1A1A1A]">
               Statistical <span className="italic-accent">Perspectives</span>.
             </h1>
-            
+
             <p className="text-lg text-[#6C6863] font-light max-w-2xl leading-relaxed drop-cap">
               An interactive laboratory analyzing real-world global time-series, demographic trajectories, and cultural distributions through high-contrast editorial visualization models.
             </p>
@@ -283,7 +283,7 @@ const App = () => {
                 {currentFact.explanation}
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 mt-8 border-t border-white/10">
               <div className="text-xs text-[#A09B94] italic">
                 Source Document: <span className="font-medium text-white not-italic">{currentFact.source}</span>
@@ -336,7 +336,7 @@ const App = () => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={handleDownload}
               className="luxury-btn-outline h-9 px-4 text-[11px] tracking-[0.2em]"
             >
@@ -347,10 +347,10 @@ const App = () => {
           
           <div className="p-6 sm:p-10 space-y-8">
              <div className="p-4 bg-[#F9F8F6] border border-[#1A1A1A]/10">
-               <ReactECharts 
+               <ReactECharts
                  ref={chartRef}
-                 option={getChartOption()} 
-                 style={{ height: '440px', width: '100%' }} 
+                 option={getChartOption()}
+                 style={{ height: '440px', width: '100%' }}
                  opts={{ renderer: 'svg' }}
                />
              </div>
@@ -361,8 +361,8 @@ const App = () => {
                  <span>Statistical Note</span>
                </div>
                <p className="text-base text-[#1A1A1A] font-serif italic leading-relaxed">
-                 {chartData?.length 
-                   ? `Evaluated ${chartData.length} records in the ${datasetId} archive. Values update in real time across the selected visualization canvas.` 
+                 {chartData?.length
+                   ? `Evaluated ${chartData.length} records in the ${datasetId} archive. Values update in real time across the selected visualization canvas.`
                    : "Parsing data stream..."}
                </p>
              </div>
