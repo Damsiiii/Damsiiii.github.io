@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import ReactECharts from 'echarts-for-react';
-import { ArrowLeft, Shuffle } from 'lucide-react';
+import { ArrowLeft, Shuffle, Download } from 'lucide-react';
 
 const Header = () => (
   <header className="bg-[#F9F8F6]/90 backdrop-blur-md border-b border-[#1A1A1A]/10 py-5 px-6 sm:px-12 sticky top-0 z-50 transition-colors duration-500">
     <div className="max-w-7xl mx-auto flex justify-between items-center">
       <div className="flex items-center gap-3">
-        <span className="font-serif text-lg tracking-[0.15em] font-semibold text-[#1A1A1A] uppercase">
+        <a href="../" className="font-serif text-lg tracking-[0.14em] font-semibold text-[#1A1A1A] uppercase">
           Damsara <span className="text-[#D4AF37]">.</span>
-        </span>
+        </a>
         <span className="hidden sm:inline-block text-[10px] tracking-[0.25em] uppercase text-[#6C6863] border-l border-[#1A1A1A]/15 pl-3">
-          Data Atelier
+          Data Atelier / Vol. 2026
         </span>
       </div>
       <a 
         href="../" 
         className="luxury-btn-outline h-9 px-4 text-[11px] tracking-[0.2em]"
       >
-        <ArrowLeft size={14} className="text-[#D4AF37]" />
+        <ArrowLeft size={13} className="text-[#D4AF37]" />
         <span>Return to Portfolio</span>
       </a>
     </div>
@@ -32,6 +32,7 @@ const App = () => {
   const [datasetId, setDatasetId] = useState('population');
   const [chartType, setChartType] = useState('line');
   const [chartData, setChartData] = useState(null);
+  const chartRef = React.useRef(null);
   
   useEffect(() => {
     const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
@@ -75,8 +76,23 @@ const App = () => {
       setDatasetId(currentFact.dataset);
       const element = document.getElementById('visualizer-atelier');
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    }
+  };
+
+  const handleDownload = () => {
+    if (chartRef.current) {
+      const echartInstance = chartRef.current.getEchartsInstance();
+      const picInfo = echartInstance.getDataURL({
+        type: 'png',
+        pixelRatio: 2,
+        backgroundColor: '#F9F8F6'
+      });
+      const link = document.createElement('a');
+      link.download = `atelier-${datasetId}-${chartType}.png`;
+      link.href = picInfo;
+      link.click();
     }
   };
 
@@ -173,7 +189,7 @@ const App = () => {
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: 'rgba(212, 175, 55, 0.25)' },
+              { offset: 0, color: 'rgba(212, 175, 55, 0.22)' },
               { offset: 1, color: 'rgba(212, 175, 55, 0.0)' }
             ]
           }
@@ -197,80 +213,80 @@ const App = () => {
 
       <Header />
       
-      <main className="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-20 relative z-10">
+      <main className="max-w-7xl mx-auto px-6 sm:px-12 py-16 space-y-24 relative z-10">
         
-        {/* Editorial Hero Intro */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end border-b border-[#1A1A1A]/10 pb-16">
+        {/* Editorial Hero Banner */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-b border-[#1A1A1A]/10 pb-16">
           <div className="lg:col-span-8 space-y-6">
             <div className="flex items-center gap-4">
               <span className="text-[11px] font-semibold tracking-[0.28em] text-[#D4AF37] uppercase">
-                Observation &amp; Analysis
+                Empirical Analytics
               </span>
               <span className="h-px w-12 bg-[#1A1A1A]/20"></span>
               <span className="text-[11px] tracking-[0.25em] text-[#6C6863] uppercase">
-                Vol. 2026
+                Edition MMXXVI
               </span>
             </div>
             
-            <h2 className="font-serif text-5xl sm:text-7xl font-normal leading-[0.95] tracking-tight text-[#1A1A1A]">
+            <h1 className="font-serif text-5xl sm:text-7xl font-normal leading-[0.92] tracking-tight text-[#1A1A1A]">
               Statistical <span className="italic-accent">Perspectives</span>.
-            </h2>
+            </h1>
             
-            <p className="text-lg text-[#6C6863] font-light max-w-2xl leading-relaxed">
-              An interactive laboratory dissecting macroeconomic indicators, atmospheric anomalies, and cultural metrics through precise editorial visualizations.
+            <p className="text-lg text-[#6C6863] font-light max-w-2xl leading-relaxed drop-cap">
+              An interactive laboratory analyzing real-world global time-series, demographic trajectories, and cultural distributions through high-contrast editorial visualization models.
             </p>
           </div>
 
-          <div className="lg:col-span-4 border-t-2 border-[#1A1A1A] pt-6 space-y-4">
+          <div className="lg:col-span-4 border-t-2 border-[#1A1A1A] pt-6 space-y-6">
             <div className="text-[11px] uppercase tracking-[0.25em] text-[#6C6863] font-medium">
               Atelier Coordinates
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <div className="font-serif text-3xl text-[#1A1A1A]">05</div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Curated Datasets</div>
+                <div className="font-serif text-4xl text-[#1A1A1A]">05</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Verified Corpora</div>
               </div>
               <div>
-                <div className="font-serif text-3xl text-[#1A1A1A]">03</div>
-                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Projection Modes</div>
+                <div className="font-serif text-4xl text-[#1A1A1A]">03</div>
+                <div className="text-[10px] uppercase tracking-[0.2em] text-[#6C6863] mt-1">Geometric Projections</div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Curated Fact Feature Card */}
+        {/* Curated Fact Feature Card (Inverted Dark Surface for Contrast) */}
         {currentFact && (
-          <section className="bg-white border-t-2 border-[#1A1A1A] p-8 sm:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.03)] relative">
-            <div className="flex flex-wrap justify-between items-center gap-4 mb-8 pb-6 border-b border-[#1A1A1A]/10">
+          <section className="bg-[#141414] text-[#F9F8F6] border-t-2 border-[#D4AF37] p-8 sm:p-14 shadow-[0_8px_32px_rgba(0,0,0,0.12)] relative">
+            <div className="flex flex-wrap justify-between items-center gap-4 mb-8 pb-6 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <span className="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#D4AF37] border-b border-[#D4AF37] pb-0.5">
                   {currentFact.category || "Empirical Observation"}
                 </span>
-                <span className="text-xs text-[#6C6863]">/</span>
-                <span className="text-[11px] tracking-widest text-[#6C6863] uppercase">
-                  Fact #{currentFact.id || "01"}
+                <span className="text-xs text-white/30">/</span>
+                <span className="text-[11px] tracking-widest text-[#A09B94] uppercase">
+                  Observation #{currentFact.id || "01"}
                 </span>
               </div>
               <button 
                 onClick={generateRandomFact}
-                className="luxury-btn-outline h-8 px-3 text-[10px] tracking-[0.2em]"
+                className="luxury-btn-outline h-8 px-4 text-[10px] tracking-[0.2em] text-white border-white/20 hover:bg-white hover:text-[#141414]"
               >
                 <Shuffle size={12} className="text-[#D4AF37]" /> Next Observation
               </button>
             </div>
             
             <div className="space-y-4 max-w-4xl">
-              <h3 className="font-serif text-2xl sm:text-4xl font-normal text-[#1A1A1A] leading-snug">
+              <h2 className="font-serif text-2xl sm:text-4xl font-normal text-[#F9F8F6] leading-snug">
                 {currentFact.title}
-              </h3>
-              <p className="text-[#6C6863] text-base sm:text-lg leading-relaxed font-light">
+              </h2>
+              <p className="text-[#A09B94] text-base sm:text-lg leading-relaxed font-light">
                 {currentFact.explanation}
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 mt-8 border-t border-[#1A1A1A]/10">
-              <div className="text-xs text-[#6C6863] italic">
-                Source Document: <span className="font-medium text-[#1A1A1A] not-italic">{currentFact.source}</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-8 mt-8 border-t border-white/10">
+              <div className="text-xs text-[#A09B94] italic">
+                Source Document: <span className="font-medium text-white not-italic">{currentFact.source}</span>
               </div>
               <button 
                 onClick={handleExploreFact}
@@ -320,14 +336,19 @@ const App = () => {
               </div>
             </div>
 
-            <div className="text-[11px] tracking-[0.2em] text-[#6C6863] uppercase">
-              Render Engine: <span className="font-semibold text-[#1A1A1A]">Vector SVG</span>
-            </div>
+            <button 
+              onClick={handleDownload}
+              className="luxury-btn-outline h-9 px-4 text-[11px] tracking-[0.2em]"
+            >
+              <Download size={13} className="text-[#D4AF37]" />
+              <span>Export Vector</span>
+            </button>
           </div>
           
           <div className="p-6 sm:p-10 space-y-8">
              <div className="p-4 bg-[#F9F8F6] border border-[#1A1A1A]/10">
                <ReactECharts 
+                 ref={chartRef}
                  option={getChartOption()} 
                  style={{ height: '440px', width: '100%' }} 
                  opts={{ renderer: 'svg' }}

@@ -1,74 +1,92 @@
-/* ============================================
+/* ==========================================================================
    LUXURY / EDITORIAL DESIGN SYSTEM
+   High-Fashion Magazine & Luxury Atelier Aesthetic
    Portfolio of Damsara Dissanayaka
-   ============================================ */
+   ========================================================================== */
 
-/* ---------- Design Tokens ---------- */
+/* --------------------------------------------------------------------------
+   1. Design Tokens (Monochrome + Metallic Gold)
+   -------------------------------------------------------------------------- */
 :root {
-  /* Colors — Warm Alabaster & Rich Charcoal */
-  --bg: #F9F8F6;
-  --fg: #1A1A1A;
-  --muted-bg: #EBE5DE;
-  --muted-fg: #6C6863;
-  --accent: #D4AF37;
-  --accent-light: #F0DFC8;
-  --accent-fg: #FFFFFF;
+  /* Primary Canvas & Ink */
+  --bg: #F9F8F6;               /* Warm Alabaster (Expensive Paper/Linen) */
+  --fg: #1A1A1A;               /* Rich Charcoal (Soft High-End Ink) */
+  
+  /* Surfaces & Muted Tones */
+  --muted-bg: #EBE5DE;         /* Pale Taupe (Subtle Elevation) */
+  --muted-fg: #6C6863;         /* Warm Grey (Secondary Text & Overlines) */
+  --surface-white: #FFFFFF;    /* Pure White for Inner Framing */
+  
+  /* Deliberate Luxury Accents */
+  --accent: #D4AF37;           /* Metallic Gold Accent */
+  --accent-soft: #F0DFC8;      /* Muted Gold Tint */
+  --accent-fg: #FFFFFF;        /* Accent Contrast */
+  
+  /* Hairline Borders */
   --border: #1A1A1A;
   --border-subtle: rgba(26, 26, 26, 0.12);
-  --card-bg: #FFFFFF;
-  --card-bg-subtle: #F3EFEA;
+  --border-divider: rgba(26, 26, 26, 0.08);
   --grid-line: rgba(26, 26, 26, 0.07);
 
-  /* Typography */
+  /* Inverted Dark Section Canvas Tokens */
+  --dark-bg: #141414;
+  --dark-fg: #F9F8F6;
+  --dark-muted-bg: #1F1F1F;
+  --dark-muted-fg: #A09B94;
+  --dark-border: rgba(249, 248, 246, 0.14);
+
+  /* Exquisite Typography Pairing */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  /* Shadows */
-  --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.03);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.08);
-  --shadow-hero: 0 16px 48px rgba(0, 0, 0, 0.09);
+  /* Layered Soft Depth Shadows (Never Harsh Drops) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lift: 0 14px 44px rgba(0, 0, 0, 0.10);
+  --shadow-inner-frame: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
 
-  /* Motion Timing */
-  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Cinematic Motion Easing & Timing */
+  --ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --duration-fast: 300ms;
-  --duration-normal: 500ms;
-  --duration-slow: 700ms;
-  --duration-cinematic: 1500ms;
+  --duration-btn: 500ms;
+  --duration-color: 700ms;
+  --duration-cinematic: 1600ms;
 }
 
-/* Inverted Dark Mode (Rich Charcoal & Alabaster) */
+/* Global Theme Inversion for Dark Mode */
 [data-theme="dark"] {
   --bg: #141414;
   --fg: #F9F8F6;
-  --muted-bg: #222222;
+  --muted-bg: #1F1F1F;
   --muted-fg: #A09B94;
-  --accent: #D4AF37;
-  --accent-light: #4A3E20;
-  --accent-fg: #141414;
+  --surface-white: #1C1C1C;
   --border: #F9F8F6;
-  --border-subtle: rgba(249, 248, 246, 0.12);
-  --card-bg: #1B1B1B;
-  --card-bg-subtle: #202020;
-  --grid-line: rgba(249, 248, 246, 0.05);
+  --border-subtle: rgba(249, 248, 246, 0.14);
+  --border-divider: rgba(249, 248, 246, 0.08);
+  --grid-line: rgba(249, 248, 246, 0.06);
 
-  --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover: 0 12px 36px rgba(0, 0, 0, 0.7);
-  --shadow-hero: 0 16px 48px rgba(0, 0, 0, 0.8);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-lift: 0 14px 44px rgba(0, 0, 0, 0.7);
+  --shadow-inner-frame: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
-/* ---------- Reset & Base ---------- */
+/* --------------------------------------------------------------------------
+   2. Reset & Strict Architectural Baseline (0px Border Radius)
+   -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border-radius: 0 !important; /* Strict architectural precision: 0px radii */
+  border-radius: 0px !important; /* Non-negotiable luxury rule: 0px everywhere */
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  background-color: var(--bg);
 }
 
 body {
@@ -77,13 +95,13 @@ body {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 1.0625rem;
-  line-height: 1.7;
-  letter-spacing: -0.01em;
+  line-height: 1.75;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--duration-slow) var(--ease-luxury), color var(--duration-slow) var(--ease-luxury);
+  transition: background-color var(--duration-color) var(--ease-editorial), color var(--duration-color) var(--ease-editorial);
 }
 
 ::selection {
@@ -94,7 +112,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--duration-normal) var(--ease-luxury);
+  transition: color var(--duration-fast) var(--ease-editorial);
 }
 
 img {
@@ -108,7 +126,9 @@ img {
   outline-offset: 3px;
 }
 
-/* ---------- Paper Grain Texture & Viewport Gridlines ---------- */
+/* --------------------------------------------------------------------------
+   3. Tactile Paper Grain Overlay & Viewport Gridlines
+   -------------------------------------------------------------------------- */
 .paper-noise {
   position: fixed;
   top: 0;
@@ -124,18 +144,16 @@ img {
 .architectural-grid {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 1600px;
   height: 100%;
   pointer-events: none;
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  max-width: 1600px;
-  margin: 0 auto;
   padding: 0 4rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .grid-col-line {
@@ -144,7 +162,9 @@ img {
   background: var(--grid-line);
 }
 
-/* ---------- Typography Utility Classes ---------- */
+/* --------------------------------------------------------------------------
+   4. Typography Utilities & Editorial Signature Elements
+   -------------------------------------------------------------------------- */
 .font-serif {
   font-family: var(--font-serif);
 }
@@ -160,17 +180,23 @@ img {
   color: var(--accent);
 }
 
+/* 7xl Editorial Drop Cap */
 .drop-cap::first-letter {
   font-family: var(--font-serif);
-  font-size: 4.75rem;
+  font-size: 5rem;
   line-height: 0.8;
   float: left;
-  margin-right: 0.85rem;
-  margin-top: 0.15rem;
+  margin-right: 1rem;
+  margin-top: 0.2rem;
   color: var(--fg);
   font-weight: 400;
 }
 
+.dark-section .drop-cap::first-letter {
+  color: var(--dark-fg);
+}
+
+/* Uppercase Overline with Wide Tracking */
 .overline {
   font-size: 0.6875rem;
   text-transform: uppercase;
@@ -182,14 +208,19 @@ img {
   gap: 0.75rem;
 }
 
+.dark-section .overline {
+  color: var(--dark-muted-fg);
+}
+
 .overline::before {
   content: '';
   display: inline-block;
-  width: 2rem;
+  width: 2.25rem;
   height: 1px;
   background: var(--accent);
 }
 
+/* Vertical Text Label */
 .vertical-text {
   writing-mode: vertical-rl;
   text-transform: uppercase;
@@ -200,59 +231,87 @@ img {
   user-select: none;
 }
 
-/* ---------- Container Layout ---------- */
+.dark-section .vertical-text {
+  color: var(--dark-muted-fg);
+}
+
+/* Decorative Hairline Rules */
+.hairline-rule {
+  height: 1px;
+  background: var(--border-subtle);
+  width: 100%;
+}
+
+.hairline-gold {
+  height: 1px;
+  background: var(--accent);
+  width: 3.5rem;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   5. Container Structure & Generous Breathing Room
+   -------------------------------------------------------------------------- */
 .wrap {
-  max-width: 1360px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
   z-index: 2;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .wrap {
-    padding: 0 4rem;
+    padding: 0 3.5rem;
   }
 }
 
-/* ---------- Navigation Header ---------- */
+@media (min-width: 1200px) {
+  .wrap {
+    padding: 0 5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Navigation Header
+   -------------------------------------------------------------------------- */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(249, 248, 246, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(249, 248, 246, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
-  transition: background-color var(--duration-slow) var(--ease-luxury), border-color var(--duration-slow);
+  transition: background-color var(--duration-color) var(--ease-editorial), border-color var(--duration-color);
 }
 
 [data-theme="dark"] header {
-  background: rgba(20, 20, 20, 0.88);
+  background: rgba(20, 20, 20, 0.92);
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4.5rem;
-  max-width: 1440px;
+  height: 4.75rem;
+  max-width: 1520px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 @media (min-width: 1024px) {
   .nav {
-    padding: 0 4rem;
+    padding: 0 5rem;
   }
 }
 
 .nav-brand {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
-  letter-spacing: 0.12em;
+  font-size: 1.35rem;
+  letter-spacing: 0.14em;
   font-weight: 600;
   color: var(--fg);
   text-transform: uppercase;
@@ -268,12 +327,12 @@ header {
 .nav-tagline {
   font-family: var(--font-sans);
   font-size: 0.625rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--muted-fg);
   text-transform: uppercase;
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
   border-left: 1px solid var(--border-subtle);
-  padding-left: 0.5rem;
+  padding-left: 0.75rem;
   display: none;
 }
 
@@ -293,7 +352,7 @@ header {
 #nav-links a {
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   font-weight: 500;
   color: var(--muted-fg);
   position: relative;
@@ -313,7 +372,7 @@ header {
   width: 0;
   height: 1px;
   background: var(--accent);
-  transition: width var(--duration-normal) var(--ease-luxury);
+  transition: width var(--duration-btn) var(--ease-editorial);
 }
 
 #nav-links a:hover::after {
@@ -325,12 +384,12 @@ header {
   border: 1px solid var(--border-subtle);
   color: var(--fg);
   cursor: pointer;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.8125rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  text-transform: uppercase;
   transition: all var(--duration-fast);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .theme-toggle:hover {
@@ -347,25 +406,25 @@ header {
   cursor: pointer;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .nav-toggle {
     display: block;
   }
 
   #nav-links {
     position: fixed;
-    top: 4.5rem;
+    top: 4.75rem;
     left: 0;
     width: 100%;
     background: var(--bg);
     border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
-    gap: 1.5rem;
-    transform: translateY(-120%);
-    transition: transform var(--duration-normal) var(--ease-luxury);
-    box-shadow: var(--shadow-card);
+    padding: 2.5rem;
+    gap: 1.75rem;
+    transform: translateY(-130%);
+    transition: transform var(--duration-btn) var(--ease-editorial);
+    box-shadow: var(--shadow-lg);
   }
 
   #nav-links.open {
@@ -373,7 +432,9 @@ header {
   }
 }
 
-/* ---------- Luxury Buttons ---------- */
+/* --------------------------------------------------------------------------
+   7. Luxury Buttons (Gold Slide Animation & Shadow Evolution)
+   -------------------------------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -385,19 +446,20 @@ header {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   height: 3.25rem;
-  padding: 0 2.25rem;
+  padding: 0 2.5rem;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  transition: all var(--duration-normal) var(--ease-luxury);
+  transition: all var(--duration-btn) var(--ease-editorial);
 }
 
+/* Primary Button: Dark canvas with sliding metallic gold layer */
 .btn-solid {
   background: var(--fg);
   color: var(--bg);
   border: 1px solid var(--fg);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .btn-solid::before {
@@ -409,7 +471,7 @@ header {
   height: 100%;
   background: var(--accent);
   transform: translateX(-101%);
-  transition: transform var(--duration-normal) var(--ease-luxury);
+  transition: transform var(--duration-btn) var(--ease-editorial);
   z-index: 1;
 }
 
@@ -422,7 +484,7 @@ header {
 
 .btn-solid:hover {
   border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
 }
 
 .btn-solid:hover::before {
@@ -433,6 +495,7 @@ header {
   color: #FFFFFF;
 }
 
+/* Secondary Button: Hairline rectangular outline */
 .btn-outline {
   background: transparent;
   color: var(--fg);
@@ -445,11 +508,93 @@ header {
   border-color: var(--fg);
 }
 
-/* ---------- Hero Section (Asymmetric Magazine Cover) ---------- */
+.dark-section .btn-outline {
+  color: var(--dark-fg);
+  border-color: var(--dark-border);
+}
+
+.dark-section .btn-outline:hover {
+  background: var(--dark-fg);
+  color: var(--dark-bg);
+  border-color: var(--dark-fg);
+}
+
+/* --------------------------------------------------------------------------
+   8. Section Alternation (Light & Inverted Charcoal Sections)
+   -------------------------------------------------------------------------- */
+section {
+  padding: 7.5rem 0;
+  position: relative;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding: 9rem 0;
+  }
+}
+
+/* Dark Inverted Sections for Dramatic Editorial Rhythm */
+.dark-section {
+  background-color: var(--dark-bg);
+  color: var(--dark-fg);
+  border-bottom-color: var(--dark-border);
+}
+
+.dark-section .section-title {
+  color: var(--dark-fg);
+}
+
+.dark-section .section-subtitle {
+  color: var(--dark-muted-fg);
+}
+
+.dark-section .section-head {
+  border-bottom-color: var(--dark-border);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.5rem;
+}
+
+.section-num {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--fg);
+  letter-spacing: -0.025em;
+}
+
+.section-subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted-fg);
+  margin-left: auto;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   9. Hero Section (Asymmetric Editorial Cover)
+   -------------------------------------------------------------------------- */
 .hero {
   min-height: 100vh;
-  padding-top: 8rem;
-  padding-bottom: 6rem;
+  padding-top: 9.5rem;
+  padding-bottom: 7.5rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -471,7 +616,7 @@ header {
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.5rem;
+  gap: 4rem;
   align-items: end;
   position: relative;
   z-index: 2;
@@ -481,7 +626,7 @@ header {
 @media (min-width: 1024px) {
   .hero-inner {
     grid-template-columns: 8fr 4fr;
-    gap: 4rem;
+    gap: 5rem;
   }
 }
 
@@ -489,35 +634,35 @@ header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-size: clamp(3.25rem, 8vw, 7.5rem);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
   color: var(--fg);
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-role {
   font-family: var(--font-sans);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   line-height: 1.5;
   font-weight: 300;
   color: var(--fg);
   margin-bottom: 1.5rem;
-  max-width: 42rem;
+  max-width: 44rem;
 }
 
 .hero-desc {
   font-size: 1.0625rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--muted-fg);
-  max-width: 38rem;
-  margin-bottom: 3rem;
+  max-width: 40rem;
+  margin-bottom: 3.25rem;
 }
 
 .hero-cta {
@@ -527,11 +672,11 @@ header {
 }
 
 .hero-side-card {
-  border-top: 1px solid var(--fg);
-  padding-top: 2rem;
+  border-top: 2px solid var(--fg);
+  padding-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .hero-stat-block {
@@ -541,7 +686,7 @@ header {
 
 .hero-stat-num {
   font-family: var(--font-serif);
-  font-size: 3.5rem;
+  font-size: 3.75rem;
   line-height: 1;
   color: var(--fg);
   font-weight: 400;
@@ -549,14 +694,14 @@ header {
 
 .hero-stat-num .plus {
   color: var(--accent);
-  font-size: 2rem;
+  font-size: 2.25rem;
   vertical-align: super;
 }
 
 .hero-stat-label {
   font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--muted-fg);
   margin-top: 0.5rem;
 }
@@ -564,14 +709,14 @@ header {
 .scroll-cue {
   position: absolute;
   bottom: 2.5rem;
-  right: 4rem;
+  right: 5rem;
   font-size: 0.625rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--muted-fg);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
   z-index: 3;
 }
 
@@ -581,52 +726,13 @@ header {
   background: var(--muted-fg);
 }
 
-/* ---------- Section Headers ---------- */
-section {
-  padding: 7rem 0;
-  border-bottom: 1px solid var(--border-subtle);
-  position: relative;
-}
-
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 1.5rem;
-  margin-bottom: 4.5rem;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.5rem;
-}
-
-.section-num {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-style: italic;
-  color: var(--accent);
-  font-weight: 400;
-}
-
-.section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.25rem, 4vw, 3.75rem);
-  font-weight: 400;
-  line-height: 1.05;
-  color: var(--fg);
-  letter-spacing: -0.02em;
-}
-
-.section-subtitle {
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--muted-fg);
-  margin-left: auto;
-}
-
-/* ---------- Reveal Animation ---------- */
+/* --------------------------------------------------------------------------
+   10. Reveal Animations
+   -------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--duration-slow) var(--ease-luxury), transform var(--duration-slow) var(--ease-luxury);
+  transform: translateY(28px);
+  transition: opacity var(--duration-color) var(--ease-editorial), transform var(--duration-color) var(--ease-editorial);
 }
 
 .reveal.in {
@@ -634,17 +740,19 @@ section {
   transform: translateY(0);
 }
 
-/* ---------- About Section ---------- */
+/* --------------------------------------------------------------------------
+   11. About Section (7/5 Asymmetry)
+   -------------------------------------------------------------------------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 4.5rem;
 }
 
 @media (min-width: 1024px) {
   .about-grid {
     grid-template-columns: 7fr 5fr;
-    gap: 6rem;
+    gap: 6.5rem;
   }
 }
 
@@ -652,25 +760,25 @@ section {
   font-size: 1.125rem;
   line-height: 1.9;
   color: var(--fg);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .stat-card {
-  background: var(--card-bg-subtle);
+  background: var(--muted-bg);
   border-top: 2px solid var(--fg);
-  padding: 3rem;
-  box-shadow: var(--shadow-subtle);
+  padding: 3.5rem 3rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .stat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem 2rem;
+  gap: 3.5rem 2.5rem;
 }
 
 .stat-num {
   font-family: var(--font-serif);
-  font-size: 3.25rem;
+  font-size: 3.5rem;
   font-weight: 400;
   line-height: 1;
   color: var(--fg);
@@ -685,11 +793,13 @@ section {
   font-weight: 500;
 }
 
-/* ---------- Projects Section ---------- */
+/* --------------------------------------------------------------------------
+   12. Projects Section (Dark Inverted Atelier Canvas)
+   -------------------------------------------------------------------------- */
 .proj-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 2.75rem;
 }
 
 @media (min-width: 768px) {
@@ -705,20 +815,20 @@ section {
 }
 
 .proj-card {
-  background: var(--card-bg);
-  border-top: 1px solid var(--border-subtle);
-  padding: 2.5rem 2rem;
+  background: var(--dark-muted-bg);
+  border-top: 1px solid var(--dark-border);
+  padding: 2.75rem 2.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  transition: all var(--duration-normal) var(--ease-luxury);
-  box-shadow: var(--shadow-card);
+  transition: all var(--duration-btn) var(--ease-editorial);
+  box-shadow: var(--shadow-md);
 }
 
 .proj-card:hover {
   border-top-color: var(--accent);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--shadow-lift);
   transform: translateY(-4px);
 }
 
@@ -756,10 +866,10 @@ section {
 
 .proj-name {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 600;
   line-height: 1.2;
-  color: var(--fg);
+  color: var(--dark-fg);
 }
 
 .proj-link {
@@ -774,13 +884,13 @@ section {
 }
 
 .proj-link:hover {
-  color: var(--fg);
+  color: var(--dark-fg);
 }
 
 .proj-desc {
   font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--muted-fg);
+  line-height: 1.75;
+  color: var(--dark-muted-fg);
   margin-bottom: 2rem;
   flex-grow: 1;
 }
@@ -789,7 +899,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--dark-border);
   padding-top: 1.25rem;
 }
 
@@ -798,17 +908,19 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 500;
-  color: var(--muted-fg);
-  background: var(--card-bg-subtle);
+  color: var(--dark-muted-fg);
+  background: rgba(255, 255, 255, 0.04);
   padding: 0.35rem 0.75rem;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--dark-border);
 }
 
-/* ---------- Skills Section ---------- */
+/* --------------------------------------------------------------------------
+   13. Technical Disciplines / Skills Section
+   -------------------------------------------------------------------------- */
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 2.75rem;
 }
 
 @media (min-width: 768px) {
@@ -824,16 +936,16 @@ section {
 }
 
 .skill-card {
-  background: var(--card-bg);
+  background: var(--surface-white);
   border-top: 1px solid var(--border-subtle);
-  padding: 2.5rem 2rem;
-  box-shadow: var(--shadow-card);
-  transition: all var(--duration-normal) var(--ease-luxury);
+  padding: 2.75rem 2.25rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-btn) var(--ease-editorial);
 }
 
 .skill-card:hover {
   border-top-color: var(--accent);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--shadow-lift);
 }
 
 .skill-head {
@@ -841,7 +953,7 @@ section {
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -853,7 +965,7 @@ section {
 
 .skill-head h3 {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--fg);
 }
@@ -862,12 +974,12 @@ section {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
 .skill-card li {
   font-size: 0.9375rem;
-  line-height: 1.5;
+  line-height: 1.55;
   color: var(--fg);
 }
 
@@ -894,11 +1006,13 @@ section {
   font-weight: 600;
 }
 
-/* ---------- Certifications Section ---------- */
+/* --------------------------------------------------------------------------
+   14. Certifications Section (Slow Cinematic Grayscale to Color Reveal)
+   -------------------------------------------------------------------------- */
 .cert-cols {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 @media (min-width: 1024px) {
@@ -909,24 +1023,24 @@ section {
 
 .cert-col {
   border-top: 1px solid var(--border-subtle);
-  padding-top: 2rem;
+  padding-top: 2.25rem;
 }
 
 .cert-col h3 {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--fg);
   margin-bottom: 2rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .cert-item {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 1.25rem 0;
+  gap: 1.35rem;
+  padding: 1.35rem 0;
   border-bottom: 1px solid var(--border-subtle);
   transition: all var(--duration-fast);
 }
@@ -940,15 +1054,21 @@ section {
   font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: var(--card-bg-subtle);
+  background: var(--muted-bg);
   border: 1px solid var(--border-subtle);
   color: var(--fg);
+  filter: grayscale(100%);
+  transition: filter var(--duration-cinematic) var(--ease-editorial);
+}
+
+.cert-item:hover .cert-logo {
+  filter: grayscale(0%);
 }
 
 .cert-logo.aws {
@@ -972,7 +1092,7 @@ section {
   height: 100%;
   object-fit: contain;
   filter: grayscale(100%);
-  transition: filter var(--duration-cinematic) var(--ease-luxury);
+  transition: filter var(--duration-cinematic) var(--ease-editorial);
 }
 
 .cert-item:hover .cert-logo img {
@@ -988,7 +1108,7 @@ section {
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--fg);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .cert-meta {
@@ -998,83 +1118,87 @@ section {
   letter-spacing: 0.05em;
 }
 
-/* ---------- Education Section ---------- */
+/* --------------------------------------------------------------------------
+   15. Education Section (Dark Inverted Architecture)
+   -------------------------------------------------------------------------- */
 .edu-item {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: 2.5rem 0;
-  border-top: 1px solid var(--border-subtle);
+  gap: 1.75rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--dark-border);
 }
 
 @media (min-width: 768px) {
   .edu-item {
     grid-template-columns: 4fr 8fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
 }
 
 .edu-year {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-style: italic;
   color: var(--accent);
 }
 
 .edu-body h3 {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: 600;
-  color: var(--fg);
-  margin-bottom: 0.75rem;
+  color: var(--dark-fg);
+  margin-bottom: 0.85rem;
 }
 
 .edu-body p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--muted-fg);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: var(--dark-muted-fg);
 }
 
-/* ---------- Digital Playground (Integrated Atelier) ---------- */
+/* --------------------------------------------------------------------------
+   16. Digital Data Atelier (Playground Section)
+   -------------------------------------------------------------------------- */
 .playground-section {
-  background: var(--card-bg-subtle);
+  background: var(--bg);
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .playground-lead {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-style: italic;
   color: var(--muted-fg);
-  max-width: 48rem;
-  margin-bottom: 3.5rem;
+  max-width: 50rem;
+  margin-bottom: 4rem;
   line-height: 1.6;
 }
 
 .playground-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 @media (min-width: 1024px) {
   .playground-grid {
     grid-template-columns: 4.5fr 7.5fr;
-    gap: 3.5rem;
+    gap: 4rem;
   }
 }
 
 .playground-card {
-  background: var(--card-bg);
+  background: var(--surface-white);
   border-top: 2px solid var(--fg);
-  padding: 2.5rem;
-  box-shadow: var(--shadow-card);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--shadow-md);
 }
 
 .playground-card-head {
-  margin-bottom: 2rem;
-  padding-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.35rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -1090,35 +1214,35 @@ section {
 
 .playground-card-head h3 {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--fg);
 }
 
 .fact-display {
-  min-height: 14rem;
+  min-height: 15rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .fact-badge {
   display: inline-block;
   font-size: 0.625rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   font-weight: 600;
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
   padding-bottom: 0.25rem;
   align-self: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .fact-title {
   font-family: var(--font-serif);
-  font-size: 1.375rem;
+  font-size: 1.45rem;
   font-weight: 600;
   color: var(--fg);
   line-height: 1.35;
@@ -1127,9 +1251,9 @@ section {
 
 .fact-desc {
   font-size: 0.9375rem;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--muted-fg);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .fact-meta {
@@ -1141,16 +1265,16 @@ section {
 .fact-actions {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .controls-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   align-items: flex-end;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.75rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -1165,11 +1289,12 @@ section {
 .control-group label {
   font-size: 0.6875rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--muted-fg);
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* Underline Only Select Input */
 .control-select {
   background: transparent;
   border: none;
@@ -1188,24 +1313,24 @@ section {
 }
 
 .chart-shell {
-  min-height: 380px;
+  min-height: 400px;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .chart-container {
   width: 100%;
-  height: 380px;
+  height: 400px;
 }
 
 .dataset-info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1.75rem;
   border-top: 1px solid var(--border-subtle);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 1.5rem 0;
-  margin-bottom: 2rem;
+  padding: 1.75rem 0;
+  margin-bottom: 2.25rem;
 }
 
 @media (min-width: 768px) {
@@ -1217,22 +1342,22 @@ section {
 .info-label {
   font-size: 0.625rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--muted-fg);
   margin-bottom: 0.25rem;
 }
 
 .info-val {
   font-family: var(--font-serif);
-  font-size: 1.125rem;
+  font-size: 1.15rem;
   font-weight: 600;
   color: var(--fg);
 }
 
 .insight-card {
-  background: var(--card-bg-subtle);
+  background: var(--muted-bg);
   border-left: 2px solid var(--accent);
-  padding: 1.5rem;
+  padding: 1.75rem;
 }
 
 .insight-header {
@@ -1246,13 +1371,15 @@ section {
 
 .insight-text {
   font-family: var(--font-serif);
-  font-size: 1.0625rem;
+  font-size: 1.1rem;
   font-style: italic;
   color: var(--fg);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-/* ---------- Contact Section ---------- */
+/* --------------------------------------------------------------------------
+   17. Inquiries & Dialogue / Contact (Dark Inverted Section)
+   -------------------------------------------------------------------------- */
 .contact-wrap {
   display: grid;
   grid-template-columns: 1fr;
@@ -1268,47 +1395,49 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 2.25rem 0;
+  border-bottom: 1px solid var(--dark-border);
   transition: all var(--duration-fast);
 }
 
 .contact-row:hover {
   border-bottom-color: var(--accent);
-  padding-left: 1rem;
+  padding-left: 1.25rem;
 }
 
 .contact-row .label {
   font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: var(--muted-fg);
+  color: var(--dark-muted-fg);
   margin-bottom: 0.35rem;
 }
 
 .contact-row .value {
   font-family: var(--font-serif);
-  font-size: 1.375rem;
+  font-size: 1.45rem;
   font-weight: 500;
-  color: var(--fg);
+  color: var(--dark-fg);
 }
 
 .contact-row .arrow {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   color: var(--accent);
   transition: transform var(--duration-fast);
 }
 
 .contact-row:hover .arrow {
-  transform: translateX(8px);
+  transform: translateX(10px);
 }
 
-/* ---------- Footer ---------- */
+/* --------------------------------------------------------------------------
+   18. Footer
+   -------------------------------------------------------------------------- */
 footer {
-  padding: 5rem 0;
-  border-top: 1px solid var(--border-subtle);
+  padding: 6rem 0;
+  border-top: 1px solid var(--dark-border);
   text-align: center;
-  background: var(--bg);
+  background: var(--dark-bg);
   position: relative;
   z-index: 2;
 }
@@ -1317,5 +1446,5 @@ footer p {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: var(--muted-fg);
+  color: var(--dark-muted-fg);
 }
