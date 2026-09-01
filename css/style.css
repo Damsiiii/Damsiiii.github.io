@@ -172,8 +172,10 @@ header {
   left: 0;
   right: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  background: rgba(14, 20, 32, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: var(--ink);
+  opacity: 0.95;
   border-bottom: 1px solid var(--line);
 }
 
@@ -181,52 +183,80 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 32px;
-  max-width: 1120px;
+  padding: 20px 32px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 .nav .mark {
-  font-family: var(--mono);
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: var(--amber-soft);
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-text);
+  transition: color 0.25s ease;
 }
 
 .nav .mark span {
-  color: var(--paper);
+  color: var(--gold);
+  font-style: italic;
+}
+
+.nav .mark:hover {
+  color: var(--gold);
 }
 
 .nav ul {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
 }
 
 .nav ul a {
   font-family: var(--mono);
-  font-size: 12.5px;
-  letter-spacing: 0.06em;
+  font-size: 11px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--paper-dim);
-  transition: color 0.2s;
+  transition: all 0.25s ease;
+  position: relative;
+  padding-bottom: 4px;
 }
 
-.nav ul a[href="#playground"] {
-  color: var(--amber-soft);
+.nav ul a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .nav ul a:hover {
-  color: var(--amber-soft);
+  color: var(--ink-text);
+}
+
+.nav ul a:hover::after {
+  width: 100%;
+}
+
+.nav ul a[href="#playground"] {
+  color: var(--gold);
+  font-weight: 600;
 }
 
 .nav-toggle {
   display: none;
-  background: none;
-  border: none;
-  color: var(--paper);
-  font-size: 22px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-text);
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 0px;
   cursor: pointer;
 }
 
@@ -305,7 +335,7 @@ h1.hero-title {
   font-family: var(--display);
   font-weight: 600;
   font-size: clamp(2.6rem, 6.5vw, 5.2rem);
-  line-height: 1.02;
+  line-height: 0.92;
   letter-spacing: -0.01em;
   max-width: 900px;
 }
@@ -719,13 +749,16 @@ section {
   position: relative;
   border-radius: 0px;
   border-top: 1px solid var(--line);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  filter: grayscale(100%);
 }
 
 .proj-card:hover {
   background: var(--ink-2);
   border-top-color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  filter: grayscale(0%);
 }
 
 .proj-card:last-child {
@@ -1065,12 +1098,14 @@ footer p {
   transition:
     border-color 0.4s ease,
     box-shadow 0.4s ease,
-    transform 0.4s ease;
+    transform 0.4s ease,
+    filter 1.5s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .playground-card:hover {
   border-top-color: var(--gold);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
