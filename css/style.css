@@ -415,12 +415,12 @@ h1.hero-title .accent {
 
 .btn-solid {
   position: relative;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--ink-text);
+  color: var(--paper);
   font-weight: 600;
   overflow: hidden;
   z-index: 1;
-  border: 1px solid var(--paper);
+  border: 1px solid var(--ink-text);
 }
 
 .btn-solid::before {
@@ -444,7 +444,7 @@ h1.hero-title .accent {
 
 .btn-outline {
   border: 1px solid var(--line);
-  color: var(--paper);
+  color: var(--ink-text);
   background: transparent;
 }
 
@@ -462,7 +462,7 @@ h1.hero-title .accent {
 
 .playground-section .btn-outline:hover {
   background: var(--amber-soft);
-  color: var(--ink);
+  color: var(--ink-text);
   border-color: var(--amber);
 }
 
@@ -644,7 +644,7 @@ section {
   gap: 8px;
   font-size: 14.5px;
   font-weight: 600;
-  color: var(--paper);
+  color: var(--ink-text);
 }
 
 .skill-name::before {
@@ -912,7 +912,7 @@ section {
 }
 
 .cert-body .cert-title {
-  color: var(--paper);
+  color: var(--ink-text);
   font-weight: 500;
 }
 
@@ -1127,7 +1127,7 @@ footer p {
   font-family: var(--display);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--paper);
+  color: var(--ink-text);
   line-height: 1.25;
 }
 
@@ -1218,7 +1218,7 @@ footer p {
 .control-select {
   width: 100%;
   background: var(--ink);
-  color: var(--paper);
+  color: var(--ink-text);
   border: 1px solid var(--line);
   padding: 9px 12px;
   font-family: var(--mono);
@@ -1301,7 +1301,7 @@ footer p {
 .insight-text {
   font-family: var(--body);
   font-size: 14.5px;
-  color: var(--paper);
+  color: var(--ink-text);
   line-height: 1.65;
 }
 
@@ -1329,7 +1329,7 @@ footer p {
 .info-item .info-val {
   font-family: var(--mono);
   font-size: 12.5px;
-  color: var(--paper);
+  color: var(--ink-text);
   font-weight: 500;
   margin-top: 4px;
   word-break: break-word;
