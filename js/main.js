@@ -12,8 +12,8 @@ if (themeToggle) {
   }
 
   themeToggle.addEventListener("click", () => {
-    themeToggle.classList.add("spin");
-    setTimeout(() => themeToggle.classList.remove("spin"), 500);
+    themeToggle.classList.add("flip");
+    setTimeout(() => themeToggle.classList.remove("flip"), 1100);
 
     const isLight =
       document.documentElement.getAttribute("data-theme") === "light";
