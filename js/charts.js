@@ -2,20 +2,6 @@
  * Digital Data Playground — visualization & data engine
  * ECharts for charts, PapaParse for client-side CSV parsing.
  * Works fully static (GitHub Pages / Netlify / Vercel) — no backend.
- *
- * =============================================================================
- * HOW TO ADD A NEW DATASET
- * =============================================================================
- * 1. Add a CSV file under data/ (e.g. data/my_dataset.csv).
- * 2. Register it in DATASETS below:
- *      my_id: {
- *        name, file, source, description,
- *        processData(rows) -> { x, y, scatter, xName, yName, unit },
- *        insights: { line|bar|scatter|pie|histogram: "..." }  // or insight: "..."
- *      }
- * 3. Add <option value="my_id">…</option> to #datasetSelect in index.html.
- * 4. Optionally add facts in data/facts.json with "dataset": "my_id".
- * =============================================================================
  */
 (function () {
   "use strict";
@@ -28,13 +14,13 @@
   const cache = {};
 
   const THEME = {
-    amber: "#D4AF37",
-    amberSoft: "#D4AF37",
-    teal: "#B8860B",
-    paper: "#F9F8F6",
-    ink: "#1A1A1A",
-    ink2: "#242424",
-    colors: ["#D4AF37", "#B8860B", "#6C6863", "#1A1A1A", "#A39274", "#8C7B53"],
+    amber: "#000080",
+    amberSoft: "#008080",
+    teal: "#008080",
+    paper: "#C0C0C0",
+    ink: "#000000",
+    ink2: "#2A2A2A",
+    colors: ["#000080", "#008080", "#808080", "#D4AF37", "#800080", "#000000"],
   };
 
   const DATASETS = {
@@ -141,7 +127,6 @@
           xName: "Budget ($M)",
           yName: "Worldwide gross ($M)",
           unit: "$M",
-          // Genre aggregates for pie
           categories: (() => {
             const map = {};
             valid.forEach((r) => {
@@ -279,7 +264,6 @@
     initChart();
     loadFacts();
     bindEvents();
-    // Sync select UI
     if ($("datasetSelect")) $("datasetSelect").value = activeDatasetId;
     if ($("chartTypeSelect")) $("chartTypeSelect").value = activeChartType;
     loadDataset(activeDatasetId);
@@ -323,7 +307,6 @@
   function displayRandomFact() {
     if (!factsList.length) return;
     let next = factsList[Math.floor(Math.random() * factsList.length)];
-    // Avoid immediate repeat when possible
     if (factsList.length > 1 && currentFact && next.id === currentFact.id) {
       next = factsList[(factsList.indexOf(next) + 1) % factsList.length];
     }
@@ -365,8 +348,8 @@
       chartInstance.showLoading("default", {
         text: "Loading dataset…",
         color: THEME.amber,
-        textColor: THEME.paper,
-        maskColor: "rgba(14, 20, 32, 0.65)",
+        textColor: THEME.ink,
+        maskColor: "rgba(192, 192, 192, 0.65)",
         zlevel: 0,
       });
     }
@@ -423,9 +406,9 @@
         left: "center",
         top: "middle",
         textStyle: {
-          color: "rgba(246,243,236,0.55)",
+          color: "#808080",
           fontSize: 14,
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
           fontWeight: 400,
           width: 360,
           overflow: "break",
@@ -451,67 +434,67 @@
 
     const themeColors = isDark
       ? {
-          text: "#F9F8F6",
-          textMuted: "#A09B94",
-          textSubtle: "#6C6863",
-          axisLine: "rgba(249, 248, 246, 0.2)",
-          splitLine: "rgba(249, 248, 246, 0.08)",
-          tooltipBg: "rgba(20, 20, 20, 0.96)",
-          tooltipBorder: "#D4AF37",
-          accent: "#D4AF37",
-          accentSoft: "#F0DFC8",
-          secondary: "#EBE5DE",
+          text: "#F0F4F8",
+          textMuted: "#A0AEC0",
+          textSubtle: "#718096",
+          axisLine: "#484E54",
+          splitLine: "rgba(240, 244, 248, 0.12)",
+          tooltipBg: "#1F2225",
+          tooltipBorder: "#4895EF",
+          accent: "#4895EF",
+          accentSoft: "#E0A96D",
+          secondary: "#A0AEC0",
           colors: [
-            "#D4AF37",
-            "#EBE5DE",
-            "#A09B94",
-            "#6C6863",
-            "#C4A458",
-            "#8C7D6B",
+            "#4895EF",
+            "#E0A96D",
+            "#A0AEC0",
+            "#484E54",
+            "#718096",
+            "#C0C0C0",
           ],
-          lineGradStart: "rgba(212, 175, 55, 0.35)",
-          lineGradEnd: "rgba(212, 175, 55, 0.01)",
-          barGradStart: "#D4AF37",
-          barGradEnd: "rgba(212, 175, 55, 0.3)",
-          pieBorder: "#141414",
-          pieLine: "rgba(249, 248, 246, 0.4)",
+          lineGradStart: "rgba(72, 149, 239, 0.35)",
+          lineGradEnd: "rgba(72, 149, 239, 0.01)",
+          barGradStart: "#4895EF",
+          barGradEnd: "rgba(72, 149, 239, 0.3)",
+          pieBorder: "#181B1E",
+          pieLine: "rgba(240, 244, 248, 0.4)",
         }
       : {
-          text: "#1A1A1A",
-          textMuted: "#6C6863",
-          textSubtle: "#8C867E",
-          axisLine: "#1A1A1A",
-          splitLine: "rgba(26, 26, 26, 0.08)",
-          tooltipBg: "rgba(255, 255, 255, 0.98)",
-          tooltipBorder: "#1A1A1A",
-          accent: "#1A1A1A",
-          accentSoft: "#D4AF37",
-          secondary: "#6C6863",
+          text: "#000000",
+          textMuted: "#404040",
+          textSubtle: "#808080",
+          axisLine: "#000000",
+          splitLine: "rgba(0, 0, 0, 0.12)",
+          tooltipBg: "#C0C0C0",
+          tooltipBorder: "#000080",
+          accent: "#000080",
+          accentSoft: "#008080",
+          secondary: "#404040",
           colors: [
-            "#1A1A1A",
+            "#000080",
+            "#008080",
+            "#808080",
             "#D4AF37",
-            "#6C6863",
-            "#8C7D6B",
-            "#3E4451",
-            "#A6926D",
+            "#800080",
+            "#000000",
           ],
-          lineGradStart: "rgba(26, 26, 26, 0.25)",
-          lineGradEnd: "rgba(26, 26, 26, 0.01)",
-          barGradStart: "#1A1A1A",
-          barGradEnd: "rgba(26, 26, 26, 0.2)",
+          lineGradStart: "rgba(0, 0, 128, 0.25)",
+          lineGradEnd: "rgba(0, 0, 128, 0.01)",
+          barGradStart: "#000080",
+          barGradEnd: "rgba(0, 0, 128, 0.2)",
           pieBorder: "#FFFFFF",
-          pieLine: "rgba(26, 26, 26, 0.4)",
+          pieLine: "rgba(0, 0, 0, 0.4)",
         };
 
     const baseText = {
-      fontFamily: "'Inter', -apple-system, sans-serif",
+      fontFamily: "'Share Tech Mono', 'Courier New', monospace",
       color: themeColors.text,
     };
 
     const option = {
       backgroundColor: "transparent",
       color: themeColors.colors,
-      animationDuration: 700,
+      animationDuration: 500,
       animationEasing: "cubicOut",
       textStyle: baseText,
       legend: {
@@ -519,7 +502,7 @@
         bottom: 4,
         textStyle: {
           color: themeColors.text,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
           fontSize: 12,
           fontWeight: 500,
         },
@@ -531,12 +514,12 @@
             : "axis",
         backgroundColor: themeColors.tooltipBg,
         borderColor: themeColors.tooltipBorder,
-        borderWidth: 1,
+        borderWidth: 2,
         extraCssText:
-          "box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 0px; padding: 12px 16px;",
+          "box-shadow: 2px 2px 0px #000000; border-radius: 0px; padding: 10px 14px;",
         textStyle: {
           color: themeColors.text,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
           fontSize: 13,
         },
         formatter: (params) => {
@@ -599,13 +582,13 @@
           color: themeColors.secondary,
           fontSize: 12,
           fontWeight: 500,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
         },
         data:
           activeChartType === "scatter" || activeChartType === "pie"
             ? undefined
             : data.x,
-        axisLine: { lineStyle: { color: themeColors.axisLine, width: 1 } },
+        axisLine: { lineStyle: { color: themeColors.axisLine, width: 2 } },
         axisTick: {
           show: true,
           lineStyle: { color: themeColors.axisLine, width: 1 },
@@ -615,7 +598,7 @@
           rotate: data.x && data.x.length > 14 ? 35 : 0,
           fontSize: 12,
           fontWeight: 400,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
           interval: activeChartType === "histogram" ? 0 : "auto",
         },
         splitLine: {
@@ -634,11 +617,11 @@
           color: themeColors.secondary,
           fontSize: 12,
           fontWeight: 500,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
         },
         axisLine: {
           show: true,
-          lineStyle: { color: themeColors.axisLine, width: 1 },
+          lineStyle: { color: themeColors.axisLine, width: 2 },
         },
         axisTick: {
           show: true,
@@ -651,7 +634,7 @@
           color: themeColors.text,
           fontSize: 12,
           fontWeight: 400,
-          fontFamily: "'Inter', sans-serif",
+          fontFamily: "'Share Tech Mono', monospace",
         },
       },
       series: [],
@@ -664,8 +647,8 @@
           name: config.name,
           type: "line",
           data: data.y,
-          smooth: true,
-          symbol: "circle",
+          smooth: false,
+          symbol: "rect",
           symbolSize: 6,
           lineStyle: { width: 2, color: themeColors.accent },
           itemStyle: { color: themeColors.accent },
@@ -675,7 +658,7 @@
             color: themeColors.text,
             fontSize: 11,
             fontWeight: 500,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Share Tech Mono', monospace",
             formatter: (p) => {
               if (data.y.length <= 15)
                 return p.value + (data.unit ? " " + data.unit : "");
@@ -705,7 +688,7 @@
             color: themeColors.text,
             fontSize: 11,
             fontWeight: 500,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Share Tech Mono', monospace",
             formatter: (p) => p.value + (data.unit ? " " + data.unit : ""),
           },
           itemStyle: {
@@ -726,6 +709,7 @@
           type: "scatter",
           data: data.scatter || data.x.map((xv, i) => [i, data.y[i]]),
           symbolSize: 8,
+          symbol: "rect",
           itemStyle: {
             color: themeColors.accentSoft,
             opacity: 0.95,
@@ -738,7 +722,7 @@
               color: themeColors.text,
               fontSize: 11,
               fontWeight: 500,
-              fontFamily: "'Inter', sans-serif",
+              fontFamily: "'Share Tech Mono', monospace",
               formatter: (p) => p.value[1] + (data.unit ? " " + data.unit : ""),
             },
           },
@@ -774,12 +758,12 @@
           itemStyle: {
             borderRadius: 0,
             borderColor: themeColors.pieBorder,
-            borderWidth: 1,
+            borderWidth: 2,
           },
           label: {
             show: true,
             color: themeColors.text,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Share Tech Mono', monospace",
             fontSize: 12,
             fontWeight: 500,
             formatter:
@@ -825,7 +809,7 @@
             color: themeColors.text,
             fontSize: 11,
             fontWeight: 500,
-            fontFamily: "'Inter', sans-serif",
+            fontFamily: "'Share Tech Mono', monospace",
           },
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
@@ -864,7 +848,6 @@
     if (viz) {
       viz.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-    // Brief highlight
     const panel = $("vizPanel");
     if (panel) {
       panel.classList.add("playground-flash");
@@ -904,7 +887,7 @@
         const url = chartInstance.getDataURL({
           type: "png",
           pixelRatio: 2,
-          backgroundColor: isDark ? "#2a2a2a" : "#eee5da",
+          backgroundColor: isDark ? "#2a2a2a" : "#c0c0c0",
         });
         const link = document.createElement("a");
         link.download =
