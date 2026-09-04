@@ -32,6 +32,7 @@
             <li><a href="#projects" class="menu-item"><span class="shortcut">P</span>rojects</a></li>
             <li><a href="#skills" class="menu-item"><span class="shortcut">S</span>kills</a></li>
             <li><a href="#certifications" class="menu-item"><span class="shortcut">C</span>erts</a></li>
+            <li><a href="#snake-game-window" class="menu-item"><span class="shortcut">G</span>ame</a></li>
             <li><a href="#playground" class="menu-item"><span class="shortcut">D</span>ata_Lab</a></li>
             <li><a href="#contact" class="menu-item"><span class="shortcut">M</span>ail</a></li>
           </ul>
@@ -528,6 +529,49 @@
           </div>
           <div class="status-bar bevel-inset">
             <span>TOTAL CERTS: 12 VERIFIED</span>
+          </div>
+        </section>
+
+        <!-- Section 04.5: Retro Terminal Snake Game -->
+        <section id="snake-game-window" class="window bevel-outset reveal">
+          <div class="title-bar">
+            <div class="title-bar-text">
+              <span class="title-icon">🐍</span> C:\GAMES\SNAKE.EXE — Retro Terminal Snake
+            </div>
+            <div class="title-bar-controls">
+              <button class="win-control" aria-label="Minimize">_</button>
+              <button class="win-control" aria-label="Maximize">□</button>
+              <button class="win-control close-btn" aria-label="Close">✕</button>
+            </div>
+          </div>
+          <div class="window-body snake-window-body">
+            <div class="snake-top-bar bevel-inset">
+              <div class="snake-score-box">
+                <span class="snake-score-label">SCORE:</span>
+                <span id="snake-score-val" class="snake-score-num">0000</span>
+              </div>
+              <div class="snake-score-box">
+                <span class="snake-score-label">HIGH SCORE:</span>
+                <span id="snake-high-score-val" class="snake-score-num">0000</span>
+              </div>
+              <button type="button" id="snake-start-btn" class="btn-retro btn-primary-retro">
+                ▶ START / RESTART
+              </button>
+            </div>
+            <div class="snake-canvas-container bevel-inset">
+              <canvas id="snake-canvas" width="400" height="300" aria-label="Terminal Snake Canvas"></canvas>
+              <div id="snake-overlay" class="snake-overlay">
+                <div class="snake-overlay-msg">
+                  <h3>C:\GAMES\SNAKE.EXE</h3>
+                  <p>Press <strong>START</strong> or <strong>SPACE</strong> to Play</p>
+                  <p class="snake-controls-hint">Use Arrow Keys or WASD to navigate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="status-bar bevel-inset">
+            <span>EXECUTABLE: SNAKE.EXE</span>
+            <span id="snake-status-text">STATUS: PAUSED</span>
           </div>
         </section>
 
