@@ -12,8 +12,8 @@ if (themeToggle) {
   }
 
   themeToggle.addEventListener("click", () => {
-    themeToggle.classList.add("flip");
-    setTimeout(() => themeToggle.classList.remove("flip"), 1100);
+    themeToggle.classList.add("active");
+    setTimeout(() => themeToggle.classList.remove("active"), 300);
 
     const isLight =
       document.documentElement.getAttribute("data-theme") === "light";
@@ -30,6 +30,26 @@ if (themeToggle) {
     window.dispatchEvent(
       new CustomEvent("themechange", { detail: { theme: nextTheme } }),
     );
+  });
+}
+
+// Live Retro System Clock
+function updateClock() {
+  const clockEl = document.getElementById("system-clock");
+  if (clockEl) {
+    const now = new Date();
+    clockEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// Start menu toggle
+const startBtn = document.getElementById("start-menu-toggle");
+if (startBtn) {
+  startBtn.addEventListener("click", () => {
+    const active = startBtn.classList.toggle("active");
+    startBtn.setAttribute("aria-expanded", active ? "true" : "false");
   });
 }
 
@@ -127,13 +147,13 @@ revealEls.forEach((el) => io.observe(el));
     ctx.clearRect(0, 0, w, h);
     const isLight =
       document.documentElement.getAttribute("data-theme") === "light";
-    const lineRgb = isLight ? "217, 119, 6" : "226, 165, 61";
+    const lineRgb = isLight ? "0, 0, 128" : "72, 149, 239";
     const particleColor = isLight
-      ? "rgba(13, 148, 136, 0.95)"
-      : "rgba(95, 179, 163, 0.9)";
+      ? "rgba(0, 128, 128, 0.95)"
+      : "rgba(160, 174, 192, 0.9)";
     const labelColor = isLight
-      ? "rgba(28, 36, 52, 0.75)"
-      : "rgba(246, 243, 236, 0.55)";
+      ? "rgba(0, 0, 0, 0.85)"
+      : "rgba(240, 244, 248, 0.85)";
 
     for (const n of nodes) {
       n.x += n.vx;
@@ -175,21 +195,21 @@ revealEls.forEach((el) => io.observe(el));
 
     if (mouse.x !== null && mouse.y !== null) {
       ctx.fillStyle = isLight
-        ? "rgba(217, 119, 6, 0.9)"
-        : "rgba(226, 165, 61, 0.9)";
+        ? "rgba(0, 0, 128, 0.9)"
+        : "rgba(72, 149, 239, 0.9)";
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, 5 * devicePixelRatio, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.fillStyle = isLight
-        ? "rgba(217, 119, 6, 0.25)"
-        : "rgba(226, 165, 61, 0.25)";
+        ? "rgba(0, 0, 128, 0.25)"
+        : "rgba(72, 149, 239, 0.25)";
       ctx.beginPath();
       ctx.arc(mouse.x, mouse.y, 14 * devicePixelRatio, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.font = `${11 * devicePixelRatio}px 'JetBrains Mono', monospace`;
+    ctx.font = `${11 * devicePixelRatio}px 'Share Tech Mono', monospace`;
     for (const n of nodes) {
       ctx.fillStyle = particleColor;
       ctx.beginPath();
