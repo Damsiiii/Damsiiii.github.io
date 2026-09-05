@@ -934,12 +934,64 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .desktop-nav ul {
-    flex-wrap: wrap;
-  }
-
   .dataset-info-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .system-menubar {
+    padding: 4px 6px;
+  }
+
+  .menubar-left {
+    position: relative;
+    gap: 8px;
+  }
+
+  .desktop-nav #nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    flex-direction: column;
+    min-width: 200px;
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-border-light);
+    border-left: 2px solid var(--win-border-light);
+    border-right: 2px solid var(--win-border-darkest);
+    border-bottom: 2px solid var(--win-border-darkest);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 4px;
+    z-index: 1100;
+  }
+
+  .desktop-nav #nav-links.open {
+    display: flex;
+  }
+
+  .desktop-nav .menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .menubar-right {
+    gap: 4px;
+  }
+
+  .menubar-right .btn-retro {
+    padding: 4px 8px;
+    font-size: 11px;
+    min-height: 32px;
+  }
+
+  .system-clock {
+    font-size: 15px;
+    padding: 2px 6px;
+    min-width: 70px;
   }
 }
 
