@@ -36,8 +36,6 @@
             <li><a href="#projects" class="menu-item"><span class="shortcut">P</span>rojects</a></li>
             <li><a href="#skills" class="menu-item"><span class="shortcut">S</span>kills</a></li>
             <li><a href="#certifications" class="menu-item"><span class="shortcut">C</span>erts</a></li>
-            <li><a href="#snake-game-window" class="menu-item"><span class="shortcut">G</span>ame</a></li>
-            <li><a href="#playground" class="menu-item"><span class="shortcut">D</span>ata_Lab</a></li>
             <li><a href="#contact" class="menu-item"><span class="shortcut">M</span>ail</a></li>
           </ul>
         </nav>
@@ -536,182 +534,6 @@
           </div>
         </section>
 
-        <!-- Section 04.5: Retro Terminal Snake Game -->
-        <section id="snake-game-window" class="window bevel-outset reveal">
-          <div class="title-bar">
-            <div class="title-bar-text">
-              <span class="title-icon">🐍</span> C:\GAMES\SNAKE.EXE — Retro Terminal Snake
-            </div>
-            <div class="title-bar-controls">
-              <button class="win-control" aria-label="Minimize">_</button>
-              <button class="win-control" aria-label="Maximize">□</button>
-              <button class="win-control close-btn" aria-label="Close">✕</button>
-            </div>
-          </div>
-          <div class="window-body snake-window-body">
-            <div class="snake-top-bar bevel-inset">
-              <div class="snake-score-box">
-                <span class="snake-score-label">SCORE:</span>
-                <span id="snake-score-val" class="snake-score-num">0000</span>
-              </div>
-              <div class="snake-score-box">
-                <span class="snake-score-label">HIGH SCORE:</span>
-                <span id="snake-high-score-val" class="snake-score-num">0000</span>
-              </div>
-              <button type="button" id="snake-start-btn" class="btn-retro btn-primary-retro">
-                ▶ START / RESTART
-              </button>
-            </div>
-            <div class="snake-canvas-container bevel-inset">
-              <canvas id="snake-canvas" width="400" height="300" aria-label="Terminal Snake Canvas"></canvas>
-              <div id="snake-overlay" class="snake-overlay">
-                <div class="snake-overlay-msg">
-                  <h3>C:\GAMES\SNAKE.EXE</h3>
-                  <p>Press <strong>START</strong> or <strong>SPACE</strong> to Play</p>
-                  <p class="snake-controls-hint">Use Arrow Keys or WASD to navigate</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="status-bar bevel-inset">
-            <span>EXECUTABLE: SNAKE.EXE</span>
-            <span id="snake-status-text">STATUS: PAUSED</span>
-          </div>
-        </section>
-
-        <!-- Section 05: Digital Data Playground (REQUIRED ID: #playground) -->
-        <section id="playground" class="window bevel-outset playground-section reveal">
-          <div class="title-bar">
-            <div class="title-bar-text">
-              <span class="title-icon">📈</span> DATA ANALYZER v2.0 — Digital Data Playground
-            </div>
-            <div class="title-bar-controls">
-              <button class="win-control" aria-label="Minimize">_</button>
-              <button class="win-control" aria-label="Maximize">□</button>
-              <button class="win-control close-btn" aria-label="Close">✕</button>
-            </div>
-          </div>
-
-          <div class="window-body">
-            <div class="playground-grid">
-              <!-- Fact Generator Card -->
-              <aside class="playground-card fact-card bevel-outset" aria-labelledby="fact-heading">
-                <div class="playground-card-head">
-                  <span class="playground-kicker">[01 — DATA FACTS]</span>
-                  <h3 id="fact-heading">Random Fact Generator</h3>
-                </div>
-
-                <div id="factDisplay" class="fact-display bevel-inset" aria-live="polite">
-                  <span class="fact-badge" id="factCategory">STATUS</span>
-                  <h4 class="fact-title" id="factTitle">Fetching data fact…</h4>
-                  <p class="fact-desc" id="factDesc"></p>
-                  <div class="fact-meta" id="factSource"></div>
-                </div>
-
-                <div class="fact-actions">
-                  <button
-                    type="button"
-                    id="nextFactBtn"
-                    class="btn-retro btn-primary-retro fact-btn"
-                  >
-                    🎲 GENERATE RANDOM FACT
-                  </button>
-                  <button
-                    type="button"
-                    id="exploreFactBtn"
-                    class="btn-retro fact-btn"
-                  >
-                    🔍 EXPLORE THIS DATASET
-                  </button>
-                </div>
-              </aside>
-
-              <!-- Interactive Visualization Card -->
-              <div class="playground-card viz-card bevel-outset" id="vizPanel" aria-labelledby="viz-heading">
-                <div class="playground-card-head">
-                  <span class="playground-kicker">[02 — VISUALIZATION]</span>
-                  <h3 id="viz-heading">ECharts Explorer Module</h3>
-                </div>
-
-                <div
-                  class="controls-bar bevel-inset"
-                  role="group"
-                  aria-label="Dataset and chart controls"
-                >
-                  <div class="control-group">
-                    <label for="datasetSelect">DATASET:</label>
-                    <select id="datasetSelect" class="control-select">
-                      <option value="population">World Population</option>
-                      <option value="climate">Global Temperature</option>
-                      <option value="spotify">Spotify Songs</option>
-                      <option value="movies">Movies / Box Office</option>
-                      <option value="happiness">World Happiness</option>
-                    </select>
-                  </div>
-
-                  <div class="control-group">
-                    <label for="chartTypeSelect">CHART TYPE:</label>
-                    <select id="chartTypeSelect" class="control-select">
-                      <option value="line">Line Graph</option>
-                      <option value="bar">Bar Chart</option>
-                      <option value="scatter">Scatter Plot</option>
-                      <option value="pie">Pie Diagram</option>
-                      <option value="histogram">Histogram</option>
-                    </select>
-                  </div>
-
-                  <button
-                    type="button"
-                    id="downloadChartBtn"
-                    class="btn-retro download-btn"
-                  >
-                    💾 SAVE CHART
-                  </button>
-                </div>
-
-                <div class="chart-shell bevel-inset">
-                  <div id="chartLoading" class="chart-loading" hidden>LOADING DATASET...</div>
-                  <div
-                    id="chartContainer"
-                    class="chart-container"
-                    role="img"
-                    aria-label="Interactive retro data chart"
-                  ></div>
-                </div>
-
-                <div class="dataset-info-grid bevel-inset" aria-label="Dataset metadata">
-                  <div class="info-item">
-                    <div class="info-label">DATASET</div>
-                    <div class="info-val" id="infoName">—</div>
-                  </div>
-                  <div class="info-item">
-                    <div class="info-label">SOURCE</div>
-                    <div class="info-val" id="infoSource">—</div>
-                  </div>
-                  <div class="info-item">
-                    <div class="info-label">RECORDS</div>
-                    <div class="info-val" id="infoRecords">—</div>
-                  </div>
-                  <div class="info-item">
-                    <div class="info-label">UPDATED</div>
-                    <div class="info-val" id="infoUpdated">2026-08</div>
-                  </div>
-                </div>
-
-                <div class="insight-card bevel-inset" aria-live="polite">
-                  <div class="insight-header">> DATA INSIGHT:</div>
-                  <p class="insight-text" id="insightText">
-                    Select a dataset above to render insights.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="status-bar bevel-inset">
-            <span>MODULE: ECHARTS v5.5</span>
-            <span>ENGINE: PARSER_OK</span>
-          </div>
-        </section>
 
         <!-- Section 06: Contact (REQUIRED ID: #contact) -->
         <section id="contact" class="window bevel-outset reveal">
@@ -783,10 +605,6 @@
       </div>
     </footer>
 
-    <!-- External Libraries: PapaParse & ECharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/charts.js"></script>
   </body>
 </html>

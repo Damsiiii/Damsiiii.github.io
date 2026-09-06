@@ -1,13 +1,4 @@
-OK 200 / (35823 bytes)
-OK 200 /css/style.css (18698 bytes)
-OK 200 /js/main.js (12468 bytes)
-OK 200 /js/charts.js (29718 bytes)
-OK 200 /data/facts.json (8975 bytes)
-OK 200 /data/population.csv (534916 bytes)
-OK 200 /data/climate.csv (6087 bytes)
-OK 200 /data/movies.csv (312621 bytes)
-OK 200 /data/happiness.csv (69323 bytes)
-OK 200 /data/spotify.csv (184395 bytes)
+OK 200 / (27288 bytes)
+OK 200 /css/style.css (14901 bytes)
+OK 200 /js/main.js (7099 bytes)
 HTML structure checks passed
-fact datasets: animals, climate, energy, environment, food, geography, happiness, health, movies, population, space, spotify, technology, transportation
-charts.js dataset keys present
